@@ -1,0 +1,95 @@
+# iptv-myapp
+
+Personal IPTV app for a Samsung Tizen smart TV, fed by free public playlists.
+Not for distribution. Streams are loaded from public sources at runtime; nothing is rebroadcast.
+
+## Data pipeline (runs on the Mac)
+
+```
+npm run fetch    # download iptv-org API JSON, iptv-org + Free-TV playlists, Albanian EPG -> data/raw/
+npm run merge    # join everything into data/channels.json (one record per channel, N streams each)
+npm run check    # HTTP-level liveness check of every stream URL -> data/health.json
+npm run report   # data/report.md + data/channels.checked.json (channels with per-stream health)
+npm run pipeline # all four in order
+```
+
+Useful env vars for `check`:
+
+| Var | Default | Meaning |
+|---|---|---|
+| `CONCURRENCY` | 48 | parallel requests |
+| `TIMEOUT` | 12000 | ms per request |
+| `ONLY` | | comma-separated country codes, e.g. `ONLY=AL,XK` |
+
+The checker fetches the manifest, follows a master playlist to its first variant, requires the media
+playlist to list segments, then pulls the first 64 KB of the first segment. Statuses:
+
+- `ok` data flows
+- `http_403` / `http_404` server refuses or stream gone (403 from `5.254.89.106` is a token-protected relay)
+- `timeout`, `dns`, `refused`, `reset`, `tls` network-level failures
+- `html_page` the URL is a web page (YouTube / Twitch), not a stream
+- `bad_manifest`, `no_segments`, `variant_http_*`, `segment_http_*` manifest reachable but stream not usable
+
+## YouTube lives
+
+Some broadcasters (Euronews, France 24, A2 CNN, Euronews Albania, many public broadcasters) stream officially and
+free on YouTube. A playlist entry pointing at a YouTube page is not playable by itself, so `scripts/youtube.mjs`
+resolves it: it finds the live video on the page, asks YouTube's player API as the Android client, and returns the
+HLS manifest (fallback: manifest embedded in the mobile page). Manifests expire after ~6 h and are re-resolved on
+demand. The checker marks them `ok` when the resolved stream delivers bytes, `yt_offline` when the channel is not
+live. The viewer/proxy resolves them transparently. Twitch pages are not supported.
+
+`sources/official-youtube.json` lists hand-curated official YouTube lives; `sources/official-hls.json` lists hand-verified open
+broadcaster HLS/DASH URLs. Both are merged in and tried before other streams of the same channel.
+
+## Additional sources (added after the deep research)
+
+- **Gjirafa Video public API** (`scripts/gjirafa.mjs`): the official player backend of rtklive.com, televizioni7.com, atvlive.tv,
+  koha.net. Returns open HLS for RTK 3, RTK 1 Sat, KTV, Arta News, T7, RTV21, ATV, Syri Vision, Euronews Albania 24/7, RTV Besa,
+  TV Prizreni, TV News, Zico, PRO1. Paths rotate, so the list is refreshed on every `npm run fetch`. RTK 1/2/4 are Kosovo-only (403).
+- **Rakuten TV, Albania market** (`scripts/rakuten.mjs`): 51 free live channels (15 sports: FIFA+, Eurovision Sport, DAZN Ringside,
+  Red Bull TV, Man City 24/7, INTER 24/7, TOP Barça, ...). Stream URLs are short-lived, so channels are stored as `rakuten://<id>`
+  and resolved on play by the checker and the proxy.
+- **FAST playlists** from BuddyChewChew/app-m3u-generator: Samsung TV Plus, Tubi, Roku (Pluto TV serves only ad slates from
+  Albania; the checker marks those `slate_only`). Plex is omitted (needs a token).
+- **Hand-verified official feeds** in `sources/official-hls.json` (News 24, Syri, Vizion Plus, RTV21, A2 CNN, Teledeporte,
+  TyC Sports, beIN XTRA, Red Bull TV, Sportitalia Solocalcio, TVR Sport) — tried before other streams of the same channel.
+
+Not used on purpose: pirate relays (e.g. `5.254.89.106`), anything the Albanian prosecution DNS sinkhole
+(`you.are.closed.by.law.prosecution.`) covers (TvMAK, albportal.net/AlbKanale, ekranishqip, ...), Twitch embeds (user's choice),
+and tokenized players we cannot resolve legitimately (Klan Kosova, Scan TV, MRT geo-block). Report TV and MCN TV are
+played through their own public session players (`scripts/resolvers.mjs`).
+
+## Local DVB-T2 tuner (free-to-air antenna → your app)
+
+Top Channel, TV Klan, Klan Plus/News, all RTSH channels, Vizion Plus, News 24, ABC, Report TV, Ora News, Syri, A2 CNN and
+Euronews Albania are free-to-air on Albania's DVB-T2 platform (AMA free-channel lists; Tirana: Top Channel LCN 5 on UHF 59,
+TV Klan LCN 4, RTSH LCN 1-3). A Mac has no tuner, so one piece of hardware is needed:
+
+1. **Network tuner** (e.g. HDHomeRun DVB-T2 model): plug into the router, scan once, it serves `http://<tuner>/lineup.json`
+   and one MPEG-TS stream per channel. Config: `{"hdhomerun": {"host": "192.168.x.x"}}`.
+2. **USB DVB-T2 stick + Tvheadend**: Docker on macOS cannot pass USB through, but a Linux VM (UTM/Parallels) can, or use a
+   Raspberry Pi / any Linux box. Tvheadend publishes `/playlist/channels.m3u` and per-channel HTTP streams plus EPG.
+   Config: `{"tvheadend": {"url": "http://host:9981", "user": "...", "pass": "...", "profile": "pass"}}`.
+3. Any other tuner software that exports an M3U: `{"m3u": {"url": "..."}}`.
+
+Copy `sources/local-tuner.example.json` to `sources/local-tuner.json` (git-ignored), then `npm run fetch && npm run merge`.
+Over-the-air channels are mapped to the existing channel records (`TUNER_MAP` in `scripts/tuner.mjs`) and tried first.
+Streams are raw MPEG-TS over HTTP: the Samsung AVPlay player handles that natively; the browser viewer uses mpegts.js.
+Encrypted (pay) channels reported by the tuner are skipped. Antenna: UHF, pointed at the nearest transmitter (Dajti for Tirana).
+
+## Sources
+
+- iptv-org API: https://iptv-org.github.io/api/ (channels, feeds, streams, logos, guides, blocklist)
+- iptv-org playlists: https://iptv-org.github.io/iptv/
+- Free-TV curated playlist: https://github.com/Free-TV/IPTV
+- Albanian EPG (XMLTV): https://epgshare01.online/epgshare01/epg_ripper_AL1.xml.gz
+
+## Layout
+
+```
+scripts/   fetch.mjs, merge.mjs, check.mjs, report.mjs, m3u.mjs
+data/      channels.json, channels.checked.json, report.md   (raw downloads and health.json are git-ignored)
+```
+
+The TV app itself (Tizen web app, AVPlay player) comes next, once the target TV model is known.

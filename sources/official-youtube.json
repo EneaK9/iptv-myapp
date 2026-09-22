@@ -1,0 +1,548 @@
+[
+  {
+    "channel": "EuronewsAlbania.al",
+    "name": "Euronews Albania",
+    "country": "AL",
+    "categories": [
+      "news"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://www.youtube.com/@EuronewsAlbania/live",
+    "note": "24/7 simulcast",
+    "channelId": "UChR-A__NS_C5kHDWj3PeAhw"
+  },
+  {
+    "channel": "A2CNN.al",
+    "name": "A2 CNN",
+    "country": "AL",
+    "categories": [
+      "news"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://www.youtube.com/@a2cnn/live",
+    "note": "daily 24h simulcast stream",
+    "channelId": "UCO-B2zbHROkxpMLjwQX6C8A"
+  },
+  {
+    "channel": "KlanKosova.xk",
+    "name": "Klan Kosova",
+    "country": "XK",
+    "categories": [
+      "general"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://www.youtube.com/@KlanKosovaOfficial/live",
+    "note": "per-programme lives, near-continuous",
+    "channelId": "UC_SXHVF21a9FqvEbtsyNcPg"
+  },
+  {
+    "channel": "OraNews.al",
+    "name": "Ora News",
+    "country": "AL",
+    "categories": [
+      "news"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://www.youtube.com/@rtvoranews1/live",
+    "note": "per-programme lives, near-continuous",
+    "channelId": "UCU-25_ycYvBv60_nMHUxAwA"
+  },
+  {
+    "channel": "ATV.xk",
+    "name": "ATV",
+    "country": "XK",
+    "categories": [
+      "general"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://www.youtube.com/@ATVofficialchannel/live",
+    "note": "per-programme lives, near-continuous",
+    "channelId": "UCz_xW0xaiShue0GDQhGURFw"
+  },
+  {
+    "channel": "Kohavision.xk",
+    "name": "Kohavision",
+    "country": "XK",
+    "categories": [
+      "general"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://www.youtube.com/@ktv-sot9910/live",
+    "note": "per-programme lives",
+    "channelId": "UCTjnTy9cebkj_xc1RjJpuEg"
+  },
+  {
+    "channel": "Teve1.xk",
+    "name": "Tëvë1",
+    "country": "XK",
+    "categories": [
+      "general"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://www.youtube.com/@teve1/live",
+    "note": "per-programme lives",
+    "channelId": "UCm7xhcX-x1Yi3E0WYy4RiZQ"
+  },
+  {
+    "channel": "RTVDukagjini.xk",
+    "name": "RTV Dukagjini",
+    "country": "XK",
+    "categories": [
+      "general"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://www.youtube.com/@DukagjiniTV/live",
+    "note": "per-programme lives daily",
+    "channelId": "UCL3nrPOUK0MCcm5nFk800xQ"
+  },
+  {
+    "channel": "T7.xk",
+    "name": "T7",
+    "country": "XK",
+    "categories": [
+      "general"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://www.youtube.com/@T7videos/live",
+    "note": "per-programme lives daily",
+    "channelId": "UCWJe7loIldFtmfaVHYaQw0g"
+  },
+  {
+    "channel": "RTV21.xk",
+    "name": "RTV21",
+    "country": "XK",
+    "categories": [
+      "general"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://www.youtube.com/@rtv21/live",
+    "note": "per-programme lives"
+  },
+  {
+    "channel": "RTK1.xk",
+    "name": "RTK 1",
+    "country": "XK",
+    "categories": [
+      "general"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://www.youtube.com/@RTKOfficial/live",
+    "note": "Kosovo public broadcaster; per-programme/event lives",
+    "channelId": "UCLKm461v_m6OcgJOQDlXuuw"
+  },
+  {
+    "channel": "News24.al",
+    "name": "News 24",
+    "country": "AL",
+    "categories": [
+      "news"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://www.youtube.com/@News24Albania/live",
+    "note": "per-programme lives every day"
+  },
+  {
+    "channel": "Syri.al",
+    "name": "Syri",
+    "country": "AL",
+    "categories": [
+      "news"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://www.youtube.com/@syritv/live",
+    "note": "per-programme lives all day"
+  },
+  {
+    "channel": "ABCNewsAlbania.al",
+    "name": "ABC News Albania",
+    "country": "AL",
+    "categories": [
+      "news"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://www.youtube.com/@abcalbania/live",
+    "note": "official YouTube (live is mainly on Twitch)"
+  },
+  {
+    "channel": "VizionPlus.al",
+    "name": "Vizion Plus",
+    "country": "AL",
+    "categories": [
+      "general"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://www.youtube.com/@VizionPlusAlbania/live",
+    "note": "rare lives",
+    "channelId": "UCXZu85c9j8i_WDtip9hXZTQ"
+  },
+  {
+    "channel": "PanoramaTV.al",
+    "name": "Panorama TV",
+    "country": "AL",
+    "categories": [
+      "news"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://www.youtube.com/@panoramatvalbania/live",
+    "note": "occasional event lives"
+  },
+  {
+    "channel": "ReportTV.al",
+    "name": "Report TV",
+    "country": "AL",
+    "categories": [
+      "news"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://www.youtube.com/@reporttvalbania/live",
+    "note": "occasional event lives"
+  },
+  {
+    "channel": "TopChannel.al",
+    "name": "Top Channel",
+    "country": "AL",
+    "categories": [
+      "general"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://www.youtube.com/@TopChannelAlbania/live",
+    "note": "event lives only"
+  },
+  {
+    "channel": "TVKlan.al",
+    "name": "TV Klan",
+    "country": "AL",
+    "categories": [
+      "general"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://www.youtube.com/@televizioniKLAN/live",
+    "note": "event lives only"
+  },
+  {
+    "channel": "RTSH1.al",
+    "name": "RTSH 1",
+    "country": "AL",
+    "categories": [
+      "general"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://www.youtube.com/@RadioTelevizioniShqiptar/live",
+    "note": "per-programme lives of RTSH 1 shows"
+  },
+  {
+    "channel": "Alsat.mk",
+    "name": "Alsat",
+    "country": "MK",
+    "categories": [
+      "general"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://www.youtube.com/@televizionialsatm/live",
+    "note": "rare lives"
+  },
+  {
+    "channel": "TV21.mk",
+    "name": "TV21",
+    "country": "MK",
+    "categories": [
+      "general"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://www.youtube.com/@tv21hd/live",
+    "note": "rare lives"
+  },
+  {
+    "channel": "talkSPORT.uk",
+    "name": "talkSPORT",
+    "country": "UK",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "eng"
+    ],
+    "url": "https://www.youtube.com/@talkSPORT/live",
+    "note": "24/7 radio-with-video simulcast; football talk"
+  },
+  {
+    "channel": "YahooSportsNetwork.us",
+    "name": "Yahoo Sports Network",
+    "country": "US",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "eng"
+    ],
+    "url": "https://www.youtube.com/@YahooSports/live",
+    "note": "24/7 FAST simulcast"
+  },
+  {
+    "channel": "SquashTV.uk",
+    "name": "SQUASHTV",
+    "country": "UK",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "eng"
+    ],
+    "url": "https://www.youtube.com/@SQUASHTV/live",
+    "note": "24/7 non-stop squash (PSA official)"
+  },
+  {
+    "channel": "BellatorMMA.us",
+    "name": "Bellator MMA",
+    "country": "US",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "eng"
+    ],
+    "url": "https://www.youtube.com/@BellatorMMA/live",
+    "note": "24/7 Bellator/PFL loop"
+  },
+  {
+    "channel": "FuelTV.pt",
+    "name": "Fuel TV",
+    "country": "PT",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "eng"
+    ],
+    "url": "https://www.youtube.com/@FuelTV/live",
+    "note": "24/7 action-sports FAST loop"
+  },
+  {
+    "channel": "WWE.us",
+    "name": "WWE",
+    "country": "US",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "eng"
+    ],
+    "url": "https://www.youtube.com/@WWE/live",
+    "note": "near-permanent match marathons"
+  },
+  {
+    "channel": "IndyCar.us",
+    "name": "IndyCar",
+    "country": "US",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "eng"
+    ],
+    "url": "https://www.youtube.com/@IndyCar/live",
+    "note": "season marathon streams"
+  },
+  {
+    "channel": "TopCalcio24.it",
+    "name": "Top Calcio 24",
+    "country": "IT",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "ita"
+    ],
+    "url": "https://www.youtube.com/@QsvsTopCalcio24/live",
+    "note": "Italian football talk TV; streams most of the day"
+  },
+  {
+    "channel": "BarclaysWSL.uk",
+    "name": "Barclays WSL",
+    "country": "UK",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "eng"
+    ],
+    "url": "https://www.youtube.com/@BarclaysWSL/live",
+    "note": "every WSL match without a broadcaster, live"
+  },
+  {
+    "channel": "BarclaysWSL2.uk",
+    "name": "Barclays WSL2",
+    "country": "UK",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "eng"
+    ],
+    "url": "https://www.youtube.com/@BarclaysWSL2/live",
+    "note": "every WSL2 match live"
+  },
+  {
+    "channel": "MLSNextPro.us",
+    "name": "MLS (NEXT Pro)",
+    "country": "US",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "eng"
+    ],
+    "url": "https://www.youtube.com/@MLS/live",
+    "note": "MLS NEXT Pro matches live, free worldwide"
+  },
+  {
+    "channel": "JLeagueInternational.jp",
+    "name": "J.LEAGUE International",
+    "country": "JP",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "eng"
+    ],
+    "url": "https://www.youtube.com/@JLEAGUEInternational/live",
+    "note": "selected J1 full matches live"
+  },
+  {
+    "channel": "ALeagues.au",
+    "name": "A-Leagues",
+    "country": "AU",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "eng"
+    ],
+    "url": "https://www.youtube.com/@aleagues/live",
+    "note": "A-League matches for territories without a broadcaster"
+  },
+  {
+    "channel": "UEFA.ch",
+    "name": "UEFA",
+    "country": "CH",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "eng"
+    ],
+    "url": "https://www.youtube.com/@UEFA/live",
+    "note": "youth tournaments and draws live"
+  },
+  {
+    "channel": "Concacaf.us",
+    "name": "Concacaf",
+    "country": "US",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "eng"
+    ],
+    "url": "https://www.youtube.com/@Concacaf/live",
+    "note": "Nations League matches live"
+  },
+  {
+    "channel": "DAZNWomensFootball.uk",
+    "name": "DAZN Women's Football",
+    "country": "UK",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "eng"
+    ],
+    "url": "https://www.youtube.com/@DAZNWomensFootball/live",
+    "note": "Liga F and women's football live"
+  },
+  {
+    "channel": "FaxNews.al",
+    "name": "Fax News",
+    "country": "AL",
+    "categories": [
+      "news"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://www.youtube.com/channel/UCXdFDrI4f3ToxD-YfdvJ0Hw/live",
+    "note": "YouTube is the channel's only online outlet",
+    "channelId": "UCXdFDrI4f3ToxD-YfdvJ0Hw"
+  },
+  {
+    "channel": "ShijakTV.al",
+    "name": "Shijak TV",
+    "country": "AL",
+    "categories": [
+      "general"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://www.youtube.com/@shijaktv2244/live",
+    "note": "YouTube is the channel's only online outlet"
+  },
+  {
+    "channel": "RTVMitrovica.xk",
+    "name": "RTV Mitrovica",
+    "country": "XK",
+    "categories": [
+      "general"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://www.youtube.com/channel/UCdwrrO9mGnVRUjfSQqdXuRw/live",
+    "note": "YouTube is the channel's only online outlet",
+    "channelId": "UCdwrrO9mGnVRUjfSQqdXuRw"
+  }
+]

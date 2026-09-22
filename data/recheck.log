@@ -1,0 +1,150 @@
+checking 2690 unique stream URLs, concurrency 96, timeout 12000ms
+22:36:42 250 done, 108 ok, 2345 left, 4s
+22:36:45 500 done, 249 ok, 2095 left, 8s
+22:36:48 750 done, 394 ok, 1845 left, 11s
+22:36:51 1000 done, 584 ok, 1595 left, 14s
+22:36:55 1250 done, 772 ok, 1345 left, 17s
+22:36:58 1500 done, 933 ok, 1095 left, 20s
+22:37:01 1750 done, 1086 ok, 845 left, 23s
+22:37:05 2000 done, 1214 ok, 595 left, 27s
+22:37:08 2250 done, 1352 ok, 345 left, 30s
+22:37:11 2500 done, 1516 ok, 95 left, 34s
+22:37:12 2595 done, 1569 ok, 0 left, 35s
+22:37:12 2596 done, 1570 ok, 0 left, 35s
+22:37:12 2597 done, 1571 ok, 0 left, 35s
+22:37:12 2598 done, 1572 ok, 0 left, 35s
+22:37:12 2599 done, 1573 ok, 0 left, 35s
+22:37:12 2600 done, 1574 ok, 0 left, 35s
+22:37:12 2601 done, 1574 ok, 0 left, 35s
+22:37:12 2602 done, 1575 ok, 0 left, 35s
+22:37:12 2603 done, 1576 ok, 0 left, 35s
+22:37:12 2604 done, 1576 ok, 0 left, 35s
+22:37:12 2605 done, 1577 ok, 0 left, 35s
+22:37:12 2606 done, 1578 ok, 0 left, 35s
+22:37:13 2607 done, 1579 ok, 0 left, 35s
+22:37:13 2608 done, 1580 ok, 0 left, 35s
+22:37:13 2609 done, 1580 ok, 0 left, 35s
+22:37:13 2610 done, 1580 ok, 0 left, 35s
+22:37:13 2611 done, 1581 ok, 0 left, 35s
+22:37:13 2612 done, 1581 ok, 0 left, 35s
+22:37:13 2613 done, 1582 ok, 0 left, 35s
+22:37:13 2614 done, 1582 ok, 0 left, 35s
+22:37:13 2615 done, 1582 ok, 0 left, 35s
+22:37:13 2616 done, 1583 ok, 0 left, 35s
+22:37:13 2617 done, 1584 ok, 0 left, 35s
+22:37:13 2618 done, 1584 ok, 0 left, 35s
+22:37:13 2619 done, 1585 ok, 0 left, 35s
+22:37:13 2620 done, 1586 ok, 0 left, 35s
+22:37:13 2621 done, 1586 ok, 0 left, 35s
+22:37:13 2622 done, 1586 ok, 0 left, 35s
+22:37:13 2623 done, 1586 ok, 0 left, 35s
+22:37:13 2624 done, 1586 ok, 0 left, 35s
+22:37:13 2625 done, 1587 ok, 0 left, 35s
+22:37:13 2626 done, 1588 ok, 0 left, 35s
+22:37:13 2627 done, 1589 ok, 0 left, 35s
+22:37:13 2628 done, 1590 ok, 0 left, 35s
+22:37:13 2629 done, 1591 ok, 0 left, 35s
+22:37:13 2630 done, 1592 ok, 0 left, 35s
+22:37:13 2631 done, 1593 ok, 0 left, 35s
+22:37:13 2632 done, 1594 ok, 0 left, 35s
+22:37:13 2633 done, 1595 ok, 0 left, 35s
+22:37:13 2634 done, 1595 ok, 0 left, 35s
+22:37:13 2635 done, 1595 ok, 0 left, 35s
+22:37:13 2636 done, 1596 ok, 0 left, 35s
+22:37:13 2637 done, 1596 ok, 0 left, 35s
+22:37:13 2638 done, 1597 ok, 0 left, 35s
+22:37:13 2639 done, 1597 ok, 0 left, 35s
+22:37:13 2640 done, 1597 ok, 0 left, 35s
+22:37:13 2641 done, 1598 ok, 0 left, 36s
+22:37:13 2642 done, 1599 ok, 0 left, 36s
+22:37:13 2643 done, 1600 ok, 0 left, 36s
+22:37:13 2644 done, 1601 ok, 0 left, 36s
+22:37:13 2645 done, 1601 ok, 0 left, 36s
+22:37:13 2646 done, 1601 ok, 0 left, 36s
+22:37:13 2647 done, 1602 ok, 0 left, 36s
+22:37:13 2648 done, 1602 ok, 0 left, 36s
+22:37:13 2649 done, 1603 ok, 0 left, 36s
+22:37:13 2650 done, 1604 ok, 0 left, 36s
+22:37:13 2651 done, 1605 ok, 0 left, 36s
+22:37:13 2652 done, 1606 ok, 0 left, 36s
+22:37:13 2653 done, 1607 ok, 0 left, 36s
+22:37:13 2654 done, 1608 ok, 0 left, 36s
+22:37:13 2655 done, 1609 ok, 0 left, 36s
+22:37:13 2656 done, 1609 ok, 0 left, 36s
+22:37:13 2657 done, 1609 ok, 0 left, 36s
+22:37:13 2658 done, 1610 ok, 0 left, 36s
+22:37:13 2659 done, 1611 ok, 0 left, 36s
+22:37:13 2660 done, 1612 ok, 0 left, 36s
+22:37:13 2661 done, 1613 ok, 0 left, 36s
+22:37:13 2662 done, 1614 ok, 0 left, 36s
+22:37:13 2663 done, 1614 ok, 0 left, 36s
+22:37:13 2664 done, 1615 ok, 0 left, 36s
+22:37:13 2665 done, 1616 ok, 0 left, 36s
+22:37:13 2666 done, 1617 ok, 0 left, 36s
+22:37:13 2667 done, 1618 ok, 0 left, 36s
+22:37:13 2668 done, 1619 ok, 0 left, 36s
+22:37:13 2669 done, 1620 ok, 0 left, 36s
+22:37:13 2670 done, 1620 ok, 0 left, 36s
+22:37:13 2671 done, 1620 ok, 0 left, 36s
+22:37:14 2672 done, 1621 ok, 0 left, 36s
+22:37:14 2673 done, 1622 ok, 0 left, 36s
+22:37:14 2674 done, 1623 ok, 0 left, 36s
+22:37:14 2675 done, 1624 ok, 0 left, 36s
+22:37:14 2676 done, 1625 ok, 0 left, 36s
+22:37:14 2677 done, 1626 ok, 0 left, 37s
+22:37:14 2678 done, 1627 ok, 0 left, 37s
+22:37:14 2679 done, 1628 ok, 0 left, 37s
+22:37:14 2680 done, 1629 ok, 0 left, 37s
+22:37:14 2681 done, 1630 ok, 0 left, 37s
+22:37:14 2682 done, 1631 ok, 0 left, 37s
+22:37:14 2683 done, 1632 ok, 0 left, 37s
+22:37:14 2684 done, 1633 ok, 0 left, 37s
+22:37:14 2685 done, 1634 ok, 0 left, 37s
+22:37:15 2686 done, 1635 ok, 0 left, 37s
+22:37:15 2687 done, 1636 ok, 0 left, 37s
+22:37:15 2688 done, 1637 ok, 0 left, 37s
+22:37:15 2689 done, 1638 ok, 0 left, 37s
+22:37:15 2690 done, 1639 ok, 0 left, 37s
+
+status breakdown:
+    1639  ok
+    1002  slate_only
+      49  http_404
+
+wrote data/health.json (2690 results) in 37s
+checking 160 unique stream URLs, concurrency 4, timeout 12000ms
+22:41:12 157 done, 73 ok, 0 left, 237s
+22:41:14 158 done, 74 ok, 0 left, 239s
+22:41:15 159 done, 75 ok, 0 left, 240s
+22:41:16 160 done, 76 ok, 0 left, 241s
+
+status breakdown:
+      78  yt_offline
+      76  ok
+       5  yt_no_hls
+       1  yt_page_404
+
+wrote data/health.json (160 results) in 241s
+# Stream health report
+Generated 2026-09-22T22:41:16.778Z from this machine.
+
+| | Streams | Channels |
+|---|---|---|
+| Checked | 21941 | 15447 |
+| Alive | 13696 (62.4%) | 10395 (67.3%) |
+| Alive, not NSFW | 13695 | 10394 |
+
+## Failure reasons (streams)
+| Status | Count |
+|---|---|
+| ok | 13696 |
+| http_403 | 2118 |
+| timeout | 1316 |
+| http_404 | 1026 |
+| slate_only | 1002 |
+| dns | 651 |
+
+wrote data/report.md and data/channels.checked.json
+wrote data/sports-by-country.md: 385 channels, 66 countries
+US:107  ??:38  RU:20  IT:17  UA:15  UK:15  SE:11  FR:9  DE:9  IN:9  BR:8  CA:7  ES:7  AT:6  CZ:6  HU:6  RO:5  TR:4  CH:4  MX:4  VN:4  GR:4  PE:4  AR:3  CN:3  AU:3  NL:3  IR:2  SK:2  VE:2  BH:2  BY:2  DO:2  PT:2  UZ:2  KW:2  PK:2  KZ:2  IE:2  ID:2  TH:2  CL:2  BJ:1  MA:1  HN:1  DZ:1  GE:1  BO:1  CR:1  EE:1  JO:1  LT:1  MN:1  MM:1  NO:1  DK:1  OM:1  SY:1  PL:1  KP:1  LK:1  PY:1  TM:1  KR:1  MD:1  CO:1
+RECHECK_DONE

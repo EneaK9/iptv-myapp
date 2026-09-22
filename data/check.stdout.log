@@ -1,0 +1,231 @@
+checking 18637 unique stream URLs, concurrency 96, timeout 12000ms
+10:33:33 250 done, 86 ok, 18292 left, 13s
+10:33:40 500 done, 263 ok, 18042 left, 20s
+10:33:44 750 done, 404 ok, 17792 left, 24s
+10:33:48 1000 done, 561 ok, 17542 left, 27s
+10:33:53 1250 done, 727 ok, 17292 left, 33s
+10:33:59 1500 done, 879 ok, 17042 left, 39s
+10:34:07 1750 done, 1063 ok, 16792 left, 46s
+10:34:14 2000 done, 1219 ok, 16542 left, 54s
+10:34:23 2250 done, 1380 ok, 16292 left, 63s
+10:34:29 2500 done, 1540 ok, 16042 left, 69s
+10:34:37 2750 done, 1685 ok, 15792 left, 77s
+10:34:45 3000 done, 1851 ok, 15542 left, 84s
+10:34:53 3250 done, 2024 ok, 15292 left, 93s
+10:35:02 3500 done, 2194 ok, 15042 left, 102s
+10:35:13 3750 done, 2338 ok, 14792 left, 113s
+10:35:21 4000 done, 2524 ok, 14542 left, 121s
+10:35:26 4250 done, 2732 ok, 14292 left, 126s
+10:35:35 4500 done, 2905 ok, 14042 left, 135s
+10:35:40 4750 done, 3065 ok, 13792 left, 140s
+10:35:49 5000 done, 3226 ok, 13542 left, 149s
+10:35:58 5250 done, 3376 ok, 13292 left, 158s
+10:35:59 5500 done, 3417 ok, 13042 left, 159s
+10:36:02 5750 done, 3569 ok, 12792 left, 162s
+10:36:07 6000 done, 3739 ok, 12542 left, 167s
+10:36:12 6250 done, 3897 ok, 12292 left, 172s
+10:36:17 6500 done, 4097 ok, 12042 left, 176s
+10:36:22 6750 done, 4279 ok, 11792 left, 182s
+10:36:28 7000 done, 4460 ok, 11542 left, 188s
+10:36:32 7250 done, 4658 ok, 11292 left, 192s
+10:36:36 7500 done, 4896 ok, 11042 left, 195s
+10:36:39 7750 done, 5105 ok, 10792 left, 199s
+10:36:49 8000 done, 5265 ok, 10542 left, 209s
+10:36:55 8250 done, 5427 ok, 10292 left, 214s
+10:37:01 8500 done, 5599 ok, 10042 left, 220s
+10:37:06 8750 done, 5784 ok, 9792 left, 225s
+10:37:11 9000 done, 5950 ok, 9542 left, 231s
+10:37:17 9250 done, 6127 ok, 9292 left, 237s
+10:37:22 9500 done, 6316 ok, 9042 left, 242s
+10:37:27 9750 done, 6511 ok, 8792 left, 247s
+10:37:33 10000 done, 6680 ok, 8542 left, 253s
+10:37:37 10250 done, 6867 ok, 8292 left, 256s
+10:37:42 10500 done, 7036 ok, 8042 left, 262s
+10:37:47 10750 done, 7193 ok, 7792 left, 267s
+10:37:51 11000 done, 7370 ok, 7542 left, 271s
+10:37:56 11250 done, 7558 ok, 7292 left, 276s
+10:38:03 11500 done, 7704 ok, 7042 left, 283s
+10:38:09 11750 done, 7848 ok, 6792 left, 289s
+10:38:15 12000 done, 8029 ok, 6542 left, 295s
+10:38:26 12250 done, 8190 ok, 6292 left, 306s
+10:38:34 12500 done, 8354 ok, 6042 left, 314s
+10:38:39 12750 done, 8497 ok, 5792 left, 319s
+10:38:44 13000 done, 8694 ok, 5542 left, 324s
+10:38:49 13250 done, 8873 ok, 5292 left, 329s
+10:38:53 13500 done, 9055 ok, 5042 left, 333s
+10:39:01 13750 done, 9228 ok, 4792 left, 341s
+10:39:12 14000 done, 9400 ok, 4542 left, 352s
+10:39:18 14250 done, 9567 ok, 4292 left, 358s
+10:39:23 14500 done, 9759 ok, 4042 left, 363s
+10:39:30 14750 done, 9929 ok, 3792 left, 370s
+10:39:36 15000 done, 10108 ok, 3542 left, 375s
+10:39:43 15250 done, 10287 ok, 3292 left, 383s
+10:39:54 15500 done, 10448 ok, 3042 left, 394s
+10:40:01 15750 done, 10599 ok, 2792 left, 401s
+10:40:07 16000 done, 10757 ok, 2542 left, 407s
+10:40:12 16250 done, 10929 ok, 2292 left, 412s
+10:40:18 16500 done, 11121 ok, 2042 left, 418s
+10:40:22 16750 done, 11252 ok, 1792 left, 421s
+10:40:25 17000 done, 11372 ok, 1542 left, 425s
+10:40:29 17250 done, 11571 ok, 1292 left, 429s
+10:40:35 17500 done, 11740 ok, 1042 left, 435s
+10:40:40 17750 done, 11903 ok, 792 left, 439s
+10:40:45 18000 done, 12087 ok, 542 left, 445s
+10:40:50 18250 done, 12249 ok, 292 left, 450s
+10:40:54 18500 done, 12446 ok, 42 left, 453s
+10:40:54 18542 done, 12472 ok, 0 left, 454s
+10:40:54 18543 done, 12473 ok, 0 left, 454s
+10:40:54 18544 done, 12474 ok, 0 left, 454s
+10:40:54 18545 done, 12475 ok, 0 left, 454s
+10:40:54 18546 done, 12476 ok, 0 left, 454s
+10:40:54 18547 done, 12477 ok, 0 left, 454s
+10:40:54 18548 done, 12478 ok, 0 left, 454s
+10:40:54 18549 done, 12478 ok, 0 left, 454s
+10:40:55 18550 done, 12479 ok, 0 left, 454s
+10:40:55 18551 done, 12480 ok, 0 left, 454s
+10:40:55 18552 done, 12481 ok, 0 left, 454s
+10:40:55 18553 done, 12482 ok, 0 left, 454s
+10:40:55 18554 done, 12483 ok, 0 left, 454s
+10:40:55 18555 done, 12484 ok, 0 left, 454s
+10:40:55 18556 done, 12485 ok, 0 left, 454s
+10:40:55 18557 done, 12485 ok, 0 left, 454s
+10:40:55 18558 done, 12486 ok, 0 left, 454s
+10:40:55 18559 done, 12487 ok, 0 left, 454s
+10:40:55 18560 done, 12487 ok, 0 left, 454s
+10:40:55 18561 done, 12487 ok, 0 left, 454s
+10:40:55 18562 done, 12487 ok, 0 left, 454s
+10:40:55 18563 done, 12488 ok, 0 left, 454s
+10:40:55 18564 done, 12489 ok, 0 left, 454s
+10:40:55 18565 done, 12490 ok, 0 left, 455s
+10:40:55 18566 done, 12491 ok, 0 left, 455s
+10:40:55 18567 done, 12491 ok, 0 left, 455s
+10:40:55 18568 done, 12492 ok, 0 left, 455s
+10:40:55 18569 done, 12493 ok, 0 left, 455s
+10:40:55 18570 done, 12494 ok, 0 left, 455s
+10:40:55 18571 done, 12495 ok, 0 left, 455s
+10:40:55 18572 done, 12496 ok, 0 left, 455s
+10:40:55 18573 done, 12496 ok, 0 left, 455s
+10:40:55 18574 done, 12496 ok, 0 left, 455s
+10:40:55 18575 done, 12496 ok, 0 left, 455s
+10:40:55 18576 done, 12497 ok, 0 left, 455s
+10:40:55 18577 done, 12498 ok, 0 left, 455s
+10:40:55 18578 done, 12499 ok, 0 left, 455s
+10:40:55 18579 done, 12500 ok, 0 left, 455s
+10:40:55 18580 done, 12501 ok, 0 left, 455s
+10:40:55 18581 done, 12502 ok, 0 left, 455s
+10:40:55 18582 done, 12502 ok, 0 left, 455s
+10:40:55 18583 done, 12502 ok, 0 left, 455s
+10:40:55 18584 done, 12503 ok, 0 left, 455s
+10:40:56 18585 done, 12503 ok, 0 left, 455s
+10:40:56 18586 done, 12504 ok, 0 left, 455s
+10:40:56 18587 done, 12504 ok, 0 left, 455s
+10:40:56 18588 done, 12504 ok, 0 left, 455s
+10:40:56 18589 done, 12504 ok, 0 left, 455s
+10:40:56 18590 done, 12504 ok, 0 left, 455s
+10:40:56 18591 done, 12505 ok, 0 left, 456s
+10:40:56 18592 done, 12506 ok, 0 left, 456s
+10:40:56 18593 done, 12507 ok, 0 left, 456s
+10:40:56 18594 done, 12507 ok, 0 left, 456s
+10:40:56 18595 done, 12508 ok, 0 left, 456s
+10:40:56 18596 done, 12509 ok, 0 left, 456s
+10:40:56 18597 done, 12509 ok, 0 left, 456s
+10:40:56 18598 done, 12509 ok, 0 left, 456s
+10:40:56 18599 done, 12510 ok, 0 left, 456s
+10:40:57 18600 done, 12511 ok, 0 left, 456s
+10:40:57 18601 done, 12511 ok, 0 left, 457s
+10:40:58 18602 done, 12512 ok, 0 left, 458s
+10:40:58 18603 done, 12512 ok, 0 left, 458s
+10:40:58 18604 done, 12512 ok, 0 left, 458s
+10:40:59 18605 done, 12512 ok, 0 left, 459s
+10:40:59 18606 done, 12512 ok, 0 left, 459s
+10:40:59 18607 done, 12512 ok, 0 left, 459s
+10:40:59 18608 done, 12513 ok, 0 left, 459s
+10:41:00 18609 done, 12513 ok, 0 left, 459s
+10:41:00 18610 done, 12513 ok, 0 left, 459s
+10:41:00 18611 done, 12513 ok, 0 left, 459s
+10:41:00 18612 done, 12514 ok, 0 left, 460s
+10:41:00 18613 done, 12514 ok, 0 left, 460s
+10:41:00 18614 done, 12515 ok, 0 left, 460s
+10:41:00 18615 done, 12515 ok, 0 left, 460s
+10:41:00 18616 done, 12515 ok, 0 left, 460s
+10:41:00 18617 done, 12515 ok, 0 left, 460s
+10:41:00 18618 done, 12515 ok, 0 left, 460s
+10:41:01 18619 done, 12515 ok, 0 left, 460s
+10:41:01 18620 done, 12516 ok, 0 left, 461s
+10:41:01 18621 done, 12517 ok, 0 left, 461s
+10:41:01 18622 done, 12518 ok, 0 left, 461s
+10:41:02 18623 done, 12518 ok, 0 left, 462s
+10:41:02 18624 done, 12518 ok, 0 left, 462s
+10:41:03 18625 done, 12518 ok, 0 left, 462s
+10:41:03 18626 done, 12518 ok, 0 left, 462s
+10:41:03 18627 done, 12518 ok, 0 left, 462s
+10:41:03 18628 done, 12518 ok, 0 left, 462s
+10:41:03 18629 done, 12518 ok, 0 left, 462s
+10:41:03 18630 done, 12518 ok, 0 left, 463s
+10:41:04 18631 done, 12518 ok, 0 left, 463s
+10:41:04 18632 done, 12518 ok, 0 left, 464s
+10:41:05 18633 done, 12518 ok, 0 left, 464s
+10:41:05 18634 done, 12518 ok, 0 left, 464s
+10:41:05 18635 done, 12518 ok, 0 left, 464s
+10:41:05 18636 done, 12518 ok, 0 left, 465s
+10:41:06 18637 done, 12518 ok, 0 left, 466s
+
+status breakdown:
+   12518  ok
+    1463  http_403
+    1052  timeout
+    1020  http_404
+     651  dns
+     269  tls
+     232  segment_http_403
+     221  html_page
+     151  segment_http_404
+     145  variant_http_404
+     126  refused
+     111  http_400
+      75  no_segments
+      75  error:23
+      67  http_503
+      58  variant_http_403
+      54  http_502
+      52  error:UNABLE_TO_VERIFY_LEAF_SIGNATURE
+      48  http_401
+      36  reset
+      36  error:TypeError
+      31  error:ENETUNREACH
+      23  http_504
+      23  http_500
+       9  error:EHOSTUNREACH
+       9  http_530
+       8  http_451
+       6  variant_http_504
+       6  http_567
+       6  http_408
+       5  bad_url
+       5  http_406
+       4  error:EHOSTDOWN
+       3  variant_http_400
+       3  error:ETIMEDOUT
+       3  empty
+       3  http_521
+       3  segment_http_416
+       3  segment_http_429
+       2  http_409
+       2  segment_http_503
+       2  ok_unverified
+       2  http_523
+       2  http_410
+       2  http_429
+       2  segment_http_206
+       1  variant_http_503
+       1  http_405
+       1  segment_http_451
+       1  variant_http_453
+       1  http_512
+       1  http_574
+       1  segment_http_200
+       1  variant_http_502
+       1  segment_http_400
+       1  variant_http_410
+
+wrote data/health.json (18637 results) in 466s

@@ -1,0 +1,9 @@
+node_modules/
+.DS_Store
+data/raw/
+data/health.json
+data/check.log
+data/check.progress.json
+*.wgt
+.buildResult/
+sources/local-tuner.json

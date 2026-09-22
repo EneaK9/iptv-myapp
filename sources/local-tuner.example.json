@@ -1,0 +1,7 @@
+{
+  "_comment": "Copy to local-tuner.json and fill ONE of the blocks. Channels received over the air are merged as source 'local-tuner' and tried first.",
+  "hdhomerun": { "host": "192.168.1.50" },
+  "tvheadend": { "url": "http://192.168.1.20:9981", "user": "", "pass": "", "profile": "pass" },
+  "m3u": { "url": "http://192.168.1.20:8000/channels.m3u" },
+  "country": "AL"
+}

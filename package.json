@@ -1,0 +1,19 @@
+{
+  "name": "iptv-myapp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Personal IPTV app for a Samsung Tizen TV. Data pipeline: fetch public playlists, merge, health-check.",
+  "scripts": {
+    "fetch": "node scripts/fetch.mjs",
+    "merge": "node scripts/merge.mjs",
+    "check": "node scripts/check.mjs",
+    "report": "node scripts/report.mjs",
+    "pipeline": "npm run fetch && npm run merge && npm run check && npm run report",
+    "serve": "node scripts/serve.mjs",
+    "sports": "node scripts/sports.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

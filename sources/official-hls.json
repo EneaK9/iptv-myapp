@@ -1,0 +1,145 @@
+[
+  {
+    "channel": "A2CNN.al",
+    "name": "A2 CNN",
+    "country": "AL",
+    "categories": [
+      "news"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://tv.a2news.com/live/smil:a2cnnweb.stream.smil/playlist.m3u8",
+    "note": "broadcaster's own web-player origin (tv.a2news.com); listed by Free-TV; channel is FTA in Albania"
+  },
+  {
+    "channel": "RTV21.xk",
+    "name": "RTV21",
+    "country": "XK",
+    "categories": [
+      "general"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://rtv21.tv/api/live/hls/ch_tfu726d/info.m3u8",
+    "note": "broadcaster's own site player"
+  },
+  {
+    "channel": "News24.al",
+    "name": "News 24",
+    "country": "AL",
+    "categories": [
+      "news"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://tv.balkanweb.com/news24/livestream/playlist.m3u8",
+    "note": "broadcaster's own site player (balkanweb.com/live)"
+  },
+  {
+    "channel": "Syri.al",
+    "name": "Syri",
+    "country": "AL",
+    "categories": [
+      "news"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://stream.syritv.al/live/syritv/playlist.m3u8",
+    "note": "broadcaster's own site player (syri.net)"
+  },
+  {
+    "channel": "VizionPlus.al",
+    "name": "Vizion Plus",
+    "country": "AL",
+    "categories": [
+      "general"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://tringliveviz.akamaized.net/delta/105/out/u/qwaszxerdfcvrtryuy.m3u8",
+    "note": "embedded by vizionplus.tv/live (Tring Akamai CDN)"
+  },
+  {
+    "channel": "Teledeporte.es",
+    "name": "Teledeporte",
+    "country": "ES",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "spa"
+    ],
+    "url": "https://rtve01p.origin.c21livecloud.com/live-origin/tdp-hls/bitrate_1.m3u8",
+    "note": "RTVE origin; the rtve.es URL geo-blocks segments"
+  },
+  {
+    "channel": "TyCSports.ar",
+    "name": "TyC Sports",
+    "country": "AR",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "spa"
+    ],
+    "url": "https://amg26268-amg26268c14-freelivesports-emea-10267.playouts.now.amagi.tv/ts-us-e2-n2/playlist/amg26268-sportsstudio-tycsports-freelivesportsemea/playlist.m3u8",
+    "note": "Free Live Sports EMEA FAST playout (Amagi); hostname may rotate"
+  },
+  {
+    "channel": "beINSPORTSXTRA.us",
+    "name": "beIN SPORTS XTRA",
+    "country": "US",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "eng"
+    ],
+    "url": "https://bein-xtra-bein.amagi.tv/playlist.m3u8",
+    "note": "official FAST feed (Amagi)"
+  },
+  {
+    "channel": "RedBullTV.at",
+    "name": "Red Bull TV",
+    "country": "AT",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "eng"
+    ],
+    "url": "https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master.m3u8",
+    "note": "official Red Bull TV linear feed"
+  },
+  {
+    "channel": "SportitaliaSolocalcio.it",
+    "name": "Sportitalia Solocalcio",
+    "country": "IT",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "ita"
+    ],
+    "url": "https://italiansport-solocalcio-samsung.amagi.tv/playlist.m3u8",
+    "note": "FTA football channel, Amagi FAST feed"
+  },
+  {
+    "channel": "TVRSport.ro",
+    "name": "TVR Sport",
+    "country": "RO",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "ron"
+    ],
+    "url": "https://tvr-sport.lg.mncdn.com/tvrsport/smil:tvrsport.smil/playlist.m3u8",
+    "note": "Romanian public broadcaster CDN"
+  }
+]

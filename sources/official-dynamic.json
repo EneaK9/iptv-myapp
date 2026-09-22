@@ -1,0 +1,4 @@
+[
+  { "channel": "ReportTV.al", "name": "Report TV", "country": "AL", "categories": ["news"], "languages": ["sqi"], "url": "reporttv://live", "note": "report-tv.al/report_live player: /playurl?ttl=1800 -> signed URL, refreshed before 30-min TTL" },
+  { "channel": "MCNTV.al", "name": "MCN TV", "country": "AL", "categories": ["news"], "languages": ["sqi"], "url": "mcntv://live", "note": "mcntv.al live page: GET /api/stream-session -> 180 s cookies -> /hls/mcntv.m3u8 (AES-128)" }
+]
