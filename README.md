@@ -55,6 +55,10 @@ broadcaster HLS/DASH URLs. Both are merged in and tried before other streams of 
 - **Plex free Live TV** (`scripts/plex.mjs`): 182 channels (Tennis TV, Fight Network, SPEEDVISION, PokerGO, Cricket Gold, ...)
   with the anonymous token the watch.plex.tv web client uses. Stored as `plex://<gridKey>`, resolved on play. Plex answers 429
   to bursts, so the checker spaces Plex lookups (`PLEX_SPACING_MS`, default 1500).
+- **Famelack** (ex TV Garden, github.com/famelack/famelack-channels, MIT): curated free TV that is re-validated upstream,
+  including ~750 YouTube lives (stored as `watch?v=` URLs, refreshed on every fetch). Adds ~440 channels we had no stream for.
+- **TDTChannels** (tdtchannels.com): Spanish free-to-air, regional and international channels. RTVE (La 1, +24), Canal Sur and
+  most regional broadcasters play from Albania. Both lists join existing channels by name + country, otherwise add new ones.
 - **Hand-verified official feeds** in `sources/official-hls.json` (News 24, Syri, Vizion Plus, RTV21, A2 CNN, Teledeporte,
   TyC Sports, beIN XTRA, Red Bull TV, Sportitalia Solocalcio, TVR Sport, L'Equipe, SuperTennis, RugbyPass TV, DFB Play TV,
   TVRI Sport, ...) — tried before other streams of the same channel.

@@ -31,7 +31,8 @@ for (const s of allStreams) counts[s.health.status] = (counts[s.health.status] ?
 for (const [k, v] of Object.entries(counts).sort((a, b) => b[1] - a[1])) L(`| ${k} | ${v} |`);
 
 L(`\n## Alive by source\n`, `| Source | Streams checked | Alive |`, `\n|---|---|---|`);
-for (const src of ['iptv-org', 'free-tv']) { const ss = allStreams.filter(s => s.source === src); L(`| ${src} | ${ss.length} | ${ss.filter(ok).length} (${(100 * ss.filter(ok).length / Math.max(1, ss.length)).toFixed(1)}%) |`); }
+const sources = Object.entries(allStreams.reduce((a, s) => (a[s.source] = (a[s.source] ?? 0) + 1, a), {})).sort((a, b) => b[1] - a[1]).map(([src]) => src);
+for (const src of sources) { const ss = allStreams.filter(s => s.source === src); L(`| ${src} | ${ss.length} | ${ss.filter(ok).length} (${(100 * ss.filter(ok).length / Math.max(1, ss.length)).toFixed(1)}%) |`); }
 
 L(`\n## Albanian-language channels (AL, XK, or language sqi)\n`, `| Channel | Country | Alive | Streams (status) |`, `\n|---|---|---|---|`);
 const sq = checked.filter(c => c.country === 'AL' || c.country === 'XK' || c.languages.includes('sqi')).sort((a, b) => (b.alive - a.alive) || a.name.localeCompare(b.name));

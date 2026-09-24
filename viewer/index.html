@@ -29,6 +29,15 @@
   #log { font-family: ui-monospace, Menlo, monospace; font-size: 12px; white-space: pre-wrap; max-height: 120px; overflow: auto; padding: 8px 14px; color: #8b95a7; border-top: 1px solid #1f242c; }
   .tag { padding: 2px 6px; border-radius: 4px; background: #1f2937; font-size: 11px; }
   button { background: #1f2937; color: inherit; border: 1px solid #2a313d; border-radius: 6px; padding: 4px 10px; cursor: pointer; }
+  button:disabled { opacity: .4; cursor: default; }
+  #ctrl, #streams { padding: 8px 14px; border-top: 1px solid #1f242c; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; color: #9aa3b2; font-size: 13px; }
+  #streams:empty { display: none; }
+  #ctrl .hint, #streams .hint { color: #6b7485; font-size: 12px; }
+  #live, #streams button { display: flex; align-items: center; gap: 6px; }
+  #live.on { border-color: #e3342f; color: #fff; } #live.on .dot { background: #e3342f; }
+  #streams button small { color: #8b95a7; }
+  #streams button.on { background: #1c3a5e; border-color: #3b82f6; }
+  #streams button.fail { border-color: #7f1d1d; color: #f87171; }
 </style>
 </head>
 <body>
@@ -46,6 +55,18 @@
 </aside>
 <main>
   <video id="v" controls autoplay playsinline></video>
+  <div id="ctrl">
+    <button id="pp" onclick="togglePlay()" title="Pause / play (Space). Play after a pause jumps to live.">⏸</button>
+    <button onclick="seekBy(-30)" title="Back 30 s">⏪ 30s</button>
+    <button onclick="seekBy(-10)" title="Back 10 s (←)">↺ 10s</button>
+    <button onclick="seekBy(10)" title="Forward 10 s (→)">10s ↻</button>
+    <button id="live" onclick="goLive()" title="Jump to live (L)" disabled><span class="dot"></span>LIVE</button>
+    <span id="behind"></span>
+    <span style="flex:1"></span>
+    <span id="dvr" class="hint" title="How far back you can rewind from here; depends on how much the stream keeps"></span>
+    <span class="hint">Space pause · ←/→ 10s · L live · 1–9 stream</span>
+  </div>
+  <div id="streams"></div>
   <div id="info"><span>Pick a channel on the left.</span></div>
   <div id="log"></div>
 </main>
@@ -55,6 +76,9 @@
 const $ = s => document.querySelector(s);
 const video = $('#v'), list = $('#list'), info = $('#info'), logEl = $('#log');
 let all = [], view = [], hls = null, ts = null, active = null, focusIdx = 0;
+let cur = null;           // what is playing: { c, streams, i, viaProxy, failed }
+let pausedAt = 0;         // set when the user pauses a live stream; the next play jumps to live
+let internalSeek = false;
 const log = m => { logEl.textContent = `${new Date().toLocaleTimeString()}  ${m}\n` + logEl.textContent.split('\n').slice(0, 12).join('\n'); };
 
 fetch('/api/channels').then(r => r.json()).then(d => {
@@ -99,34 +123,58 @@ const proxied = s => `/proxy?u=${encodeURIComponent(s.url)}${s.ua ? `&ua=${encod
 function play(c) {
   active = c; [...list.children].forEach((li, i) => li.classList.toggle('active', view[i] === c));
   const streams = [...c.streams].sort((a, b) => (b.status === 'ok') - (a.status === 'ok'));
-  tryStream(c, streams, 0, $('#forceProxy').checked || !!(streams[0]?.ua || streams[0]?.ref));
+  cur = { c, streams, i: 0, viaProxy: false, failed: new Set() };
+  playStream(0);
+}
+// YouTube, rakuten://, plex://, broadcaster session players etc. resolve server-side
+const needsProxy = s => $('#forceProxy').checked || !!(s.ua || s.ref) || !/^https?:/i.test(s.url) || /youtube\.com|youtu\.be/i.test(s.url);
+const playStream = i => tryStream(cur.c, cur.streams, i, needsProxy(cur.streams[i]), i);
+const reload = () => { log('↻ reconnecting at the live point'); tryStream(cur.c, cur.streams, cur.i, cur.viaProxy, cur.i); };
+
+function renderStreams() {
+  const box = $('#streams'); box.innerHTML = '';
+  if (!cur) return;
+  box.append(Object.assign(document.createElement('span'), { className: 'hint', textContent: 'Streams:' }));
+  cur.streams.forEach((s, i) => {
+    const b = document.createElement('button');
+    b.innerHTML = `<span class="dot ${s.status === 'ok' ? 'ok' : s.status ? 'bad' : ''}"></span>Stream ${i + 1} <small>${[s.quality, s.source].filter(Boolean).join(' · ')}</small>`;
+    b.title = `${s.status ?? 'unchecked'} — ${s.url}`;
+    b.classList.toggle('on', i === cur.i); b.classList.toggle('fail', cur.failed.has(i));
+    b.onclick = () => playStream(i);
+    box.append(b);
+  });
 }
 
-function tryStream(c, streams, i, viaProxy) {
-  if (i >= streams.length) { info.innerHTML = `<b>${c.name}</b> <span class="tag" style="background:#7f1d1d">all ${streams.length} stream(s) failed</span>`; return; }
+function tryStream(c, streams, i, viaProxy, first) {
   const s = streams[i];
   const src = viaProxy ? proxied(s) : s.url;
+  Object.assign(cur, { i, viaProxy }); pausedAt = 0;
   if (hls) { hls.destroy(); hls = null; }
   if (ts) { ts.destroy(); ts = null; }
-  video.removeAttribute('src'); video.load();
+  video.onerror = null; video.removeAttribute('src'); video.load();
   info.innerHTML = `<b>${c.name}</b> <span class="tag">${s.quality ?? '?'}</span> <span class="tag">${s.source}</span> <span class="tag">${viaProxy ? 'via proxy' : 'direct'}</span> <span class="tag">stream ${i + 1}/${streams.length}</span> <span class="tag">${s.status ?? 'unchecked'}</span> <span style="flex:1"></span><button onclick="navigator.clipboard.writeText('${s.url.replace(/'/g, '')}')">copy URL</button>`;
+  renderStreams();
   log(`▶ ${c.name} — ${viaProxy ? 'proxy' : 'direct'} — ${s.url}`);
-  const next = reason => {
-    log(`✖ ${reason}`);
-    if (!viaProxy) tryStream(c, streams, i, true);        // same stream through proxy (fixes CORS / headers)
-    else tryStream(c, streams, i + 1, $('#forceProxy').checked);  // next alternate URL
+  const skip = reason => { // this stream is dead: next alternate URL, wrapping around until we are back where we started
+    log(`✖ ${reason}`); cur.failed.add(i);
+    const j = (i + 1) % streams.length;
+    if (j === first) { renderStreams(); info.innerHTML = `<b>${c.name}</b> <span class="tag" style="background:#7f1d1d">all ${streams.length} stream(s) failed</span>`; return; }
+    tryStream(c, streams, j, needsProxy(streams[j]), first);
   };
-  if (/\.mpd(\?|$)/i.test(s.url)) return next('DASH not supported in this viewer (AVPlay handles it on the TV)');
+  const next = reason => {
+    if (viaProxy) return skip(reason);
+    log(`✖ ${reason}`); tryStream(c, streams, i, true, first); // same stream through proxy (fixes CORS / headers)
+  };
+  if (/^(rtmp|rtsp|srt|mms|mmsh):/i.test(s.url)) return skip(`${s.url.split(':')[0]} is not playable in a browser`);
+  if (/\.mpd(\?|$)/i.test(s.url)) return skip('DASH not supported in this viewer (AVPlay handles it on the TV)');
   if (s.source === 'local-tuner' || /\.ts(\?|$)|\/auto\/v\d+|\/stream\/channel/i.test(s.url)) { // raw MPEG-TS over HTTP (tuner): mpegts.js
-    if (!(window.mpegts && mpegts.isSupported())) return next('MPEG-TS needs mpegts.js/MSE (AVPlay plays it natively on the TV)');
-    ts = mpegts.createPlayer({ type: 'mpegts', isLive: true, url: src }, { enableWorker: true, liveBufferLatencyChasing: true });
+    if (!(window.mpegts && mpegts.isSupported())) return skip('MPEG-TS needs mpegts.js/MSE (AVPlay plays it natively on the TV)');
+    // no latency chasing: it would undo rewinds; LIVE and play-after-pause re-sync instead
+    ts = mpegts.createPlayer({ type: 'mpegts', isLive: true, url: src }, { enableWorker: true });
     ts.on(mpegts.Events.ERROR, (t, d) => next(`mpegts ${t}: ${d}`)); ts.attachMediaElement(video); ts.load(); video.play().catch(() => {});
     log(`✓ MPEG-TS via mpegts.js`); return;
   }
-  if (/twitch\.tv/i.test(s.url)) return next('Twitch page, not supported');
-  if (/youtube\.com|youtu\.be/i.test(s.url) && !viaProxy) return tryStream(c, streams, i, true); // YouTube lives resolve server-side
-  if (/^rakuten:\/\//.test(s.url) && !viaProxy) return tryStream(c, streams, i, true); // Rakuten resolves server-side
-  if (/^(reporttv|mcntv|klankosova|mrt):\/\//.test(s.url) && !viaProxy) return tryStream(c, streams, i, true); // broadcaster session players resolve server-side
+  if (/twitch\.tv/i.test(s.url)) return skip('Twitch page, not supported');
   if (Hls.isSupported()) {
     hls = new Hls({ enableWorker: true, lowLatencyMode: false, manifestLoadingTimeOut: 12000, levelLoadingTimeOut: 12000, fragLoadingTimeOut: 15000, fragLoadingMaxRetry: 2, manifestLoadingMaxRetry: 1, levelLoadingMaxRetry: 2 });
     hls.on(Hls.Events.MANIFEST_PARSED, (_, d) => log(`✓ manifest parsed: ${d.levels.length} quality level(s)`));
@@ -137,6 +185,59 @@ function tryStream(c, streams, i, viaProxy) {
     video.src = src; video.onerror = () => next('video element error'); video.play().catch(() => {});
   }
 }
+video.addEventListener('playing', () => { if (cur && cur.failed.delete(cur.i)) renderStreams(); });
+
+// ---- live / rewind ----
+const fmt = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+function details() { const lv = hls && (hls.levels[hls.currentLevel] || hls.levels[hls.loadLevel] || hls.levels.find(l => l.details)); return lv && lv.details; }
+// earliest position we can rewind to, the live position and how far behind it we are; null when not a live stream
+function liveRange() {
+  const b = video.buffered, t = video.currentTime;
+  let start, live, tol = 8;
+  if (hls) {
+    const d = details();
+    if (!d || !d.live || !d.fragments.length) return null;
+    start = d.fragments[0].start + 1; live = hls.liveSyncPosition ?? d.edge - 3 * d.targetduration; tol = 5;
+  } else if (ts) {
+    if (!b.length) return null;
+    start = t; live = b.end(b.length - 1) - 1;
+  } else {
+    const s = video.seekable;
+    if (video.duration !== Infinity || !s.length) return null;
+    start = s.start(0); live = s.end(s.length - 1) - 1;
+  }
+  for (let k = b.length - 1; k >= 0; k--) if (b.start(k) < start && b.end(k) >= start - 0.5) start = b.start(k); // plus downloaded video that joins up (back buffer)
+  return { start, live, tol, behind: Math.max(0, live - t) };
+}
+function goLive() {
+  const away = pausedAt && Date.now() - pausedAt; pausedAt = 0;
+  if (cur && (ts ? away : away > 60000)) return reload(); // raw TS or a long pause (tokens may have expired): reconnect
+  const r = liveRange();
+  if (r && r.live - video.currentTime > 1) { internalSeek = true; video.currentTime = r.live; }
+  if (video.paused) video.play().catch(() => {});
+}
+function seekBy(d) {
+  if (!cur) return;
+  const r = liveRange(), t = video.currentTime + d;
+  if (!r) { if (isFinite(video.duration)) video.currentTime = Math.max(0, Math.min(t, video.duration)); return; } // not live
+  if (d > 0) { if (t >= r.live - 1) goLive(); else video.currentTime = t; return; }
+  if (t < r.start) log(`⏪ can't go further back: only ${fmt(r.live - r.start)} available so far (grows while you watch)`);
+  video.currentTime = Math.max(t, Math.min(r.start, video.currentTime));
+}
+const togglePlay = () => { if (cur) video.paused ? video.play().catch(() => {}) : video.pause(); };
+video.addEventListener('pause', () => { if (cur && video.readyState >= 2 && !video.ended && liveRange()) pausedAt = Date.now(); });
+video.addEventListener('play', () => { if (pausedAt) goLive(); });
+video.addEventListener('seeking', () => { if (internalSeek) internalSeek = false; else if (video.paused) pausedAt = 0; }); // picked a spot while paused: resume there
+function updateCtrl() {
+  $('#pp').textContent = video.paused ? '▶' : '⏸';
+  const r = cur && liveRange(), atLive = !!r && !video.paused && r.behind < r.tol;
+  $('#live').disabled = !r; $('#live').classList.toggle('on', atLive);
+  $('#behind').textContent = !r ? '' : video.paused ? (pausedAt ? 'paused · ▶ continues from live' : `paused · ${fmt(r.behind)} behind live`) : atLive ? '' : `${fmt(r.behind)} behind live`;
+  $('#dvr').textContent = r ? `can go back ${fmt(Math.max(0, video.currentTime - r.start))}` : '';
+}
+setInterval(updateCtrl, 1000);
+['play', 'pause', 'seeked', 'playing', 'emptied'].forEach(e => video.addEventListener(e, updateCtrl));
+$('main').addEventListener('mousedown', e => { if (e.target.closest('button')) e.preventDefault(); }); // keep focus off player buttons so Space doesn't re-press them
 
 ['#q', '#country', '#cat', '#aliveOnly'].forEach(s => $(s).addEventListener('input', render));
 window.quick = (co, cat) => { $('#country').value = co; $('#cat').value = cat; $('#q').value = ''; focusIdx = 0; render(); };
@@ -144,6 +245,12 @@ let sourceFilter = null; window.quickSource = (src) => { sourceFilter = src; $('
 ['#q', '#country', '#cat'].forEach(s => $(s).addEventListener('input', () => { sourceFilter = null; }));
 document.addEventListener('keydown', e => {
   if (e.target.tagName === 'SELECT') return;
+  if (!(e.target.tagName === 'INPUT' && e.target.type === 'text') && !e.metaKey && !e.ctrlKey && !e.altKey) { // player keys, not while typing a search
+    const act = { ' ': togglePlay, k: togglePlay, MediaPlayPause: togglePlay, l: goLive,
+      ArrowLeft: () => seekBy(-10), MediaRewind: () => seekBy(-10), ArrowRight: () => seekBy(10), MediaFastForward: () => seekBy(10) }[e.key];
+    if (act) { act(); e.preventDefault(); return; }
+    if (cur && /^[1-9]$/.test(e.key) && cur.streams[e.key - 1]) return playStream(e.key - 1);
+  }
   if (e.key === 'ArrowDown') { focusIdx = Math.min(view.length - 1, focusIdx + 1); highlight(); e.preventDefault(); }
   else if (e.key === 'ArrowUp') { focusIdx = Math.max(0, focusIdx - 1); highlight(); e.preventDefault(); }
   else if (e.key === 'Enter' && view[focusIdx]) { play(view[focusIdx]); }

@@ -2,6 +2,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { parseM3U } from './m3u.mjs';
 import { GJIRAFA_MAP } from './gjirafa.mjs';
+import { normalizeYouTube } from './youtube.mjs';
 
 const RAW = new URL('../data/raw/', import.meta.url);
 const OUT = new URL('../data/', import.meta.url);
@@ -99,6 +100,45 @@ for (const [file, source] of FAST) {
   fastStats[source] = { total: items.length, added, dup };
 }
 
+// ---- Famelack (ex TV Garden) and TDTChannels: join existing channels by name (+ country), otherwise new records ----
+const urlKey = u => u.replace(/^https?:\/\//i, '').replace(/\/+$/, '').toLowerCase(); // http/https or a trailing slash is the same stream
+const seenKeys = new Set([...allUrls].map(urlKey));
+const blockedNames = new Set(channels.filter(ch => blocked.has(ch.id)).map(ch => `${norm(ch.name)}|${ch.country}`));
+const byName = new Map(), byNameAny = new Map(); // "name|country" -> channel; "name" -> channel, or null when ambiguous
+for (const c of db.values()) for (const n of [c.name, ...c.altNames]) {
+  if (c.country) byName.set(`${norm(n)}|${c.country}`, c);
+  byNameAny.set(norm(n), byNameAny.has(norm(n)) && byNameAny.get(norm(n)) !== c ? null : c);
+}
+const isYouTubeUrl = u => /youtube\.com|youtu\.be/.test(u);
+const extraStats = {};
+function addExtra(source, ch, url, { labels = [], userAgent = null, referrer = null } = {}) {
+  const st = extraStats[source] ??= { added: 0, joined: 0, dup: 0 };
+  if (!url || seenKeys.has(urlKey(url)) || blockedNames.has(`${norm(ch.name)}|${ch.country}`)) { st.dup++; return; }
+  let c = ch.country ? byName.get(`${norm(ch.name)}|${ch.country}`) : byNameAny.get(norm(ch.name));
+  if (c && isYouTubeUrl(url) && c.streams.some(s => isYouTubeUrl(s.url))) { st.dup++; return; } // already has a YouTube live, just in another URL form
+  if (c) st.joined++;
+  else { c = ensureChannel(`${source}:${ch.key}`, ch); if (ch.country) byName.set(`${norm(ch.name)}|${ch.country}`, c); }
+  for (const cat of ch.categories ?? []) if (!c.categories.includes(cat)) c.categories.push(cat);
+  c.streams.push({ url, quality: null, labels: isYouTubeUrl(url) ? ['YouTube', ...labels] : labels, userAgent, referrer, feed: null, source });
+  allUrls.add(url); seenKeys.add(urlKey(url)); st.added++;
+}
+try {
+  for (const f of JSON.parse(await text('famelack.tv.json'))) {
+    const ch = { key: f.nanoid, name: f.name.trim(), country: f.country ? f.country.toUpperCase() : null, languages: f.languages ?? [], categories: f.categories ?? [] };
+    for (const url of f.sources?.streams ?? []) addExtra('famelack', ch, url.trim(), { labels: f.isGeoBlocked ? ['Geo-blocked'] : [] });
+    for (const url of f.sources?.youtube ?? []) addExtra('famelack', ch, normalizeYouTube(url)); // embed/<videoId> -> watch?v=<videoId>
+  }
+} catch (e) { if (e.code !== 'ENOENT') throw e; }
+const TDT_CATEGORY = [[/deport/i, 'sports'], [/informativ/i, 'news'], [/infantil/i, 'kids'], [/musical/i, 'music'], [/religios/i, 'religious']];
+try {
+  for (const it of parseM3U(await text('tdtchannels.tv.m3u8'))) {
+    const group = it.attrs['group-title'] ?? '';
+    const ch = { key: norm(it.name), name: it.name.trim(), country: /\bInt\./.test(group) ? null : 'ES', // "Int. Europa", "Deportivos Int." ... are foreign channels
+      categories: TDT_CATEGORY.filter(([re]) => re.test(group)).map(([, cat]) => cat), logo: it.attrs['tvg-logo'] ?? null };
+    addExtra('tdtchannels', ch, it.url.trim(), { userAgent: it.headers['http-user-agent'] ?? null, referrer: it.headers['http-referrer'] ?? null });
+  }
+} catch (e) { if (e.code !== 'ENOENT') throw e; }
+
 // ---- Gjirafa live channels (official player backend for RTK/T7/KTV/RTV21/ATV/...) ----
 let gjAdded = 0;
 try {
@@ -187,7 +227,7 @@ for (const c of db.values()) {
 
 // ---- output ----
 // stream priority: antenna first, then the broadcaster's own feeds, then aggregators
-const SOURCE_PRIORITY = ['local-tuner', 'official-hls', 'official-session', 'gjirafa', 'official-youtube', 'iptv-org', 'free-tv', 'rakuten', 'fast-samsung', 'fast-plex', 'fast-tubi', 'fast-roku', 'fast-pluto'];
+const SOURCE_PRIORITY = ['local-tuner', 'official-hls', 'official-session', 'gjirafa', 'official-youtube', 'iptv-org', 'free-tv', 'famelack', 'tdtchannels', 'rakuten', 'fast-samsung', 'fast-plex', 'fast-tubi', 'fast-roku', 'fast-pluto'];
 const prio = s => { if (s.official && !/youtube/.test(s.source)) return SOURCE_PRIORITY.indexOf('official-hls'); const i = SOURCE_PRIORITY.indexOf(s.source); return i === -1 ? SOURCE_PRIORITY.length : i; };
 for (const c of db.values()) c.streams.sort((a, b) => prio(a) - prio(b));
 const list = [...db.values()].filter(c => c.streams.length > 0).sort((a, b) => a.name.localeCompare(b.name));
@@ -201,6 +241,7 @@ console.log(`  Albanian (AL/XK/sqi): ${sq.length} channels, ${sq.reduce((n, c) =
 console.log(`  official YouTube sources added: ${officialAdded}`);
 console.log(`  sports tagged by name (no category upstream): ${sportsTagged}`);
 console.log(`  FAST: ${Object.entries(fastStats).map(([k, v]) => `${k} ${v.added} new (${v.dup} already known) of ${v.total}`).join('; ')}`);
+console.log(`  ${Object.entries(extraStats).map(([k, v]) => `${k}: ${v.added} streams added (${v.joined} onto existing channels), ${v.dup} already known`).join('; ')}`);
 console.log(`  gjirafa streams added: ${gjAdded}`);
 console.log(`  rakuten channels added: ${rkAdded}`);
 console.log(`  plex channels added: ${plexAdded}`);
