@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { extname } from 'node:path';
 import { isYouTube, resolveYouTubeLive, registerChannelIds } from './youtube.mjs';
 import { isRakuten, rakutenId, rakutenLang, resolveRakuten } from './rakuten.mjs';
-import { isResolver, resolveDynamic } from './resolvers.mjs';
+import { isResolver, resolveDynamic, refreshUrl } from './resolvers.mjs';
 const headerSets = new Map(); // key -> { cookie, referer } for streams whose session must follow every request
 const hkey = h => { const k = Buffer.from(JSON.stringify(h)).toString('base64url').slice(0, 24); headerSets.set(k, h); return k; };
 try { registerChannelIds(JSON.parse(await readFile(new URL('../sources/official-youtube.json', import.meta.url), 'utf8'))); } catch {}
@@ -55,6 +55,7 @@ async function proxy(req, res, q) {
     try { const r = await resolveYouTubeLive(target); target = r.hls; ua = IOS_UA; }
     catch (e) { res.writeHead(502, { 'access-control-allow-origin': '*', 'x-yt-error': e.code || 'error' }); return res.end(`youtube: ${e.message}`); }
   }
+  try { target = await refreshUrl(target); } catch {}
   const headers = { 'user-agent': ua, accept: '*/*' };
   if (ref) { headers.referer = ref; try { headers.origin = new URL(ref).origin; } catch {} }
   if (extra.cookie) headers.cookie = extra.cookie;

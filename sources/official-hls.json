@@ -141,5 +141,241 @@
     ],
     "url": "https://tvr-sport.lg.mncdn.com/tvrsport/smil:tvrsport.smil/playlist.m3u8",
     "note": "Romanian public broadcaster CDN"
+  },
+  {
+    "channel": "OraNews.al",
+    "name": "Ora News",
+    "country": "AL",
+    "categories": [
+      "news"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://live1.mediadesk.al/oranews.php",
+    "note": "source of oranews.tv/livetv2.php (the iframe on oranews.tv/live)"
+  },
+  {
+    "channel": "TVDielli.xk",
+    "name": "TV Dielli",
+    "country": "XK",
+    "categories": [
+      "general"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://stream.tvdielli.com/hls/dielli/index.m3u8",
+    "note": "tvdielli.com's own page; old :8081 URL redirects here; LL-HLS fMP4"
+  },
+  {
+    "channel": "CNA.al",
+    "name": "CNA",
+    "country": "AL",
+    "categories": [
+      "news"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://live1.mediadesk.al/cnatv.php",
+    "note": "source of cna.al/cnalivetv.php (the iframe on cna.al/live), Mediadesk origin; no Referer needed"
+  },
+  {
+    "channel": "RTVIslam.ch",
+    "name": "RTV Islam",
+    "country": "CH",
+    "categories": [
+      "religious"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://rtvislam.protokolldns.xyz/rtvislamweb554jjs/index.m3u8",
+    "note": "embedded by rtvislam.com"
+  },
+  {
+    "channel": "DritaTV.ch",
+    "name": "Drita TV",
+    "country": "CH",
+    "categories": [
+      "religious"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://dritatv.protokolldns.xyz/dritaweb5587989asw/index.m3u8",
+    "note": "embedded by drita.tv"
+  },
+  {
+    "channel": "TV2Gostivar.mk",
+    "name": "TV2 Gostivar",
+    "country": "MK",
+    "categories": [
+      "general"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://live20.bozztv.com/giatv/giatv-tv2gostivar/tv2gostivar/playlist.m3u8",
+    "note": "embedded by the station's own blog tvdue.blogspot.com"
+  },
+  {
+    "channel": "RTVArkivaIslame.xk",
+    "name": "RTV Arkiva Islame",
+    "country": "XK",
+    "categories": [
+      "religious"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://arkivaislame.serverprivat.com/index.m3u8",
+    "note": "embedded by arkivaislame.com/live-tv/"
+  },
+  {
+    "channel": "ShqiponjaTV.al",
+    "name": "Shqiponja TV",
+    "country": "AL",
+    "categories": [
+      "music"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://shiko.shqiponja-tv.com/index.m3u8",
+    "note": "embedded by shqiponja-tv.com; country assumed"
+  },
+  {
+    "channel": "AlbswissTV.ch",
+    "name": "Albswiss TV",
+    "country": "CH",
+    "categories": [
+      "general"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "https://livetv.albswiss.com/Albswiss/live/playlist.m3u8",
+    "note": "self-hosted on albswiss.com"
+  },
+  {
+    "channel": "Radio1RTV.al",
+    "name": "Radio 1 RTV",
+    "country": "AL",
+    "categories": [
+      "music"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "url": "http://video.radio1.al/hls/rtvnje/index.m3u8",
+    "note": "video feed of Radio 1 Tirana on its own domain"
+  },
+  {
+    "channel": "LEquipe.fr",
+    "name": "L'Equipe",
+    "country": "FR",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "fra"
+    ],
+    "url": "https://dq37unyetkpcz.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-m04j89j7k5gtp/LEquipe_FR.m3u8",
+    "note": "Samsung TV Plus FR feed (official FAST since 2025-06); lequipe.fr Dailymotion live is geo-blocked"
+  },
+  {
+    "channel": "SuperTennis.it",
+    "name": "SuperTennis",
+    "country": "IT",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "ita"
+    ],
+    "url": "https://d2bbbc1corbwv1.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-bllikk0toovuo/SupertennisIT.m3u8",
+    "note": "Italian Tennis Federation channel, Samsung TV Plus IT feed"
+  },
+  {
+    "channel": "Automoto.it",
+    "name": "Automoto",
+    "country": "IT",
+    "categories": [
+      "sports",
+      "auto"
+    ],
+    "languages": [
+      "ita"
+    ],
+    "url": "https://d2d70kuzq4qhmm.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-nwqkjgrx3umyk/Automoto_IT.m3u8",
+    "note": "Samsung TV Plus IT feed"
+  },
+  {
+    "channel": "RugbyPassTV.uk",
+    "name": "RugbyPass TV",
+    "country": "UK",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "eng"
+    ],
+    "url": "https://97bf7b92.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/U2Ftc3VuZy1nYl9SdWdieVBhc3NUVl9ITFM/playlist.m3u8",
+    "note": "World Rugby official 24/7 channel, Samsung TV Plus GB feed (Wurl)"
+  },
+  {
+    "channel": "AlIraqiaSport.iq",
+    "name": "Al Iraqia Sport",
+    "country": "IQ",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "ara"
+    ],
+    "url": "https://imn-live.esite-lab.com/hls/iraqia-sports-1.m3u8",
+    "note": "Iraqi Media Network (state broadcaster) player on imn.iq/ar/channels/iraqi-sports"
+  },
+  {
+    "channel": "DFBPlayTV.de",
+    "name": "DFB Play TV",
+    "country": "DE",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "deu"
+    ],
+    "url": "https://amg00622-amg00622c21-sportworld-europe-3676.playouts.now.amagi.tv/playlist/amg00622-sportworld-dfbplaytv-sportworldeurope/playlist.m3u8",
+    "note": "German FA channel via Sportworld (B1 SmartTV) FAST app; the Samsung/Pluto feeds 403 or slate from Albania"
+  },
+  {
+    "channel": "TVRISport.id",
+    "name": "TVRI Sport",
+    "country": "ID",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "ind"
+    ],
+    "url": "https://ott-balancer.tvri.go.id/live/eds/SportHD/hls/SportHD.m3u8",
+    "note": "TVRI (Indonesian public TV) own OTT origin; shows a logo slate off-air"
+  },
+  {
+    "channel": "RTASport.af",
+    "name": "RTA Sport",
+    "country": "AF",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "prs",
+      "pus"
+    ],
+    "url": "https://rta-tv.akamaized.net/live/SD/RTA-3/RTA/RTA-3.m3u8",
+    "note": "listed in rta.af own player bundle (fMP4, separate audio)"
   }
 ]

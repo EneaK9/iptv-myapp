@@ -1,0 +1,36 @@
+[
+ {
+  "channel": "CNA.al",
+  "name": "CNA",
+  "status": "ok",
+  "master": 200,
+  "segment": 200,
+  "bytes": 81487
+ },
+ {
+  "channel": "CNA.al",
+  "name": "CNA (no referer)",
+  "status": "ok",
+  "master": 200,
+  "segment": 200,
+  "bytes": 81487
+ },
+ {
+  "channel": "AlpoTV.al",
+  "name": "Alpo TV",
+  "status": "error",
+  "error": "fetch failed"
+ },
+ {
+  "channel": "PanoramaTV.al",
+  "name": "Panorama TV",
+  "status": "error",
+  "error": "fetch failed"
+ },
+ {
+  "channel": "PanoramaTV.al",
+  "name": "Panorama (no referer)",
+  "status": "error",
+  "error": "fetch failed"
+ }
+]

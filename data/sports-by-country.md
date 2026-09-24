@@ -1,8 +1,8 @@
 # Alive sports channels by country
 
-Generated 2026-09-22T22:56:55.648Z. 394 channels in 66 countries. "alive" = stream delivered data at last check.
+Generated 2026-09-23T21:59:32.128Z. 475 channels in 70 countries. "alive" = stream delivered data at last check.
 
-## 🇺🇸 United States (107)
+## 🇺🇸 United States (113)
 
 - ACC Digital Network · 1080p
 - ACC Network · 720p
@@ -17,6 +17,7 @@ Generated 2026-09-22T22:56:55.648Z. 394 channels in 66 countries. "alive" = stre
 - Bellator MMA
 - Bellator MMA · (tagged by name)
 - Big 12 Studios
+- Billiard TV · (tagged by name)
 - CBS Sports HQ · 720p
 - CG MMA En Español · (tagged by name)
 - CHGO Sports · (tagged by name)
@@ -27,9 +28,11 @@ Generated 2026-09-22T22:56:55.648Z. 394 channels in 66 countries. "alive" = stre
 - ESPN8: The Ocho · 1080p
 - ESPNews · 720p
 - ESPNU · 720p
+- Estrella TV Deportes · (tagged by name)
 - FITE 24/7 · 720p
 - FloHockey · 1080p
 - FloRacing · 1080p
+- FloRacing 24/7 · (tagged by name)
 - Fox Deportes · 720p
 - FOX Sports · (tagged by name)
 - FOX Sports · (tagged by name)
@@ -77,6 +80,8 @@ Generated 2026-09-22T22:56:55.648Z. 394 channels in 66 countries. "alive" = stre
 - Scripps Sports Network
 - Slopes TV · 720p
 - SportsGrid · 1080p
+- SportsGrid · (tagged by name)
+- SPORTSGRID · (tagged by name)
 - Stadium · 720p
 - Stadium · (tagged by name)
 - Stadium
@@ -87,6 +92,7 @@ Generated 2026-09-22T22:56:55.648Z. 394 channels in 66 countries. "alive" = stre
 - Tennis Channel · 1080p
 - Tennis Channel 2 · 1080p
 - Top Rank Classics
+- Triton Poker · (tagged by name)
 - TVS Bowling Network · 720p
 - TVS Boxing · 360p
 - TVS Classic Sports · 360p
@@ -112,46 +118,134 @@ Generated 2026-09-22T22:56:55.648Z. 394 channels in 66 countries. "alive" = stre
 - XFC TV · 720p
 - Yahoo Sports Network
 
-##  Unknown country (38)
+##  Unknown country (70)
 
 - Auto Motor Sport · (tagged by name)
+- Billiard TV · (tagged by name)
+- Billiards+ · 1080p · (tagged by name)
 - Channel Fight · 1080p · (tagged by name)
+- CombaTV · (tagged by name)
+- Cricket Gold · (tagged by name)
 - DAZN Ringside · 1080p · (tagged by name)
 - DAZN Ringside
+- EchoSports · 720p · (tagged by name)
 - Equidia Racing Mag · 1080p · (tagged by name)
 - Eurovision Sport
 - Extreme Makeover Home Edition · (tagged by name)
 - FIFA+
+- Fight Network · 720p · (tagged by name)
 - Fight TV · 1080p · (tagged by name)
 - FOX Sports · 1080p · (tagged by name)
+- FTF Sports · (tagged by name)
 - FUEL TV
 - GFN Football · 1080p · (tagged by name)
 - Goal TV · (tagged by name)
+- GolfPass · 1080p · (tagged by name)
 - INTER 24/7
+- ITV Deportes · (tagged by name)
 - Just.fishing · (tagged by name)
 - Man City 24/7
+- MODUS Super Series Darts · 720p · (tagged by name)
+- MSG SportsZone · 720p · (tagged by name)
 - Nascar · 1080p · (tagged by name)
 - NASCAR
+- PFL MMA · (tagged by name)
+- PickleTV · (tagged by name)
+- PokerGO · (tagged by name)
 - RACER International
+- Racing America · (tagged by name)
 - Red Bull TV
 - Shooting Sports Life · 720p · (tagged by name)
 - Speed Sport 1 · 1080p · (tagged by name)
+- SPEEDVISION · (tagged by name)
 - Sport Fishing TV · 1080p · (tagged by name)
+- Sport2U · (tagged by name)
+- Sportoutdoor.tv · (tagged by name)
 - Sports First · 1080p · (tagged by name)
 - Sports Illustrated TV
+- SportsGrid · 720p · (tagged by name)
 - Stingray Soccer Anthems · 1080p · (tagged by name)
+- Strongman Champions · (tagged by name)
 - Surf Cinema · 1080p · (tagged by name)
+- Surf Cinema · (tagged by name)
+- Surfer TV · (tagged by name)
+- SURFER TV · 1080p · (tagged by name)
+- Surfing+ · 1080p · (tagged by name)
 - Tennis Channel Germany · 720p · (tagged by name)
+- Tennis TV · (tagged by name)
 - Tennis+ · 1080p · (tagged by name)
+- Tennis+ · (tagged by name)
+- The World Poker Tour · (tagged by name)
+- The World Poker Tour · (tagged by name)
 - TOP Barça
 - UEFA Champions League · 720p · (tagged by name)
 - UFC · 1080p · (tagged by name)
+- UFC · (tagged by name)
+- Women's Sports Network · (tagged by name)
 - World Billiards TV
+- World Billiards TV · (tagged by name)
 - World of Freesports
 - World Poker Tour
 - World Surf League 24/7
+- World Surf League 24/7 · (tagged by name)
 - WWE Superstar Central · 1080p · (tagged by name)
 - Xtrem Sports · 1080p · (tagged by name)
+
+## 🇮🇹 Italy (27)
+
+- ACI Sport TV · 1080p
+- Adventure Sports TV · (tagged by name)
+- Automoto · (tagged by name)
+- Automoto
+- FIFA+ · (tagged by name)
+- Golf Television · (tagged by name)
+- Horse TV · 720p
+- Inter TV · 1080p
+- Italian Fishing TV · 1080p · (tagged by name)
+- MadeinBO TV · 1080p
+- Nautical Channel · 720p
+- NFL Channel · (tagged by name)
+- Radio Juke Box TV · (tagged by name)
+- Rai Sport
+- Rete 8 Sport · (tagged by name)
+- Solocalcio · (tagged by name)
+- Sportface · (tagged by name)
+- Sportitalia · 1080p
+- Sportitalia · (tagged by name)
+- Sportitalia Solocalcio · 1080p
+- SportOutdoor.tv · (tagged by name)
+- SuperTennis
+- SuperTennis · (tagged by name)
+- Top Calcio 24
+- TR Sport · 480p
+- TSN Tele Sondrio News · (tagged by name)
+- World Poker Tour · (tagged by name)
+
+## 🇬🇧 United Kingdom (23)
+
+- Eurovision Sport · (tagged by name)
+- FIFA+ · 720p
+- FIFA+ · (tagged by name)
+- FIFA+ Women · 720p
+- FIFA+ Women · (tagged by name)
+- GFN Football · (tagged by name)
+- MotorRacing · (tagged by name)
+- MUTV · 720p
+- NFL Channel · (tagged by name)
+- PGA Tour · (tagged by name)
+- Racing TV Play · (tagged by name)
+- RugbyPass TV · 720p · (tagged by name)
+- RugbyPass TV · (tagged by name)
+- Setanta Sports
+- Sky Sports Cricket
+- Sports First TV · (tagged by name)
+- SQUASHTV
+- Strongman Champions League · 720p
+- Strongman Champions League · (tagged by name)
+- talkSPORT
+- talkSPORT · (tagged by name)
+- World Poker Tour · (tagged by name)
+- Your Sports News · (tagged by name)
 
 ## 🇷🇺 Russia (20)
 
@@ -176,47 +270,6 @@ Generated 2026-09-22T22:56:55.648Z. 394 channels in 66 countries. "alive" = stre
 - UDAR · 1080p
 - viju+ Sport · 1080p
 
-## 🇮🇹 Italy (19)
-
-- ACI Sport TV · 1080p
-- Adventure Sports TV · (tagged by name)
-- Golf Television · (tagged by name)
-- Horse TV · 720p
-- Inter TV · 1080p
-- Italian Fishing TV · 1080p · (tagged by name)
-- MadeinBO TV · 1080p
-- Nautical Channel · 720p
-- NFL Channel · (tagged by name)
-- Radio Juke Box TV · (tagged by name)
-- Rai Sport
-- Rete 8 Sport · (tagged by name)
-- Solocalcio · (tagged by name)
-- Sportface · (tagged by name)
-- Sportitalia · 1080p
-- Sportitalia Solocalcio · 1080p
-- Top Calcio 24
-- TR Sport · 480p
-- TSN Tele Sondrio News · (tagged by name)
-
-## 🇬🇧 United Kingdom (16)
-
-- Eurovision Sport · (tagged by name)
-- FIFA+ · 720p
-- FIFA+ Women · 720p
-- GFN Football · (tagged by name)
-- MUTV · 720p
-- NFL Channel · (tagged by name)
-- Racing TV Play · (tagged by name)
-- Setanta Sports
-- Sky Sports Cricket
-- Sports First TV · (tagged by name)
-- SQUASHTV
-- Strongman Champions League · 720p
-- Strongman Champions League · (tagged by name)
-- talkSPORT
-- talkSPORT · (tagged by name)
-- Your Sports News · (tagged by name)
-
 ## 🇺🇦 Ukraine (15)
 
 - 2+2 Marathon · 1080p · (tagged by name)
@@ -235,6 +288,40 @@ Generated 2026-09-22T22:56:55.648Z. 394 channels in 66 countries. "alive" = stre
 - Suspilne. Sport · 1080p
 - XSport
 
+## 🇫🇷 France (14)
+
+- Africa 24 Sport · 1080p
+- Equidia · 1080p
+- FIFA+ · (tagged by name)
+- Journal du Golf TV · (tagged by name)
+- Kozoom TV · 1080p
+- L'Equipe
+- L'Equipe · (tagged by name)
+- Motor Racing · (tagged by name)
+- NFL Channel · (tagged by name)
+- Persiana Fight
+- Sport en France
+- Tennis+ · (tagged by name)
+- Trace Sport Stars · 1080p
+- World Poker Tour · (tagged by name)
+
+## 🇩🇪 Germany (14)
+
+- auto motor und sport · (tagged by name)
+- DFB Play TV
+- FIFA+ · (tagged by name)
+- just.fishing · (tagged by name)
+- More than Sports TV · (tagged by name)
+- More Than Sports TV · 1080p
+- NFL Channel · (tagged by name)
+- Pluto TV Sport
+- Red Bull TV Motorsport · (tagged by name)
+- Scooore · (tagged by name)
+- Sportdigital Free · (tagged by name)
+- Strongman Champions League · (tagged by name)
+- World of Freesports · 1080p
+- World Poker Tour · (tagged by name)
+
 ## 🇸🇪 Sweden (11)
 
 - ATG Live · 720p
@@ -249,37 +336,13 @@ Generated 2026-09-22T22:56:55.648Z. 394 channels in 66 countries. "alive" = stre
 - Pluto TV Sport
 - V Sport Golf
 
-## 🇩🇪 Germany (11)
-
-- auto motor und sport · (tagged by name)
-- just.fishing · (tagged by name)
-- More than Sports TV · (tagged by name)
-- More Than Sports TV · 1080p
-- NFL Channel · (tagged by name)
-- Pluto TV Sport
-- Red Bull TV Motorsport · (tagged by name)
-- Scooore · (tagged by name)
-- Sportdigital Free · (tagged by name)
-- Strongman Champions League · (tagged by name)
-- World of Freesports · 1080p
-
-## 🇫🇷 France (9)
-
-- Africa 24 Sport · 1080p
-- Equidia · 1080p
-- Journal du Golf TV · (tagged by name)
-- Kozoom TV · 1080p
-- Motor Racing · (tagged by name)
-- NFL Channel · (tagged by name)
-- Persiana Fight
-- Tennis+ · (tagged by name)
-- Trace Sport Stars · 1080p
-
-## 🇮🇳 India (9)
+## 🇮🇳 India (11)
 
 - DD Sports · 720p
+- FIFA+ · (tagged by name)
 - Fight TV · (tagged by name)
 - Golf Network · (tagged by name)
+- Pickleball Now · (tagged by name)
 - Sports Live · (tagged by name)
 - Star Sports 2 · 720p
 - Star Sports 2 Hindi · 720p
@@ -287,9 +350,10 @@ Generated 2026-09-22T22:56:55.648Z. 394 channels in 66 countries. "alive" = stre
 - Star Sports Select 2 · 720p
 - Unite8 Sports 2
 
-## 🇦🇹 Austria (8)
+## 🇦🇹 Austria (10)
 
 - auto motor und sport · (tagged by name)
+- FIFA+ · (tagged by name)
 - just.fishing · (tagged by name)
 - More than Sports TV · (tagged by name)
 - Red Bull TV · 1080p
@@ -297,6 +361,31 @@ Generated 2026-09-22T22:56:55.648Z. 394 channels in 66 countries. "alive" = stre
 - Sportdigital Free · (tagged by name)
 - Strongman Champions League · (tagged by name)
 - Tennis Channel · (tagged by name)
+- World Poker Tour · (tagged by name)
+
+## 🇨🇭 Switzerland (9)
+
+- auto motor und sport · (tagged by name)
+- FIFA+ · (tagged by name)
+- More than Sports TV · (tagged by name)
+- Scooore · (tagged by name)
+- Sportdigital Free · (tagged by name)
+- SportOutdoor.tv [IT] · (tagged by name)
+- Strongman Champions League · (tagged by name)
+- Tennis Channel · (tagged by name)
+- World Poker Tour · (tagged by name)
+
+## 🇪🇸 Spain (9)
+
+- Esport3 · 1080p
+- FIFA+ · (tagged by name)
+- NFL Channel · (tagged by name)
+- Real Madrid TV · 726p
+- Real Madrid TV English
+- Rugby Challenge · (tagged by name)
+- Surf Channel · (tagged by name)
+- Teledeporte
+- World Poker Tour · (tagged by name)
 
 ## 🇧🇷 Brazil (8)
 
@@ -309,34 +398,26 @@ Generated 2026-09-22T22:56:55.648Z. 394 channels in 66 countries. "alive" = stre
 - NFL Channel · (tagged by name)
 - SporTV 3 · 720p
 
-## 🇨🇦 Canada (7)
+## 🇨🇦 Canada (8)
 
 - beIN SPORTS XTRA · (tagged by name)
 - CG MMA En Español · (tagged by name)
+- FIFA+ · (tagged by name)
 - Hard Knocks · 1080p
 - NFL Channel · (tagged by name)
 - TSN The Ocho · 1080p
 - TSN The Ocho · (tagged by name)
 - UFC · (tagged by name)
 
-## 🇪🇸 Spain (7)
+## 🇭🇺 Hungary (7)
 
-- Esport3 · 1080p
-- NFL Channel · (tagged by name)
-- Real Madrid TV · 726p
-- Real Madrid TV English
-- Rugby Challenge · (tagged by name)
-- Surf Channel · (tagged by name)
-- Teledeporte
-
-## 🇨🇭 Switzerland (6)
-
-- auto motor und sport · (tagged by name)
-- More than Sports TV · (tagged by name)
-- Scooore · (tagged by name)
-- Sportdigital Free · (tagged by name)
-- Strongman Champions League · (tagged by name)
-- Tennis Channel · (tagged by name)
+- M4 Sport
+- M4 Sport+
+- Spiler 1
+- Spiler 2
+- Sport 1
+- Sport 2
+- The Fishing & Hunting Channel · (tagged by name)
 
 ## 🇨🇿 Czech Republic (6)
 
@@ -346,15 +427,6 @@ Generated 2026-09-22T22:56:55.648Z. 394 channels in 66 countries. "alive" = stre
 - Sport1
 - Sport2
 - Sporty TV
-
-## 🇭🇺 Hungary (6)
-
-- M4 Sport · 1080p
-- Spiler 1
-- Spiler 2
-- Sport 1
-- Sport 2
-- The Fishing & Hunting Channel · (tagged by name)
 
 ## 🇷🇴 Romania (5)
 
@@ -392,6 +464,13 @@ Generated 2026-09-22T22:56:55.648Z. 394 channels in 66 countries. "alive" = stre
 - ERT Sports 3
 - ERT Sports 4 · (tagged by name)
 
+## 🇰🇷 South Korea (4)
+
+- FIFA+ · (tagged by name)
+- PGA Tour · (tagged by name)
+- tvN SPORTS · (tagged by name)
+- World Billiards TV · (tagged by name)
+
 ## 🇵🇪 Peru (4)
 
 - L1 Max · 1080p
@@ -422,6 +501,12 @@ Generated 2026-09-22T22:56:55.648Z. 394 channels in 66 countries. "alive" = stre
 - Fast&FunBox
 - FightBox
 - InTrouble · 1080p
+
+## 🇮🇩 Indonesia (3)
+
+- SPOTV · 720p
+- SPOTV 2 · 720p
+- TVRI Sport
 
 ## 🇮🇷 Iran (2)
 
@@ -478,15 +563,15 @@ Generated 2026-09-22T22:56:55.648Z. 394 channels in 66 countries. "alive" = stre
 - QazSport · 1080p
 - Sport+ Qazaqstan · 1080p
 
+## 🇵🇱 Poland (2)
+
+- RACER International · 1080p
+- World Billiards · (tagged by name)
+
 ## 🇮🇪 Ireland (2)
 
 - Setanta Sports 1 Eurasia · 1080p
 - Setanta Sports 2 Eurasia · 1080p
-
-## 🇮🇩 Indonesia (2)
-
-- SPOTV · 720p
-- SPOTV 2 · 720p
 
 ## 🇹🇭 Thailand (2)
 
@@ -505,6 +590,10 @@ Generated 2026-09-22T22:56:55.648Z. 394 channels in 66 countries. "alive" = stre
 ## 🇲🇦 Morocco (1)
 
 - Arryadia
+
+## 🇨🇲 Cameroon (1)
+
+- CRTV Sport
 
 ## 🇭🇳 Honduras (1)
 
@@ -534,6 +623,10 @@ Generated 2026-09-22T22:56:55.648Z. 394 channels in 66 countries. "alive" = stre
 
 - Jordan Sport · 1080p
 
+## 🇰🇬 Kyrgyzstan (1)
+
+- KTRK Sport
+
 ## 🇱🇹 Lithuania (1)
 
 - LRT Plius · 1080p
@@ -562,9 +655,9 @@ Generated 2026-09-22T22:56:55.648Z. 394 channels in 66 countries. "alive" = stre
 
 - Prime · 1080p
 
-## 🇵🇱 Poland (1)
+## 🇦🇫 Afghanistan (1)
 
-- RACER International · 1080p
+- RTA Sport
 
 ## 🇰🇵 North Korea (1)
 
@@ -582,9 +675,9 @@ Generated 2026-09-22T22:56:55.648Z. 394 channels in 66 countries. "alive" = stre
 
 - Turkmenistan Sport · 406p
 
-## 🇰🇷 South Korea (1)
+## 🇸🇮 Slovenia (1)
 
-- tvN SPORTS · (tagged by name)
+- TV SLO 2
 
 ## 🇲🇩 Moldova (1)
 

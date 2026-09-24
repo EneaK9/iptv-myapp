@@ -55,8 +55,10 @@ async function get(url, headers, { maxBytes = 512 * 1024, range } = {}) {
   return { res, body: Buffer.concat(chunks) };
 }
 
-let ytChain = Promise.resolve(); const YT_SPACING_MS = Number(process.env.YT_SPACING_MS ?? 2500);
-const ytGate = () => { const p = ytChain.then(() => new Promise(r => setTimeout(r, YT_SPACING_MS))); ytChain = p.catch(() => {}); return p; };
+// serialise requests to hosts that rate-limit bursts: each call waits its turn, spaced `ms` apart
+function makeGate(ms) { let chain = Promise.resolve(); return () => { const p = chain.then(() => new Promise(r => setTimeout(r, ms))); chain = p.catch(() => {}); return p; }; }
+const ytGate = makeGate(Number(process.env.YT_SPACING_MS ?? 2500));
+const plexGate = makeGate(Number(process.env.PLEX_SPACING_MS ?? 1500)); // Plex answers 429 to ~50 parallel channel starts
 const resolveUrl = (u, base) => { try { return new URL(u, base).href; } catch { return null; } };
 const isHls = (body, ct) => body?.subarray(0, 32).toString().includes('#EXTM3U') || /mpegurl/i.test(ct);
 
@@ -66,6 +68,7 @@ async function checkOne(job) {
   try {
     let url = job.url;
     if (isResolver(url)) {
+      if (url.startsWith('plex://')) await plexGate();
       try { const r = await resolveDynamic(url); url = r.hls; out.kind = 'session'; job = { ...job, ref: r.headers?.referer ?? job.ref, cookie: r.headers?.cookie ?? null }; }
       catch (e) { out.status = e.code || 'resolver_error'; return out; }
     } else if (isRakuten(url)) {

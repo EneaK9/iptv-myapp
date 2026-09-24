@@ -1,0 +1,50 @@
+[
+ {
+  "channel": "AlkassOne.qa",
+  "name": "Alkass One",
+  "country": "QA",
+  "url": "https://liveeu-gcps.alkassdigital.net/alkass1-p/main.m3u8?hdnts=exp=1790200938~hmac=eed472c5f6b0b8326f2510ddca504aa88b1322309995005901edd79b7600fa18",
+  "note": "resolved from https://shoofapi.alkass.net/Shoof/liveV3.php (hdnts ~15 min TTL)"
+ },
+ {
+  "channel": "AlkassTwo.qa",
+  "name": "Alkass Two",
+  "country": "QA",
+  "url": "https://liveeu-gcps.alkassdigital.net/alkass2-p/main.m3u8?hdnts=exp=1790200938~hmac=99a73d29ebb9a3322fd52a89bc4fa3e264d29693724b0e881cdc2f85dff13e0e",
+  "note": "resolved from https://shoofapi.alkass.net/Shoof/liveV3.php (hdnts ~15 min TTL)"
+ },
+ {
+  "channel": "AlkassThree.qa",
+  "name": "Alkass Three",
+  "country": "QA",
+  "url": "https://liveeu-gcps.alkassdigital.net/alkass3-p/main.m3u8?hdnts=exp=1790200938~hmac=211f414970bd2d4cba3c1e5add4a55c10370bde9272c6d8026a536eff3a2f93b",
+  "note": "resolved from https://shoofapi.alkass.net/Shoof/liveV3.php (hdnts ~15 min TTL)"
+ },
+ {
+  "channel": "AlkassFour.qa",
+  "name": "Alkass Four",
+  "country": "QA",
+  "url": "https://liveeu-gcps.alkassdigital.net/alkass4-p/main.m3u8?hdnts=exp=1790200938~hmac=7980b467d3aa045314cb26d4a45e44412a84a56f1dcca794d62e66ca97e827a4",
+  "note": "resolved from https://shoofapi.alkass.net/Shoof/liveV3.php (hdnts ~15 min TTL)"
+ },
+ {
+  "channel": "AlkassShoofLive.qa",
+  "name": "Alkass Shoof Live",
+  "country": "QA",
+  "url": "https://liveakgrns.alkassdigital.net/hls/live/2097037/shooflivevssaua/master.m3u8?hdnts=exp=1790200938~hmac=fd76daf5d5936c9e3177f4b74f6632a14b44427537c26588b719fdc92e42a5b4",
+  "note": "resolved from https://shoofapi.alkass.net/Shoof/liveV3.php (hdnts ~15 min TTL)"
+ },
+ {
+  "channel": "AlIraqiaSport.iq",
+  "name": "Al Iraqia Sport",
+  "country": "IQ",
+  "url": "https://imn-live.esite-lab.com/hls/iraqia-sports-1.m3u8",
+  "referrer": "https://imn.iq/"
+ },
+ {
+  "channel": "RugbyPassTV.uk",
+  "name": "RugbyPass TV (World Rugby)",
+  "country": "INT",
+  "url": "https://97bf7b92.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/U2Ftc3VuZy1nYl9SdWdieVBhc3NUVl9ITFM/playlist.m3u8"
+ }
+]

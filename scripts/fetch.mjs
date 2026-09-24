@@ -58,6 +58,14 @@ try {
   ok++; console.log(`ok   ${'rakuten.json'.padEnd(32)} ${String(list.length).padStart(7)} live channels`);
 } catch (e) { failed++; console.log(`FAIL rakuten.json  ${e.message}`); }
 
+// Plex free Live TV (anonymous web-client token)
+try {
+  const { fetchPlexChannels } = await import('./plex.mjs');
+  const list = await fetchPlexChannels();
+  await writeFile(new URL('plex.json', RAW), JSON.stringify(list, null, 1));
+  ok++; console.log(`ok   ${'plex.json'.padEnd(32)} ${String(list.length).padStart(7)} live channels`);
+} catch (e) { failed++; console.log(`FAIL plex.json  ${e.message}`); }
+
 // Local DVB-T2 tuner on the LAN (optional; sources/local-tuner.json)
 try {
   const { fetchTunerChannels } = await import('./tuner.mjs');

@@ -126,7 +126,7 @@ function tryStream(c, streams, i, viaProxy) {
   if (/twitch\.tv/i.test(s.url)) return next('Twitch page, not supported');
   if (/youtube\.com|youtu\.be/i.test(s.url) && !viaProxy) return tryStream(c, streams, i, true); // YouTube lives resolve server-side
   if (/^rakuten:\/\//.test(s.url) && !viaProxy) return tryStream(c, streams, i, true); // Rakuten resolves server-side
-  if (/^(reporttv|mcntv):\/\//.test(s.url) && !viaProxy) return tryStream(c, streams, i, true); // broadcaster session players resolve server-side
+  if (/^(reporttv|mcntv|klankosova|mrt):\/\//.test(s.url) && !viaProxy) return tryStream(c, streams, i, true); // broadcaster session players resolve server-side
   if (Hls.isSupported()) {
     hls = new Hls({ enableWorker: true, lowLatencyMode: false, manifestLoadingTimeOut: 12000, levelLoadingTimeOut: 12000, fragLoadingTimeOut: 15000, fragLoadingMaxRetry: 2, manifestLoadingMaxRetry: 1, levelLoadingMaxRetry: 2 });
     hls.on(Hls.Events.MANIFEST_PARSED, (_, d) => log(`✓ manifest parsed: ${d.levels.length} quality level(s)`));

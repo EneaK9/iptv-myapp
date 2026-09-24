@@ -1,0 +1,64 @@
+[
+ {
+  "channel": "AlkassOne.qa",
+  "name": "Alkass One",
+  "status": "ok",
+  "master": 200,
+  "variant": 200,
+  "segment": 200,
+  "bytes": 67268
+ },
+ {
+  "channel": "AlkassTwo.qa",
+  "name": "Alkass Two",
+  "status": "ok",
+  "master": 200,
+  "variant": 200,
+  "segment": 200,
+  "bytes": 66832
+ },
+ {
+  "channel": "AlkassThree.qa",
+  "name": "Alkass Three",
+  "status": "ok",
+  "master": 200,
+  "variant": 200,
+  "segment": 200,
+  "bytes": 68004
+ },
+ {
+  "channel": "AlkassFour.qa",
+  "name": "Alkass Four",
+  "status": "ok",
+  "master": 200,
+  "variant": 200,
+  "segment": 200,
+  "bytes": 66768
+ },
+ {
+  "channel": "AlkassShoofLive.qa",
+  "name": "Alkass Shoof Live",
+  "status": "ok",
+  "master": 200,
+  "variant": 200,
+  "segment": 200,
+  "bytes": 68124
+ },
+ {
+  "channel": "AlIraqiaSport.iq",
+  "name": "Al Iraqia Sport",
+  "status": "ok",
+  "master": 200,
+  "segment": 200,
+  "bytes": 81412
+ },
+ {
+  "channel": "RugbyPassTV.uk",
+  "name": "RugbyPass TV (World Rugby)",
+  "status": "ok",
+  "master": 200,
+  "variant": 200,
+  "segment": 200,
+  "bytes": 65536
+ }
+]

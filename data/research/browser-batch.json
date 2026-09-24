@@ -1,0 +1,7 @@
+[
+ {"channel":"CNA.al","name":"CNA","url":"https://live1.mediadesk.al/cnatv.php","referrer":"https://www.cna.al/"},
+ {"channel":"CNA.al","name":"CNA (no referer)","url":"https://live1.mediadesk.al/cnatv.php"},
+ {"channel":"AlpoTV.al","name":"Alpo TV","url":"https://5d00db0e0fcd5.streamlock.net:443/7236/7236/playlist.m3u8","referrer":"https://alpomedia.com/"},
+ {"channel":"PanoramaTV.al","name":"Panorama TV","url":"https://tv.panorama.com.al/panorama/livestream/playlist.m3u8","referrer":"https://www.panorama.com.al/"},
+ {"channel":"PanoramaTV.al","name":"Panorama (no referer)","url":"https://tv.panorama.com.al/panorama/livestream/playlist.m3u8"}
+]

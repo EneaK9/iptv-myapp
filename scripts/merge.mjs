@@ -132,6 +132,19 @@ try {
   }
 } catch (e) { if (e.code !== 'ENOENT') throw e; }
 
+// ---- Plex free Live TV (resolved on play via plex://<gridKey>; categories come from the name heuristics below) ----
+let plexAdded = 0;
+try {
+  const px = JSON.parse(await readFile(new URL('plex.json', RAW), 'utf8'));
+  for (const p of px) {
+    const url = `plex://${p.gridKey}`;
+    if (allUrls.has(url)) continue;
+    const c = ensureChannel(`plex:${p.gridKey}`, { name: p.title, country: null, categories: [], logo: p.logo });
+    c.streams.push({ url, quality: p.hd ? '720p' : null, labels: ['FAST', 'Plex'], userAgent: null, referrer: null, feed: null, source: 'fast-plex' });
+    allUrls.add(url); plexAdded++;
+  }
+} catch (e) { if (e.code !== 'ENOENT') throw e; }
+
 // ---- local DVB-T2 tuner (antenna reception on the LAN) ----
 let tunerAdded = 0;
 try {
@@ -164,15 +177,17 @@ for (const [file, source, labels] of [['official-youtube.json', 'official-youtub
 
 // ---- heuristic category fill: many iptv-org channels have no category; tag obvious sports channels by name ----
 const SPORTS_RE = /\b(scooore|sportdigital|solocalcio|sportface|golazo|talksport|sport|sports|deporte|deportes|esporte|esportes|futbol|fútbol|football|soccer|calcio|fussball|fußball|voetbal|piłka|liga|arena|kick|goal|golazo|match|premier|champions|bein|espn|dazn|eurosport|supersport|setanta|tsn|sportsnet|sky sport|sportklub|polsat sport|nbc sports|cbs sports|fox sports|fanduel|bally|stadium|fite|motorsport|motogp|nascar|nba|nfl|mlb|nhl|ufc|wwe|aew|tennis|golf|racing|f1|formula|wrestl|boxing|boxeo|box tv|cricket|rugby|hockey|basket|volley|fight|mma|olymp|marathon|fishing|hunting|equestr|equidia|turf|hipica|hippique|ski|surf|extreme)\b/i;
+// brand names where the sport word is glued on (FAST lineups ship these with no genre)
+const SPORTS_BRAND_RE = /(fifa\+|l'?[ée]quipe|supertennis|tennis\+|sportitalia|sportsgrid|sportoutdoor|sport2u|echosports|sportszone|golfpass|pga tour|pickle|floracing|motorracing|automoto|speedvision|combatv|billiard|darts|poker|rugbypass|surfing\+|surfer tv)/i;
 const NOT_SPORTS_RE = /\b(music box|box kids|music|kids|cine|movie|film|news 24|24 news)\b/i;
 let sportsTagged = 0;
 for (const c of db.values()) {
-  if (!c.categories.includes('sports') && SPORTS_RE.test(c.name) && !NOT_SPORTS_RE.test(c.name)) { c.categories.push('sports'); c.sportsByName = true; sportsTagged++; }
+  if (!c.categories.includes('sports') && (SPORTS_RE.test(c.name) || SPORTS_BRAND_RE.test(c.name)) && !NOT_SPORTS_RE.test(c.name)) { c.categories.push('sports'); c.sportsByName = true; sportsTagged++; }
 }
 
 // ---- output ----
 // stream priority: antenna first, then the broadcaster's own feeds, then aggregators
-const SOURCE_PRIORITY = ['local-tuner', 'official-hls', 'official-session', 'gjirafa', 'official-youtube', 'iptv-org', 'free-tv', 'rakuten', 'fast-samsung', 'fast-tubi', 'fast-roku', 'fast-pluto'];
+const SOURCE_PRIORITY = ['local-tuner', 'official-hls', 'official-session', 'gjirafa', 'official-youtube', 'iptv-org', 'free-tv', 'rakuten', 'fast-samsung', 'fast-plex', 'fast-tubi', 'fast-roku', 'fast-pluto'];
 const prio = s => { if (s.official && !/youtube/.test(s.source)) return SOURCE_PRIORITY.indexOf('official-hls'); const i = SOURCE_PRIORITY.indexOf(s.source); return i === -1 ? SOURCE_PRIORITY.length : i; };
 for (const c of db.values()) c.streams.sort((a, b) => prio(a) - prio(b));
 const list = [...db.values()].filter(c => c.streams.length > 0).sort((a, b) => a.name.localeCompare(b.name));
@@ -188,6 +203,7 @@ console.log(`  sports tagged by name (no category upstream): ${sportsTagged}`);
 console.log(`  FAST: ${Object.entries(fastStats).map(([k, v]) => `${k} ${v.added} new (${v.dup} already known) of ${v.total}`).join('; ')}`);
 console.log(`  gjirafa streams added: ${gjAdded}`);
 console.log(`  rakuten channels added: ${rkAdded}`);
+console.log(`  plex channels added: ${plexAdded}`);
 console.log(`  local tuner channels: ${tunerAdded}`);
 console.log(`  nsfw channels: ${list.filter(c => c.isNsfw).length}`);
 console.log(`wrote data/channels.json (${(Buffer.byteLength(JSON.stringify(list)) / 1e6).toFixed(1)} MB)`);

@@ -51,20 +51,44 @@ broadcaster HLS/DASH URLs. Both are merged in and tried before other streams of 
   Red Bull TV, Man City 24/7, INTER 24/7, TOP Barça, ...). Stream URLs are short-lived, so channels are stored as `rakuten://<id>`
   and resolved on play by the checker and the proxy.
 - **FAST playlists** from BuddyChewChew/app-m3u-generator: Samsung TV Plus, Tubi, Roku (Pluto TV serves only ad slates from
-  Albania; the checker marks those `slate_only`). Plex is omitted (needs a token).
+  Albania; the checker marks those `slate_only`). The Tubi playlist has returned 404 upstream since 2026-09-23 (cached copy used).
+- **Plex free Live TV** (`scripts/plex.mjs`): 182 channels (Tennis TV, Fight Network, SPEEDVISION, PokerGO, Cricket Gold, ...)
+  with the anonymous token the watch.plex.tv web client uses. Stored as `plex://<gridKey>`, resolved on play. Plex answers 429
+  to bursts, so the checker spaces Plex lookups (`PLEX_SPACING_MS`, default 1500).
 - **Hand-verified official feeds** in `sources/official-hls.json` (News 24, Syri, Vizion Plus, RTV21, A2 CNN, Teledeporte,
-  TyC Sports, beIN XTRA, Red Bull TV, Sportitalia Solocalcio, TVR Sport) — tried before other streams of the same channel.
+  TyC Sports, beIN XTRA, Red Bull TV, Sportitalia Solocalcio, TVR Sport, L'Equipe, SuperTennis, RugbyPass TV, DFB Play TV,
+  TVRI Sport, ...) — tried before other streams of the same channel.
 
 Not used on purpose: pirate relays (e.g. `5.254.89.106`), anything the Albanian prosecution DNS sinkhole
 (`you.are.closed.by.law.prosecution.`) covers (TvMAK, albportal.net/AlbKanale, ekranishqip, ...), Twitch embeds (user's choice),
-and tokenized players we cannot resolve legitimately (Klan Kosova, Scan TV, MRT geo-block). Report TV and MCN TV are
-played through their own public session players (`scripts/resolvers.mjs`).
+unofficial restreams of pay channels (SuperSport, Tring Sport, ArtSport, Sky, beIN, DAZN, ...), players that require a sign-in
+(Alkass Shoof, SABC+, RugbyPass site) and tokenized players we cannot resolve legitimately (Scan TV, MRT terrestrial geo-block).
+`sources/official-dynamic.json` channels are played through the broadcaster's own public player session (`scripts/resolvers.mjs`):
+Report TV, MCN TV, Klan Kosova, MRT Sat, M4 Sport/M4 Sport+ (mediaklikk), TV SLO 2 (rtvslo), Sport en France (Dailymotion),
+CRTV Sport, KTRK Sport.
+
+## Pay TV and paid sports (not in the app; official subscriptions)
+
+Since 2026 DigitAlb and Tring cross-carry each other's sports: DigitAlb Premium (SuperSport 1-7 + Tring Sport 1-7, ~24,900 L/yr)
+or Tring Extra (~23,900 L/yr) each give all Albanian pay sports; both have Samsung apps (test the 2018 model with the trial).
+Free by antenna: Kategoria Superiore (RTSH Sport), the best UCL Wednesday match (Top Channel, 2026/27), 1 UEL/UECL match a week
+(RTSH Sport), Albania national team (TV Klan). Direct subscriptions sold in Albania: DAZN (Samsung 2015+ app; NFL Game Pass, NHL.TV,
+FIBA, FIFA+ inside), UFC Fight Pass, Tennis TV, EuroLeague TV (€31.99/yr AL price), MotoGP VideoPass (web only), NBA League Pass
+(app needs a 2019+ Samsung). F1 TV is not sold in Albania.
 
 ## Local DVB-T2 tuner (free-to-air antenna → your app)
 
 Top Channel, TV Klan, Klan Plus/News, all RTSH channels, Vizion Plus, News 24, ABC, Report TV, Ora News, Syri, A2 CNN and
 Euronews Albania are free-to-air on Albania's DVB-T2 platform (AMA free-channel lists; Tirana: Top Channel LCN 5 on UHF 59,
-TV Klan LCN 4, RTSH LCN 1-3). A Mac has no tuner, so one piece of hardware is needed:
+TV Klan LCN 4, RTSH LCN 1-3).
+
+**The target TV has its own DVB-T2 tuner** (UE50NU7022, 2018, Tizen 4.0, one CI+ 1.4 slot). A Tizen web app can show it directly:
+`tizen.tvwindow` (show the tuner picture behind a transparent page) and `tizen.tvchannel` (channel list, tune, up/down) are
+public-privilege APIs (see Samsung's OverlayPiP sample), so no partner certificate is needed. Only an aerial into the TV is
+required; the app then lists antenna channels next to internet streams. The hardware below is only needed to watch
+antenna channels on other devices or through the Mac pipeline.
+
+A Mac has no tuner, so for that one piece of hardware is needed:
 
 1. **Network tuner** (e.g. HDHomeRun DVB-T2 model): plug into the router, scan once, it serves `http://<tuner>/lineup.json`
    and one MPEG-TS stream per channel. Config: `{"hdhomerun": {"host": "192.168.x.x"}}`.
@@ -92,4 +116,6 @@ scripts/   fetch.mjs, merge.mjs, check.mjs, report.mjs, m3u.mjs
 data/      channels.json, channels.checked.json, report.md   (raw downloads and health.json are git-ignored)
 ```
 
-The TV app itself (Tizen web app, AVPlay player) comes next, once the target TV model is known.
+The TV app itself comes next. Target: UE50NU7022 (2018, Tizen 4.0, Chromium 56 → transpile to `chrome56`, no `?.`/object
+spread at runtime). Sideload with the default Tizen certificate (DUID-bound Samsung certificates are only required on Tizen 7+).
+Player: tvwindow for antenna channels, AVPlay for streams (hide one before starting the other; they share the video plane).

@@ -1,0 +1,175 @@
+[
+ {
+  "channel": "KlanKosova.xk",
+  "name": "Klan Kosova",
+  "status": "ok",
+  "resolved": true,
+  "master": 200,
+  "variant": 200,
+  "segment": 200,
+  "bytes": 81628
+ },
+ {
+  "channel": "ReportTV.al",
+  "name": "Report TV",
+  "status": "ok",
+  "resolved": true,
+  "master": 200,
+  "segment": 200,
+  "bytes": 81469
+ },
+ {
+  "channel": "MRT2Sat.mk",
+  "name": "MRT 2 Sat",
+  "status": "ok",
+  "resolved": true,
+  "master": 200,
+  "variant": 200,
+  "segment": 200,
+  "bytes": 65536
+ },
+ {
+  "channel": "MRTSobraniskikanal.mk",
+  "name": "MRT Sobraniski kanal",
+  "status": "ok",
+  "resolved": true,
+  "master": 200,
+  "variant": 200,
+  "segment": 200,
+  "bytes": 65536
+ },
+ {
+  "channel": "MRT1Sat.mk",
+  "name": "MRT 1 Sat",
+  "status": "ok",
+  "resolved": true,
+  "master": 200,
+  "variant": 200,
+  "segment": 200,
+  "bytes": 65536
+ },
+ {
+  "channel": "MRT2.mk",
+  "name": "MRT 2 (terrestrial feed)",
+  "status": "playlist_http_403",
+  "resolved": true,
+  "master": 403
+ },
+ {
+  "channel": "OraNews.al",
+  "name": "Ora News (mediadesk)",
+  "status": "ok",
+  "master": 200,
+  "segment": 200,
+  "bytes": 81487
+ },
+ {
+  "channel": "TVDielli.xk",
+  "name": "TV Dielli (new URL)",
+  "status": "ok",
+  "master": 200,
+  "variant": 200,
+  "segment": 200,
+  "bytes": 69432
+ },
+ {
+  "channel": "CNA.al",
+  "name": "CNA",
+  "status": "ok",
+  "master": 200,
+  "segment": 200,
+  "bytes": 81487
+ },
+ {
+  "channel": "TVOpoja.xk",
+  "name": "TV Opoja",
+  "status": "ok",
+  "master": 200,
+  "variant": 200,
+  "segment": 200,
+  "bytes": 65800
+ },
+ {
+  "channel": "CNA.al",
+  "name": "CNA (cnatvlive)",
+  "status": "ok",
+  "master": 200,
+  "segment": 200,
+  "bytes": 81487
+ },
+ {
+  "channel": "PanoramaTV.al",
+  "name": "Panorama TV",
+  "status": "ok",
+  "master": 200,
+  "variant": 200,
+  "segment": 200,
+  "bytes": 72561
+ },
+ {
+  "channel": "RTVIslam.ch",
+  "name": "RTV Islam",
+  "status": "ok",
+  "master": 200,
+  "variant": 200,
+  "segment": 200,
+  "bytes": 69149
+ },
+ {
+  "channel": "DritaTV.ch",
+  "name": "Drita TV",
+  "status": "ok",
+  "master": 200,
+  "variant": 200,
+  "segment": 200,
+  "bytes": 69149
+ },
+ {
+  "channel": "TV2Gostivar.mk",
+  "name": "TV2 Gostivar",
+  "status": "ok",
+  "master": 200,
+  "variant": 200,
+  "segment": 200,
+  "bytes": 81428
+ },
+ {
+  "channel": "RTVArkivaIslame.xk",
+  "name": "RTV Arkiva Islame",
+  "status": "ok",
+  "master": 200,
+  "segment": 200,
+  "bytes": 65536
+ },
+ {
+  "channel": "ShqiponjaTV.al",
+  "name": "Shqiponja TV",
+  "status": "ok",
+  "master": 200,
+  "segment": 200,
+  "bytes": 65536
+ },
+ {
+  "channel": "AlbswissTV.ch",
+  "name": "Albswiss TV",
+  "status": "ok",
+  "master": 200,
+  "variant": 200,
+  "segment": 200,
+  "bytes": 81352
+ },
+ {
+  "channel": "RTVAhireti.xk",
+  "name": "RTV Ahireti",
+  "status": "error",
+  "error": "fetch failed"
+ },
+ {
+  "channel": "Radio1RTV.al",
+  "name": "Radio 1 RTV",
+  "status": "ok",
+  "master": 200,
+  "segment": 200,
+  "bytes": 83448
+ }
+]

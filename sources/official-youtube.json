@@ -544,5 +544,19 @@
     "url": "https://www.youtube.com/channel/UCdwrrO9mGnVRUjfSQqdXuRw/live",
     "note": "YouTube is the channel's only online outlet",
     "channelId": "UCdwrrO9mGnVRUjfSQqdXuRw"
+  },
+  {
+    "channel": "beINSPORTSHaber.tr",
+    "name": "beIN SPORTS Haber",
+    "country": "TR",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "tur"
+    ],
+    "url": "https://www.youtube.com/channel/UCPe9vNjHF1kEExT5kHwc7aw/live",
+    "note": "24/7 official simulcast, embedded by beinsports.com.tr/canli-yayin",
+    "channelId": "UCPe9vNjHF1kEExT5kHwc7aw"
   }
 ]
