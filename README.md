@@ -144,6 +144,24 @@ scripts/   fetch.mjs, merge.mjs, check.mjs, report.mjs, m3u.mjs
 data/      channels.json, channels.checked.json, report.md   (raw downloads and health.json are git-ignored)
 ```
 
-The TV app itself comes next. Target: UE50NU7022 (2018, Tizen 4.0, Chromium 56 → transpile to `chrome56`, no `?.`/object
-spread at runtime). Sideload with the default Tizen certificate (DUID-bound Samsung certificates are only required on Tizen 7+).
-Player: tvwindow for antenna channels, AVPlay for streams (hide one before starting the other; they share the video plane).
+## Samsung TV app (`tv/`)
+
+Runs on the TV by itself, no computer needed while watching. It downloads `data/tv.json` (compact list built by
+`npm run tvdata`: working channels plus all Albanian ones) from GitHub (`raw.githubusercontent.com/EneaK9/iptv-myapp/main`),
+falling back to the copy packaged with the app, and plays with Samsung AVPlay. The packaged app is not bound by CORS on
+the TV (tested on the UE50NU7022), so streams that need a pass are resolved in the app itself: YouTube, Twitch (AVPlay
+rejects Twitch's master playlist, so the app plays the best variant), Plex, Rakuten, Report TV, Klan Kosova, MRT,
+mediaklikk, RTV SLO, Dailymotion, CRTV, UTRK. Only MCN (cookies on every request) cannot work on the TV player.
+Remote debugging: `sdb shell 0 debug IPTVmyApp0.IPTV` prints a DevTools port reachable at `http://<TV IP>:<port>/json`. Remote: ▲▼ channel, ◀ ▶ or 1-9 stream, OK list, ▶‖ pause (resume = live), ◀◀ ▶▶ ±10 s, red = live, blue = debug log.
+The app remembers the stream that worked per channel and starts on the last channel watched. Written for the 2018 TV's
+Chromium 56 (no `?.`/`??`/object spread).
+
+- Test on the Mac: `npm run serve`, open `http://localhost:8789/tv/`, arrow keys = remote (desktop plays through the proxy).
+- Build + sign: `npm run tv` → `build/IPTV.wgt`, using Samsung's Tizen CLI in Docker (`vitalets/tizen-webos-sdk:3.0`,
+  amd64; it does not run natively on Apple Silicon). Author certificate in `~/.iptv-myapp-tizen/` (keep it: the TV only
+  accepts updates signed by the same author). The default Tizen distributor certificate is enough on this 2018 TV.
+- Install: on the TV open Apps, press 1-2-3-4-5, turn Developer Mode on with Host PC IP = this Mac's IP, restart the TV,
+  then `npm run tv -- <TV IP>` (Mac and TV on the same network). Alternative: TizenBrew Installer can install the signed
+  `.wgt` from a GitHub release of this repo.
+
+Later: tvwindow for antenna channels (hide AVPlay first; they share the video plane) and tiles that open Klani IM.

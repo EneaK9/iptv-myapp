@@ -9,3 +9,4 @@ data/check.progress.json
 sources/local-tuner.json
 data/rechecker.json
 data/rechecker.log
+build/

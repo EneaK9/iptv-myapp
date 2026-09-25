@@ -9,11 +9,13 @@
     "merge": "node scripts/merge.mjs",
     "check": "node scripts/check.mjs",
     "report": "node scripts/report.mjs",
-    "pipeline": "npm run fetch && npm run merge && npm run check && npm run report",
+    "pipeline": "npm run fetch && npm run merge && npm run check && npm run report && npm run tvdata",
     "serve": "node scripts/serve.mjs",
     "sports": "node scripts/sports.mjs",
     "towers": "node scripts/towers.mjs",
-    "rechecker": "node scripts/rechecker.mjs"
+    "rechecker": "node scripts/rechecker.mjs",
+    "tvdata": "node scripts/tvdata.mjs",
+    "tv": "node scripts/tv-package.mjs"
   },
   "engines": {
     "node": ">=20"

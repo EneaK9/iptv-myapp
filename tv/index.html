@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>IPTV</title>
+<meta name="viewport" content="width=1920, height=1080">
+<link rel="stylesheet" href="style.css">
+<!-- Samsung TV APIs (AVPlay, key registration); missing in a desktop browser, where the page falls back to <video> -->
+<script src="$WEBAPIS/webapis/webapis.js"></script>
+</head>
+<body>
+<object id="av" type="application/avplayer"></object>
+<video id="vid" playsinline></video>
+<div id="stage">
+  <div id="browse">
+    <div id="rail"></div>
+    <div id="panel">
+      <div id="head"><span id="title"></span><span id="sub"></span></div>
+      <div id="rows"></div>
+      <div id="keys">OK play &nbsp; ▲▼ move &nbsp; ◀ menu &nbsp; 1-9 stream &nbsp; BACK close</div>
+    </div>
+  </div>
+  <div id="banner" class="hidden">
+    <div id="b-logo" class="logo"></div>
+    <div id="b-text"><div id="b-name"></div><div id="b-meta"></div></div>
+    <div id="b-state"></div>
+    <div id="b-keys">▲▼ channel &nbsp; ◀ ▶ stream &nbsp; 1-9 stream &nbsp; OK list</div>
+  </div>
+  <div id="toast"></div>
+  <div id="debug"></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

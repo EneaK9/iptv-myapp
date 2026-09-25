@@ -151,6 +151,13 @@ const server = createServer(async (req, res) => {
       res.writeHead(204, { 'access-control-allow-origin': '*' });
       return res.end();
     }
+    if (url.pathname === '/tv' || url.pathname.startsWith('/tv/')) { // the TV app, for testing in a desktop browser (arrow keys = remote)
+      const f = url.pathname.slice(4) || 'index.html';
+      if (f.includes('..')) { res.writeHead(400); return res.end(); }
+      const body = await readFile(f === 'tv.json' ? new URL('tv.json', DATA) : new URL(f, new URL('../tv/', import.meta.url)));
+      res.writeHead(200, { 'content-type': MIME[extname(f)] ?? 'application/octet-stream' });
+      return res.end(body);
+    }
     const file = url.pathname === '/' ? 'index.html' : url.pathname.slice(1);
     const body = await readFile(new URL(file, VIEWER));
     res.writeHead(200, { 'content-type': MIME[extname(file)] ?? 'application/octet-stream' });
