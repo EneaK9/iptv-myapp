@@ -33,8 +33,14 @@ playlist to list segments, then pulls the first 64 KB of the first segment. Stat
 
 Many channels (Albanian locals especially) go off air for hours, so a status is only as good as its age. Each result keeps
 `lastOk`, the last time the stream worked. The viewer (`npm run serve`) reads `health.json` live and shows green = worked at
-the last check, yellow = failing now but worked in the last 48 h (kept in "alive only"), red = not seen working. It re-checks
-the Albanian channels every 30 minutes (`RECHECK_MIN`, `0` = off) and records every stream that actually plays in the viewer.
+the last check, yellow = failing now but worked in the last 48 h (kept in "alive only"), red = not seen working, and records
+every stream that actually plays in the viewer.
+
+**Background rechecker** (`scripts/rechecker.mjs`, started by `npm run serve`, so it runs whenever the viewer server does):
+Albanian channels every 30 min (`RECHECK_MIN`), links added by a fetch/merge every hour, everything once a day
+(`RECHECK_FULL_H`, ~40 min and ~2 GB per run, ~900 YouTube lookups). `RECHECK=0` turns it off. Last runs are kept in
+`data/rechecker.json` so restarts don't repeat the daily run; results are logged to `data/rechecker.log`. Without the viewer:
+`npm run rechecker` (scheduler in the foreground) or `npm run rechecker -- albanian` (one job now: `albanian`, `new`, `full`).
 
 ## YouTube lives
 

@@ -6,20 +6,40 @@
 <style>
   :root { color-scheme: dark; }
   * { box-sizing: border-box; }
-  body { margin: 0; font: 14px/1.4 -apple-system, system-ui, sans-serif; background: #0b0d10; color: #e6e9ee; display: grid; grid-template-columns: 380px 1fr; height: 100vh; }
-  aside { border-right: 1px solid #1f242c; display: flex; flex-direction: column; min-height: 0; }
-  .bar { padding: 10px; display: grid; gap: 8px; grid-template-columns: 1fr 1fr; border-bottom: 1px solid #1f242c; }
-  .bar input, .bar select { width: 100%; padding: 8px; background: #141821; color: inherit; border: 1px solid #2a313d; border-radius: 6px; }
-  .bar input { grid-column: 1 / -1; }
-  .bar label { display: flex; align-items: center; gap: 6px; color: #9aa3b2; font-size: 12px; }
-  #count { padding: 4px 10px; color: #9aa3b2; font-size: 12px; }
-  ul { list-style: none; margin: 0; padding: 0; overflow: auto; flex: 1; }
-  li { display: flex; align-items: center; gap: 10px; padding: 8px 10px; cursor: pointer; border-bottom: 1px solid #12161c; }
-  li:hover, li.focus { background: #171c26; }
-  li.active { background: #1c3a5e; }
-  li img { width: 40px; height: 28px; object-fit: contain; background: #1a1f29; border-radius: 4px; flex: none; }
-  li .n { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  li .m { color: #8b95a7; font-size: 11px; }
+  body { margin: 0; font: 14px/1.4 -apple-system, system-ui, sans-serif; background: #0b0d10; color: #e6e9ee; display: grid; grid-template-columns: 340px 1fr; height: 100vh; }
+  aside { border-right: 1px solid #1f242c; display: flex; flex-direction: column; min-height: 0; background: #0d1014; }
+  .top { padding: 10px 10px 6px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; border-bottom: 1px solid #1a1f27; } /* minmax: the chip row must scroll, not widen the sidebar */
+  .search { position: relative; }
+  .search input { width: 100%; height: 32px; padding: 0 28px 0 30px; background: #141821; color: inherit; border: 1px solid #262c37; border-radius: 8px; font-size: 13px; outline: none; }
+  .search input:focus { border-color: #3b82f6; }
+  .search::before { content: '⌕'; position: absolute; left: 10px; top: 5px; color: #6b7485; font-size: 16px; pointer-events: none; }
+  .search .clr { position: absolute; right: 4px; top: 4px; width: 24px; height: 24px; padding: 0; border: 0; background: none; color: #6b7485; font-size: 16px; display: none; }
+  .search.has .clr { display: block; }
+  .sel { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .sel select { width: 100%; height: 28px; padding: 0 6px; background: #141821; color: inherit; border: 1px solid #262c37; border-radius: 7px; font-size: 12px; }
+  #chips { display: flex; gap: 5px; overflow-x: auto; scrollbar-width: none; }
+  #chips::-webkit-scrollbar { display: none; }
+  .chip { flex: none; height: 24px; padding: 0 9px; border-radius: 12px; font-size: 12px; background: #151a22; border-color: #262c37; color: #b6bdc9; white-space: nowrap; }
+  .chip:hover { background: #1b2130; }
+  .chip.on { background: #1c3a5e; border-color: #3b82f6; color: #fff; }
+  .row { display: flex; align-items: center; gap: 6px; }
+  #count { flex: 1; min-width: 0; color: #7d8798; font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tog { flex: none; cursor: pointer; }
+  .tog input { position: absolute; opacity: 0; pointer-events: none; }
+  .tog span { display: inline-block; height: 20px; line-height: 18px; padding: 0 8px; border: 1px solid #262c37; border-radius: 10px; font-size: 11px; color: #7d8798; }
+  .tog input:checked + span { background: #16301f; border-color: #2f7a4b; color: #8be0a8; }
+  ul { list-style: none; margin: 0; padding: 2px 0; overflow: auto; flex: 1; scrollbar-width: thin; scrollbar-color: #2a313d transparent; }
+  li { display: flex; align-items: center; gap: 9px; padding: 5px 10px 5px 8px; cursor: pointer; border-left: 2px solid transparent; }
+  li:hover, li.focus { background: #151a22; }
+  li.active { background: #172a44; border-left-color: #3b82f6; }
+  .lg { position: relative; flex: none; width: 36px; height: 26px; border-radius: 5px; background: #171c25; display: grid; place-items: center; }
+  .lg.noimg::before { content: attr(data-i); position: absolute; font-size: 10px; font-weight: 700; color: #5d6778; letter-spacing: .5px; }
+  .lg img { position: relative; width: 36px; height: 26px; object-fit: contain; border-radius: 5px; }
+  .lg .dot { position: absolute; right: -3px; bottom: -3px; width: 9px; height: 9px; box-shadow: 0 0 0 2px #0d1014; }
+  li:hover .lg .dot, li.focus .lg .dot { box-shadow: 0 0 0 2px #151a22; } li.active .lg .dot { box-shadow: 0 0 0 2px #172a44; }
+  li .n { flex: 1; min-width: 0; font-size: 13px; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  li .m { color: #7d8798; font-size: 11px; overflow: hidden; text-overflow: ellipsis; }
+  li .sc { flex: none; min-width: 18px; height: 16px; padding: 0 4px; border-radius: 8px; background: #1b2130; color: #8b95a7; font-size: 10px; line-height: 16px; text-align: center; }
   .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; background: #3a4150; }
   .dot.ok { background: #38c172; } .dot.bad { background: #e3342f; } .dot.warn { background: #f6ad55; }
   main { display: flex; flex-direction: column; min-width: 0; }
@@ -42,15 +62,25 @@
 </head>
 <body>
 <aside>
-  <div class="bar">
-    <input id="q" placeholder="Search channels…  (↑↓ to move, Enter to play)" autocomplete="off">
-    <select id="country"><option value="SQ">Albanian (AL + XK + sqi)</option><option value="">All countries</option></select>
-    <select id="cat"><option value="">All categories</option></select>
-    <label><input type="checkbox" id="aliveOnly" checked> alive only</label>
-    <label><input type="checkbox" id="forceProxy"> always via proxy</label>
+  <div class="top">
+    <div class="search"><input id="q" placeholder="Search channels   /" title="↑↓ move · Enter play · / focus" autocomplete="off"><button class="clr" id="clr" title="Clear">×</button></div>
+    <div class="sel">
+      <select id="country"><option value="SQ">🇦🇱 Albanian</option><option value="">🌍 All countries</option></select>
+      <select id="cat"><option value="">All categories</option></select>
+    </div>
+    <div id="chips">
+      <button class="chip" data-co="SQ" data-cat="">🇦🇱 Albanian</button>
+      <button class="chip" data-co="" data-cat="sports" title="Sports, all countries">⚽ Sports</button>
+      <button class="chip" data-co="" data-cat="news" title="News, all countries">📰 News</button>
+      <button class="chip" data-co="" data-cat="radio">📻 Radio</button>
+      <button class="chip" data-src="rakuten" title="Rakuten TV, free in Albania">🎬 Rakuten</button>
+    </div>
+    <div class="row">
+      <span id="count"></span>
+      <label class="tog" title="Hide channels that are down (keeps ones that worked in the last 48 h)"><input type="checkbox" id="aliveOnly" checked><span>Alive</span></label>
+      <label class="tog" title="Play every stream through the local proxy"><input type="checkbox" id="forceProxy"><span>Proxy</span></label>
+    </div>
   </div>
-  <div id="count"></div>
-  <div style="padding:0 10px 8px;display:flex;flex-wrap:wrap;gap:6px"><button onclick="quick('SQ','')">🇦🇱 Albanian</button><button onclick="quick('','sports')">⚽ Sports (all countries)</button><button onclick="quick('','news')">📰 News</button><button onclick="quickSource('rakuten')">🎬 Rakuten (free in AL)</button><button onclick="quick('','radio')">📻 Radio</button></div>
   <ul id="list"></ul>
 </aside>
 <main>
@@ -83,6 +113,7 @@ const log = m => { logEl.textContent = `${new Date().toLocaleTimeString()}  ${m}
 const ago = iso => { const m = (Date.now() - Date.parse(iso)) / 60000; return m < 60 ? `${Math.max(1, Math.round(m))} min ago` : m < 2880 ? `${Math.round(m / 60)} h ago` : `${Math.round(m / 1440)} days ago`; };
 const recentOk = s => !!s.lastOk && Date.now() - Date.parse(s.lastOk) < 48 * 3600e3; // worked in the last 48 h: probably just off air for a while
 const lastWorked = c => c.streams.map(s => s.lastOk).filter(Boolean).sort().pop();
+const esc = s => String(s ?? '').replace(/[&<>"']/g, ch => `&#${ch.charCodeAt(0)};`); // names and logos come from public playlists
 
 fetch('/api/channels').then(r => r.json()).then(d => {
   all = d;
@@ -96,7 +127,7 @@ fetch('/api/channels').then(r => r.json()).then(d => {
 // the server's background rechecker keeps statuses fresh: show when it last ran, and pull new statuses every 5 min
 // into the loaded channels (same objects, so playback and the stream buttons are not disturbed)
 let recheckInfo = '';
-const showCount = () => { $('#count').textContent = `${view.length} channels${recheckInfo}`; };
+const showCount = () => { $('#count').textContent = $('#count').title = `${view.length} channels${recheckInfo}`; };
 async function loadRecheckInfo() {
   try {
     const r = await (await fetch('/api/rechecker')).json();
@@ -132,12 +163,17 @@ function render() {
     return true;
   }).sort((a, b) => (b.alive - a.alive) || (!!b.recent - !!a.recent) || a.name.localeCompare(b.name));
   showCount();
+  for (const b of document.querySelectorAll('.chip')) b.classList.toggle('on', b.dataset.src ? sourceFilter === b.dataset.src : !sourceFilter && co === b.dataset.co && cat === b.dataset.cat);
+  $('.search').classList.toggle('has', !!q);
   list.innerHTML = '';
   const frag = document.createDocumentFragment();
   view.slice(0, 800).forEach((c, i) => {
     const li = document.createElement('li');
     const worked = !c.alive && lastWorked(c);
-    li.innerHTML = `<span class="dot ${c.alive ? 'ok' : c.recent ? 'warn' : 'bad'}"></span><img loading="lazy" src="${c.logo ?? ''}" onerror="this.style.visibility='hidden'"><div class="n">${c.name}<div class="m">${c.country ?? '—'} · ${c.categories.join(', ') || '—'} · ${c.streams.length} stream${c.streams.length > 1 ? 's' : ''}${worked ? ` · worked ${ago(worked)}` : ''}</div></div>`;
+    const initials = (c.name.match(/[\p{L}\p{N}]/gu) ?? []).slice(0, 2).join('').toUpperCase(); // shown when the logo is missing
+    li.innerHTML = `<span class="lg${c.logo ? '' : ' noimg'}" data-i="${initials}">${c.logo ? `<img loading="lazy" src="${esc(c.logo)}" onerror="this.parentNode.classList.add('noimg'); this.remove()">` : ''}<i class="dot ${c.alive ? 'ok' : c.recent ? 'warn' : 'bad'}"></i></span>`
+      + `<div class="n">${esc(c.name)}<div class="m">${c.country ?? '—'} · ${esc(c.categories.join(', ')) || '—'}${worked ? ` · worked ${ago(worked)}` : ''}</div></div>`
+      + (c.streams.length > 1 ? `<span class="sc" title="${c.streams.length} streams">${c.streams.length}</span>` : '');
     li.onclick = () => { focusIdx = i; play(c); };
     if (c === active) li.classList.add('active');
     frag.append(li);
@@ -298,10 +334,13 @@ $('main').addEventListener('mousedown', e => { if (e.target.closest('button')) e
 window.quick = (co, cat) => { $('#country').value = co; $('#cat').value = cat; $('#q').value = ''; focusIdx = 0; render(); };
 let sourceFilter = null; window.quickSource = (src) => { sourceFilter = src; $('#country').value = ''; $('#cat').value = ''; $('#q').value = ''; focusIdx = 0; render(); };
 ['#q', '#country', '#cat'].forEach(s => $(s).addEventListener('input', () => { sourceFilter = null; }));
+$('#chips').addEventListener('click', e => { const b = e.target.closest('.chip'); if (b) b.dataset.src ? quickSource(b.dataset.src) : quick(b.dataset.co, b.dataset.cat); });
+$('#clr').addEventListener('click', () => { $('#q').value = ''; sourceFilter = null; render(); $('#q').focus(); });
+$('aside').addEventListener('mousedown', e => { if (e.target.closest('.chip, .clr')) e.preventDefault(); }); // keep focus where it was so Space/Enter keep working
 document.addEventListener('keydown', e => {
   if (e.target.tagName === 'SELECT') return;
   if (!(e.target.tagName === 'INPUT' && e.target.type === 'text') && !e.metaKey && !e.ctrlKey && !e.altKey) { // player keys, not while typing a search
-    const act = { ' ': togglePlay, k: togglePlay, MediaPlayPause: togglePlay, l: goLive,
+    const act = { ' ': togglePlay, k: togglePlay, MediaPlayPause: togglePlay, l: goLive, '/': () => { $('#q').focus(); $('#q').select(); },
       ArrowLeft: () => seekBy(-10), MediaRewind: () => seekBy(-10), ArrowRight: () => seekBy(10), MediaFastForward: () => seekBy(10) }[e.key];
     if (act) { act(); e.preventDefault(); return; }
     if (cur && /^[1-9]$/.test(e.key) && cur.streams[e.key - 1]) return playStream(e.key - 1);
