@@ -148,7 +148,7 @@ function renderStreams() {
 function tryStream(c, streams, i, viaProxy, first) {
   const s = streams[i];
   const src = viaProxy ? proxied(s) : s.url;
-  Object.assign(cur, { i, viaProxy }); pausedAt = 0;
+  Object.assign(cur, { i, viaProxy, netRetries: 0, mediaRetries: 0 }); pausedAt = 0;
   if (hls) { hls.destroy(); hls = null; }
   if (ts) { ts.destroy(); ts = null; }
   video.onerror = null; video.removeAttribute('src'); video.load();
@@ -176,16 +176,22 @@ function tryStream(c, streams, i, viaProxy, first) {
   }
   if (/twitch\.tv/i.test(s.url)) return skip('Twitch page, not supported');
   if (Hls.isSupported()) {
-    hls = new Hls({ enableWorker: true, lowLatencyMode: false, manifestLoadingTimeOut: 12000, levelLoadingTimeOut: 12000, fragLoadingTimeOut: 15000, fragLoadingMaxRetry: 2, manifestLoadingMaxRetry: 1, levelLoadingMaxRetry: 2 });
+    hls = new Hls({ enableWorker: true, lowLatencyMode: false, manifestLoadingTimeOut: 20000, levelLoadingTimeOut: 20000, fragLoadingTimeOut: 20000, fragLoadingMaxRetry: 6, manifestLoadingMaxRetry: 4, levelLoadingMaxRetry: 6 });
     hls.on(Hls.Events.MANIFEST_PARSED, (_, d) => log(`✓ manifest parsed: ${d.levels.length} quality level(s)`));
-    hls.on(Hls.Events.ERROR, (_, d) => { if (d.fatal) next(`${d.type}: ${d.details}${d.response ? ` (HTTP ${d.response.code})` : ''}`); });
+    hls.on(Hls.Events.ERROR, (_, d) => {
+      if (!d.fatal) return;
+      const why = `${d.type}: ${d.details}${d.response ? ` (HTTP ${d.response.code})` : ''}`;
+      if (d.type === Hls.ErrorTypes.NETWORK_ERROR && cur.netRetries < 4) { cur.netRetries++; log(`↻ ${why} — reconnecting (${cur.netRetries}/4)`); hls.startLoad(); return; }
+      if (d.type === Hls.ErrorTypes.MEDIA_ERROR && cur.mediaRetries < 2) { cur.mediaRetries++; log(`↻ ${why} — recovering`); hls.recoverMediaError(); return; }
+      next(why);
+    });
     hls.loadSource(src); hls.attachMedia(video);
     video.play().catch(() => {});
   } else {
     video.src = src; video.onerror = () => next('video element error'); video.play().catch(() => {});
   }
 }
-video.addEventListener('playing', () => { if (cur && cur.failed.delete(cur.i)) renderStreams(); });
+video.addEventListener('playing', () => { if (!cur) return; cur.netRetries = 0; cur.mediaRetries = 0; if (cur.failed.delete(cur.i)) renderStreams(); });
 
 // ---- live / rewind ----
 const fmt = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;

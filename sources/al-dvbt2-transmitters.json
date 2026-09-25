@@ -1,0 +1,1705 @@
+{
+ "about": "Albanian DVB-T2 transmitter sites for scripts/towers.mjs. Researched 2026-09-24 from RTSH, AMA, Tring, Vizion Plus, TV Klan, Top Channel and DigitAlb pages (source per entry). Tower positions marked unverified are the nearest village, not the mast. UHF 49-60 (700 MHz band) is due to be cleared, so those channels will move: re-scan after announcements. Kosovo has no DVB-T2 network.",
+ "muxes": {
+  "rtsh": {
+   "name": "RTSH national",
+   "free": [
+    "RTSH 1 HD",
+    "RTSH 2",
+    "RTSH 24",
+    "RTSH Sport HD",
+    "RTSH Fëmijë",
+    "RTSH Shkollë",
+    "RTSH Muzikë",
+    "RTSH Film",
+    "RTSH Shqip",
+    "RTSH Kuvend",
+    "RTK",
+    "regional RTSH (Korça/Gjirokastra/Kukësi)"
+   ],
+   "pay": [],
+   "asOf": "2022 lineup; RTSH 3, Plus and Agro closed in 2023",
+   "source": "https://web.archive.org/web/20220619124128/https://rtsh.al/rreth-rtsh/digjitalizimi"
+  },
+  "rtsh-local": {
+   "name": "RTSH local mux",
+   "free": [
+    "News 24",
+    "Report TV",
+    "Fax News",
+    "Nesër TV",
+    "Scan",
+    "UTV",
+    "IN TV",
+    "local channels"
+   ],
+   "pay": [],
+   "asOf": "2018 Tirana lineup, may have changed",
+   "source": "https://www.imalbania.com/njoftim-i-rtsh-mbi-fikjen-e-sinjalit-analog-kanalet-dhe-pikat-e-transmetimit/"
+  },
+  "klan": {
+   "name": "Klan platform",
+   "free": [
+    "TV Klan",
+    "Klan Plus",
+    "Klan News",
+    "ABC News",
+    "Syri",
+    "A2 CNN",
+    "Euronews Albania",
+    "Report TV",
+    "MCN",
+    "CNA",
+    "Scan"
+   ],
+   "pay": [],
+   "asOf": "Oct 2025 list",
+   "source": "https://tvklan.al/tv-klan-njoftim-per-ndryshimin-e-frekuencave-ne-sarande-dhe-himare"
+  },
+  "top": {
+   "name": "Top Channel mux",
+   "free": [
+    "Top Channel HD"
+   ],
+   "pay": [
+    "DigitAlb packages"
+   ],
+   "source": "https://top-channel.tv/2018/09/10/ja-si-do-ta-ndiqni-top-channel-nga-neser/"
+  },
+  "vizion": {
+   "name": "Media Vizion",
+   "free": [
+    "Vizion Plus"
+   ],
+   "pay": [
+    "Tring"
+   ],
+   "source": "https://web.archive.org/web/20260614191612/https://tring.al/televizion/platforma-tokesore/"
+  },
+  "digitalb": {
+   "name": "DigitAlb / ADTN",
+   "free": [],
+   "pay": [
+    "DigitAlb"
+   ],
+   "source": "https://digitalb.al/ndihma/mbulimi-tokesor-and-satelitor/mbulimi-tokesor"
+  }
+ },
+ "sites": [
+  {
+   "site": "Dajt (Mali i Dajtit)",
+   "region": "Tiranë",
+   "lat": 41.36664,
+   "lon": 19.92402,
+   "altM": 1613,
+   "coordConfidence": "likely",
+   "coordSource": "https://www.openstreetmap.org/node/26863587 (OSM peak, ele 1613; en.wikipedia 'Television in Albania' names RTSH stations 'Fushe Dajt' and 'Dajt 1613m')",
+   "serves": [
+    "Tiranë",
+    "Fushë Krujë",
+    "Vorë",
+    "Kamëz",
+    "Zall Bastar"
+   ],
+   "muxes": [
+    {
+     "uhf": 21,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/ ; https://www.imalbania.com/njoftim-i-rtsh-mbi-fikjen-e-sinjalit-analog-kanalet-dhe-pikat-e-transmetimit/"
+    },
+    {
+     "uhf": 34,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/ ; https://www.imalbania.com/njoftim-i-rtsh-mbi-fikjen-e-sinjalit-analog-kanalet-dhe-pikat-e-transmetimit/"
+    },
+    {
+     "uhf": 57,
+     "mux": "vizion",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://web.archive.org/web/20260614191612/https://tring.al/televizion/platforma-tokesore/ ; https://web.archive.org/web/20240719064525/https://www.vizionplus.tv/kreu/projekt-plani-frekuencor-numerike/ ; https://www.imalbania.com/ja-si-mund-te-siguroni-sinjalin-dvb-t2-te-vizion-plus-dhe-tring/"
+    },
+    {
+     "uhf": 59,
+     "mux": "top",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://top-channel.tv/2018/09/10/ja-si-do-ta-ndiqni-top-channel-nga-neser/ ; https://digitalb.al/ndihma/mbulimi-tokesor-and-satelitor/mbulimi-tokesor"
+    },
+    {
+     "uhf": 56,
+     "mux": "digitalb",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://digitalb.al/ndihma/mbulimi-tokesor-and-satelitor/mbulimi-tokesor",
+     "note": "DigitAlb lists UHF 56/59/39 with no location; Tirana assumed"
+    },
+    {
+     "uhf": 39,
+     "mux": "digitalb",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://digitalb.al/ndihma/mbulimi-tokesor-and-satelitor/mbulimi-tokesor",
+     "note": "DigitAlb lists UHF 56/59/39 with no location; Tirana assumed"
+    },
+    {
+     "uhf": 41,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "unverified",
+     "source": "https://www.satsupreme.com/showthread.php/237957-Ndryshimet-dhe-Frekuencat-e-Fundit/page78",
+     "note": "only a 2017 forum scan from before the Sept 2018 switchover; Klan points Tirana viewers at Fushë Dajt (Dajt plateau), not the summit"
+    }
+   ]
+  },
+  {
+   "site": "Prezë (Maja e Rrabës)",
+   "region": "Tiranë",
+   "lat": 41.43093,
+   "lon": 19.67265,
+   "altM": null,
+   "coordConfidence": "unverified",
+   "coordSource": "https://nominatim.openstreetmap.org/ (OSM locality/admin centroid, not the mast)",
+   "serves": [
+    "Tiranë (depending on view)",
+    "Vorë",
+    "Kamëz",
+    "Babrru"
+   ],
+   "muxes": [
+    {
+     "uhf": 21,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/ ; https://www.imalbania.com/njoftim-i-rtsh-mbi-fikjen-e-sinjalit-analog-kanalet-dhe-pikat-e-transmetimit/"
+    },
+    {
+     "uhf": 34,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/ ; https://www.imalbania.com/njoftim-i-rtsh-mbi-fikjen-e-sinjalit-analog-kanalet-dhe-pikat-e-transmetimit/"
+    }
+   ]
+  },
+  {
+   "site": "Lapidari (Sauk hills)",
+   "region": "Tiranë",
+   "lat": 41.29181,
+   "lon": 19.81622,
+   "altM": null,
+   "coordConfidence": "unverified",
+   "coordSource": "https://www.openstreetmap.org/ (Nominatim: 'Lapidari Sauk' monument; mast position not verified)",
+   "serves": [
+    "Tiranë",
+    "Fushë Krujë",
+    "Krujë",
+    "Laç",
+    "Ndroq",
+    "Pezë"
+   ],
+   "muxes": [
+    {
+     "uhf": 21,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/ ; https://www.imalbania.com/njoftim-i-rtsh-mbi-fikjen-e-sinjalit-analog-kanalet-dhe-pikat-e-transmetimit/"
+    },
+    {
+     "uhf": 34,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/ ; https://www.imalbania.com/njoftim-i-rtsh-mbi-fikjen-e-sinjalit-analog-kanalet-dhe-pikat-e-transmetimit/"
+    }
+   ]
+  },
+  {
+   "site": "Shesh",
+   "region": "Tiranë",
+   "lat": 41.29647,
+   "lon": 19.66792,
+   "altM": null,
+   "coordConfidence": "unverified",
+   "coordSource": "https://nominatim.openstreetmap.org/ (OSM locality/admin centroid, not the mast)",
+   "serves": [
+    "Ndroq",
+    "Pezë"
+   ],
+   "muxes": [
+    {
+     "uhf": 21,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/ ; https://www.imalbania.com/njoftim-i-rtsh-mbi-fikjen-e-sinjalit-analog-kanalet-dhe-pikat-e-transmetimit/"
+    },
+    {
+     "uhf": 34,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/ ; https://www.imalbania.com/njoftim-i-rtsh-mbi-fikjen-e-sinjalit-analog-kanalet-dhe-pikat-e-transmetimit/"
+    }
+   ]
+  },
+  {
+   "site": "Kryevidh",
+   "region": "Tiranë",
+   "lat": 41.09075,
+   "lon": 19.53262,
+   "altM": null,
+   "coordConfidence": "unverified",
+   "coordSource": "https://nominatim.openstreetmap.org/ (OSM locality/admin centroid, not the mast)",
+   "serves": [
+    "Kavajë",
+    "Golem",
+    "Rrogozhinë",
+    "Divjakë"
+   ],
+   "muxes": [
+    {
+     "uhf": 21,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/ ; https://www.imalbania.com/njoftim-i-rtsh-mbi-fikjen-e-sinjalit-analog-kanalet-dhe-pikat-e-transmetimit/"
+    },
+    {
+     "uhf": 34,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/ ; https://www.imalbania.com/njoftim-i-rtsh-mbi-fikjen-e-sinjalit-analog-kanalet-dhe-pikat-e-transmetimit/"
+    },
+    {
+     "uhf": 57,
+     "mux": "vizion",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://web.archive.org/web/20260614191612/https://tring.al/televizion/platforma-tokesore/ ; https://www.imalbania.com/ja-si-mund-te-siguroni-sinjalin-dvb-t2-te-vizion-plus-dhe-tring/"
+    },
+    {
+     "uhf": null,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/sinjali",
+     "note": "channel not published"
+    }
+   ]
+  },
+  {
+   "site": "Kodra Arapaj (Durrës)",
+   "region": "Durrës",
+   "lat": 41.30614,
+   "lon": 19.51282,
+   "altM": null,
+   "coordConfidence": "likely",
+   "coordSource": "https://www.openstreetmap.org/node/7019341386 (OSM mast named 'RTSH Arapaj', communication:television=yes)",
+   "serves": [
+    "Durrës",
+    "Shijak",
+    "Lalzi bay"
+   ],
+   "muxes": [
+    {
+     "uhf": 21,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/ ; https://www.imalbania.com/njoftim-i-rtsh-mbi-fikjen-e-sinjalit-analog-kanalet-dhe-pikat-e-transmetimit/"
+    },
+    {
+     "uhf": 34,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/ ; https://www.imalbania.com/njoftim-i-rtsh-mbi-fikjen-e-sinjalit-analog-kanalet-dhe-pikat-e-transmetimit/"
+    }
+   ]
+  },
+  {
+   "site": "Marina / PSV2 radar hill above Kallm (Durrës)",
+   "region": "Durrës",
+   "lat": null,
+   "lon": null,
+   "altM": null,
+   "coordConfidence": null,
+   "coordSource": null,
+   "serves": [
+    "Durrës",
+    "Shijak",
+    "Sukth"
+   ],
+   "note": "no coordinates found",
+   "muxes": [
+    {
+     "uhf": 57,
+     "mux": "vizion",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://web.archive.org/web/20260614191612/https://tring.al/televizion/platforma-tokesore/ ; https://www.imalbania.com/ja-si-mund-te-siguroni-sinjalin-dvb-t2-te-vizion-plus-dhe-tring/"
+    },
+    {
+     "uhf": 59,
+     "mux": "top",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://top-channel.tv/2018/09/10/ja-si-do-ta-ndiqni-top-channel-nga-neser/"
+    },
+    {
+     "uhf": null,
+     "mux": "digitalb",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://digitalb.al/ndihma/suporti-teknik/support-sinjal",
+     "note": "DigitAlb: Durrës/Plazh/Kavajë point at 'Kodra e Radarit të komunikacionit' (probably this site)"
+    }
+   ]
+  },
+  {
+   "site": "Kodër Currila (Durrës)",
+   "region": "Durrës",
+   "lat": 41.32019,
+   "lon": 19.43173,
+   "altM": null,
+   "coordConfidence": "unverified",
+   "coordSource": "Nominatim: 'Kodër Currila' bus stop (area only)",
+   "serves": [
+    "Durrës"
+   ],
+   "muxes": [
+    {
+     "uhf": null,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/sinjali",
+     "note": "channel not published"
+    }
+   ]
+  },
+  {
+   "site": "Kodër Ishëm",
+   "region": "Durrës",
+   "lat": 41.54076,
+   "lon": 19.59072,
+   "altM": null,
+   "coordConfidence": "unverified",
+   "coordSource": "https://nominatim.openstreetmap.org/ (OSM locality/admin centroid, not the mast) (Ishëm village)",
+   "serves": [
+    "Krujë",
+    "Fushë Krujë",
+    "Fushë Kuqe",
+    "Laç",
+    "Mamurras",
+    "Thumanë"
+   ],
+   "muxes": [
+    {
+     "uhf": 21,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/ ; https://www.imalbania.com/njoftim-i-rtsh-mbi-fikjen-e-sinjalit-analog-kanalet-dhe-pikat-e-transmetimit/"
+    },
+    {
+     "uhf": 34,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/ ; https://www.imalbania.com/njoftim-i-rtsh-mbi-fikjen-e-sinjalit-analog-kanalet-dhe-pikat-e-transmetimit/"
+    },
+    {
+     "uhf": 57,
+     "mux": "vizion",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://web.archive.org/web/20260614191612/https://tring.al/televizion/platforma-tokesore/"
+    },
+    {
+     "uhf": null,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/sinjali",
+     "note": "channel not published"
+    }
+   ]
+  },
+  {
+   "site": "Petresh (Elbasan)",
+   "region": "Elbasan",
+   "lat": 41.11242,
+   "lon": 20.00415,
+   "altM": null,
+   "coordConfidence": "unverified",
+   "coordSource": "https://nominatim.openstreetmap.org/ (OSM locality/admin centroid, not the mast) (Petresh village)",
+   "serves": [
+    "Elbasan"
+   ],
+   "muxes": [
+    {
+     "uhf": 23,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 33,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/ ; https://web.archive.org/web/20240719064525/https://www.vizionplus.tv/kreu/projekt-plani-frekuencor-numerike/"
+    },
+    {
+     "uhf": 46,
+     "mux": "vizion",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://web.archive.org/web/20260614191612/https://tring.al/televizion/platforma-tokesore/ ; https://web.archive.org/web/20240719064525/https://www.vizionplus.tv/kreu/projekt-plani-frekuencor-numerike/"
+    },
+    {
+     "uhf": null,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/sinjali",
+     "note": "channel not published"
+    },
+    {
+     "uhf": null,
+     "mux": "digitalb",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://digitalb.al/ndihma/suporti-teknik/support-sinjal",
+     "note": "channel not published per site"
+    }
+   ]
+  },
+  {
+   "site": "Librazhd Qendër hill",
+   "region": "Elbasan",
+   "lat": 41.1981,
+   "lon": 20.33963,
+   "altM": null,
+   "coordConfidence": "unverified",
+   "coordSource": "https://nominatim.openstreetmap.org/ (OSM locality/admin centroid, not the mast)",
+   "serves": [
+    "Librazhd"
+   ],
+   "muxes": [
+    {
+     "uhf": 23,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 33,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": null,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/sinjali",
+     "note": "channel not published"
+    }
+   ]
+  },
+  {
+   "site": "Kamaq hill (Gramsh)",
+   "region": "Elbasan",
+   "lat": null,
+   "lon": null,
+   "altM": null,
+   "coordConfidence": null,
+   "coordSource": null,
+   "serves": [
+    "Gramsh"
+   ],
+   "note": "no coordinates found",
+   "muxes": [
+    {
+     "uhf": 23,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 33,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": null,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/sinjali",
+     "note": "channel not published"
+    }
+   ]
+  },
+  {
+   "site": "Gjuzaj hill",
+   "region": "Elbasan/Fier (unclear)",
+   "lat": 40.99757,
+   "lon": 19.75139,
+   "altM": null,
+   "coordConfidence": "unverified",
+   "coordSource": "https://nominatim.openstreetmap.org/ (OSM locality/admin centroid, not the mast) (Gjuzaj village, Lushnjë; may not be the right Gjuzaj)",
+   "serves": [
+    "Peqin",
+    "Rrogozhinë"
+   ],
+   "muxes": [
+    {
+     "uhf": null,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "unverified",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": null,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/sinjali",
+     "note": "channel not published"
+    }
+   ]
+  },
+  {
+   "site": "Goricë / Mali Partizan (Berat)",
+   "region": "Berat",
+   "lat": 40.70257,
+   "lon": 19.94672,
+   "altM": null,
+   "coordConfidence": "unverified",
+   "coordSource": "https://nominatim.openstreetmap.org/ (OSM locality/admin centroid, not the mast) (Goricë quarter of Berat; the mast is on the hill above)",
+   "serves": [
+    "Berat",
+    "Kuçovë",
+    "Ura Vajgurore",
+    "Poliçan"
+   ],
+   "muxes": [
+    {
+     "uhf": 25,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 30,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 24,
+     "mux": "vizion",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://web.archive.org/web/20260614191612/https://tring.al/televizion/platforma-tokesore/ ; https://web.archive.org/web/20240719064525/https://www.vizionplus.tv/kreu/projekt-plani-frekuencor-numerike/"
+    },
+    {
+     "uhf": null,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/sinjali",
+     "note": "channel not published"
+    }
+   ]
+  },
+  {
+   "site": "Vërzhezhë hill (Skrapar)",
+   "region": "Berat",
+   "lat": 40.52561,
+   "lon": 20.20915,
+   "altM": null,
+   "coordConfidence": "unverified",
+   "coordSource": "https://nominatim.openstreetmap.org/ (OSM locality/admin centroid, not the mast) (village)",
+   "serves": [
+    "Çorovodë / Skrapar"
+   ],
+   "muxes": [
+    {
+     "uhf": 25,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 30,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": null,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/sinjali",
+     "note": "channel not published"
+    }
+   ]
+  },
+  {
+   "site": "Maja e Çukës (Poliçan)",
+   "region": "Berat",
+   "lat": null,
+   "lon": null,
+   "altM": null,
+   "coordConfidence": null,
+   "coordSource": null,
+   "serves": [
+    "Poliçan"
+   ],
+   "note": "Klan only; no coordinates found",
+   "muxes": [
+    {
+     "uhf": null,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/sinjali",
+     "note": "channel not published"
+    }
+   ]
+  },
+  {
+   "site": "Asim Zeneli / Shën Drijava (Gjirokastër)",
+   "region": "Gjirokastër",
+   "lat": 40.08009,
+   "lon": 20.19835,
+   "altM": null,
+   "coordConfidence": "unverified",
+   "coordSource": "https://nominatim.openstreetmap.org/ (OSM locality/admin centroid, not the mast) (Asim Zeneli village; mast on hilltop above)",
+   "serves": [
+    "Gjirokastër"
+   ],
+   "muxes": [
+    {
+     "uhf": 26,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 37,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 48,
+     "mux": "vizion",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://web.archive.org/web/20260614191612/https://tring.al/televizion/platforma-tokesore/ ; https://web.archive.org/web/20240719064525/https://www.vizionplus.tv/kreu/projekt-plani-frekuencor-numerike/"
+    },
+    {
+     "uhf": null,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/sinjali",
+     "note": "channel not published"
+    }
+   ]
+  },
+  {
+   "site": "Beçisht (Tepelenë)",
+   "region": "Gjirokastër",
+   "lat": 40.3032,
+   "lon": 20.04698,
+   "altM": null,
+   "coordConfidence": "unverified",
+   "coordSource": "https://nominatim.openstreetmap.org/ (OSM locality/admin centroid, not the mast) (village; site is 'above the village')",
+   "serves": [
+    "Tepelenë"
+   ],
+   "muxes": [
+    {
+     "uhf": 26,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 37,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": null,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/sinjali",
+     "note": "channel not published"
+    }
+   ]
+  },
+  {
+   "site": "Mali i Bardhë above Qilarishtë (Përmet)",
+   "region": "Gjirokastër",
+   "lat": null,
+   "lon": null,
+   "altM": null,
+   "coordConfidence": null,
+   "coordSource": null,
+   "serves": [
+    "Përmet"
+   ],
+   "note": "no coordinates found",
+   "muxes": [
+    {
+     "uhf": 26,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 37,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": null,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/sinjali",
+     "note": "channel not published"
+    }
+   ]
+  },
+  {
+   "site": "Ardenicë hill",
+   "region": "Fier",
+   "lat": 40.81505,
+   "lon": 19.6075,
+   "altM": null,
+   "coordConfidence": "unverified",
+   "coordSource": "https://nominatim.openstreetmap.org/ (OSM locality/admin centroid, not the mast) (Ardenicë village)",
+   "serves": [
+    "Lushnjë",
+    "Fier",
+    "Patos",
+    "Roskovec"
+   ],
+   "muxes": [
+    {
+     "uhf": 27,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 31,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 29,
+     "mux": "vizion",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://web.archive.org/web/20260614191612/https://tring.al/televizion/platforma-tokesore/ ; https://web.archive.org/web/20240719064525/https://www.vizionplus.tv/kreu/projekt-plani-frekuencor-numerike/"
+    },
+    {
+     "uhf": null,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/sinjali",
+     "note": "channel not published"
+    },
+    {
+     "uhf": null,
+     "mux": "digitalb",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://digitalb.al/ndihma/suporti-teknik/support-sinjal",
+     "note": "channel not published per site"
+    }
+   ]
+  },
+  {
+   "site": "Ligovun hill (Fier)",
+   "region": "Fier",
+   "lat": null,
+   "lon": null,
+   "altM": null,
+   "coordConfidence": null,
+   "coordSource": null,
+   "serves": [
+    "Fier"
+   ],
+   "note": "no coordinates found",
+   "muxes": [
+    {
+     "uhf": 27,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 31,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 29,
+     "mux": "vizion",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://web.archive.org/web/20260614191612/https://tring.al/televizion/platforma-tokesore/"
+    },
+    {
+     "uhf": null,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/sinjali",
+     "note": "channel not published"
+    }
+   ]
+  },
+  {
+   "site": "Kodër Ballsh",
+   "region": "Fier",
+   "lat": 40.59932,
+   "lon": 19.73558,
+   "altM": null,
+   "coordConfidence": "unverified",
+   "coordSource": "https://nominatim.openstreetmap.org/ (OSM locality/admin centroid, not the mast) (Ballsh town)",
+   "serves": [
+    "Ballsh"
+   ],
+   "muxes": [
+    {
+     "uhf": 27,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 31,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": null,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/sinjali",
+     "note": "channel not published"
+    }
+   ]
+  },
+  {
+   "site": "Mali i Drenovës (Mallakastër)",
+   "region": "Fier",
+   "lat": 40.60058,
+   "lon": 19.70102,
+   "altM": null,
+   "coordConfidence": "unverified",
+   "coordSource": "https://nominatim.openstreetmap.org/ (OSM locality/admin centroid, not the mast) (Drenovë village)",
+   "serves": [
+    "Mallakastër"
+   ],
+   "muxes": [
+    {
+     "uhf": 29,
+     "mux": "vizion",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://web.archive.org/web/20260614191612/https://tring.al/televizion/platforma-tokesore/"
+    }
+   ]
+  },
+  {
+   "site": "Zvërnec hill (Vlorë)",
+   "region": "Vlorë",
+   "lat": 40.51486,
+   "lon": 19.41876,
+   "altM": null,
+   "coordConfidence": "unverified",
+   "coordSource": "https://nominatim.openstreetmap.org/ (OSM locality/admin centroid, not the mast) (Zvërnec village)",
+   "serves": [
+    "Vlorë",
+    "Radhimë",
+    "Orikum"
+   ],
+   "muxes": [
+    {
+     "uhf": 23,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 39,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/ ; https://web.archive.org/web/20240719064525/https://www.vizionplus.tv/kreu/projekt-plani-frekuencor-numerike/"
+    },
+    {
+     "uhf": 53,
+     "mux": "vizion",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://web.archive.org/web/20260614191612/https://tring.al/televizion/platforma-tokesore/ ; https://web.archive.org/web/20240719064525/https://www.vizionplus.tv/kreu/projekt-plani-frekuencor-numerike/"
+    },
+    {
+     "uhf": null,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/sinjali",
+     "note": "channel not published"
+    },
+    {
+     "uhf": null,
+     "mux": "digitalb",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://digitalb.al/ndihma/suporti-teknik/support-sinjal",
+     "note": "channel not published per site"
+    }
+   ]
+  },
+  {
+   "site": "Shashicë (Kaninë)",
+   "region": "Vlorë",
+   "lat": null,
+   "lon": null,
+   "altM": null,
+   "coordConfidence": null,
+   "coordSource": null,
+   "serves": [
+    "Vlorë",
+    "Orikum",
+    "Vllahinë",
+    "Sevaster",
+    "Selenicë"
+   ],
+   "note": "no coordinates found",
+   "muxes": [
+    {
+     "uhf": 23,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 39,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    }
+   ]
+  },
+  {
+   "site": "Llogara (mountain top)",
+   "region": "Vlorë",
+   "lat": 40.19819,
+   "lon": 19.59241,
+   "altM": 1027,
+   "coordConfidence": "unverified",
+   "coordSource": "https://www.openstreetmap.org/node/1816795281 (Qafa e Llogarasë pass; RTSH says 'maja e malit Llogarasë', exact summit unknown)",
+   "serves": [
+    "Radhimë",
+    "Orikum",
+    "Dukat",
+    "Dhërmi",
+    "Himarë",
+    "Vuno",
+    "Palasë"
+   ],
+   "muxes": [
+    {
+     "uhf": 23,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 39,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    }
+   ]
+  },
+  {
+   "site": "Treblovë",
+   "region": "Vlorë",
+   "lat": 40.48885,
+   "lon": 19.64305,
+   "altM": null,
+   "coordConfidence": "unverified",
+   "coordSource": "https://nominatim.openstreetmap.org/ (OSM locality/admin centroid, not the mast) (village)",
+   "serves": [
+    "Vllahinë",
+    "Sevaster",
+    "Selenicë",
+    "Lapardha",
+    "Kocul",
+    "Poçëm"
+   ],
+   "muxes": [
+    {
+     "uhf": 23,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 39,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    }
+   ]
+  },
+  {
+   "site": "Shën Vasil",
+   "region": "Vlorë",
+   "lat": 39.95989,
+   "lon": 19.96271,
+   "altM": null,
+   "coordConfidence": "unverified",
+   "coordSource": "https://nominatim.openstreetmap.org/ (OSM locality/admin centroid, not the mast) (village)",
+   "serves": [
+    "Borsh",
+    "Qeparo",
+    "Lukovë",
+    "Delvinë"
+   ],
+   "muxes": [
+    {
+     "uhf": 23,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 39,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    }
+   ]
+  },
+  {
+   "site": "Milë (Mali i Milesë, Sarandë)",
+   "region": "Vlorë",
+   "lat": 39.75453,
+   "lon": 20.09081,
+   "altM": 823,
+   "coordConfidence": "unverified",
+   "coordSource": "https://www.openstreetmap.org/node/26863604 (OSM peak 'Maja e Milesë'; also 'Maja Miles' 695 m at 39.74061,20.08706)",
+   "serves": [
+    "Sarandë",
+    "Delvinë"
+   ],
+   "muxes": [
+    {
+     "uhf": 23,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 39,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 53,
+     "mux": "vizion",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://web.archive.org/web/20260614191612/https://tring.al/televizion/platforma-tokesore/"
+    },
+    {
+     "uhf": 27,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/tv-klan-njoftim-per-ndryshimin-e-frekuencave-ne-sarande-dhe-himare",
+     "note": "moved to UHF 27 on 27 Oct 2025 because of interference"
+    }
+   ]
+  },
+  {
+   "site": "Ksamil",
+   "region": "Vlorë",
+   "lat": 39.77014,
+   "lon": 20.00379,
+   "altM": null,
+   "coordConfidence": "unverified",
+   "coordSource": "https://nominatim.openstreetmap.org/ (OSM locality/admin centroid, not the mast) (admin centroid)",
+   "serves": [
+    "Ksamil",
+    "Sarandë"
+   ],
+   "muxes": [
+    {
+     "uhf": 23,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 39,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    }
+   ]
+  },
+  {
+   "site": "Sopot (Delvinë)",
+   "region": "Vlorë",
+   "lat": 39.99141,
+   "lon": 20.08876,
+   "altM": null,
+   "coordConfidence": "unverified",
+   "coordSource": "https://nominatim.openstreetmap.org/ (OSM locality/admin centroid, not the mast) (village)",
+   "serves": [
+    "Delvinë"
+   ],
+   "muxes": [
+    {
+     "uhf": 23,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 39,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    }
+   ]
+  },
+  {
+   "site": "Himarë hill (east of town / above Potam)",
+   "region": "Vlorë",
+   "lat": 40.0862,
+   "lon": 19.77139,
+   "altM": null,
+   "coordConfidence": "unverified",
+   "coordSource": "https://nominatim.openstreetmap.org/ (OSM locality/admin centroid, not the mast) (Potam hamlet)",
+   "serves": [
+    "Himarë"
+   ],
+   "muxes": [
+    {
+     "uhf": 53,
+     "mux": "vizion",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://web.archive.org/web/20260614191612/https://tring.al/televizion/platforma-tokesore/"
+    },
+    {
+     "uhf": 27,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/tv-klan-njoftim-per-ndryshimin-e-frekuencave-ne-sarande-dhe-himare",
+     "note": "moved to UHF 27 on 27 Oct 2025"
+    }
+   ]
+  },
+  {
+   "site": "Dhërmi hill (above 'Panorama')",
+   "region": "Vlorë",
+   "lat": 40.1512,
+   "lon": 19.64141,
+   "altM": null,
+   "coordConfidence": "unverified",
+   "coordSource": "https://nominatim.openstreetmap.org/ (OSM locality/admin centroid, not the mast) (Dhërmi village)",
+   "serves": [
+    "Dhërmi"
+   ],
+   "muxes": [
+    {
+     "uhf": null,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/sinjali",
+     "note": "channel not published"
+    }
+   ]
+  },
+  {
+   "site": "Çardhak (Mali i Moravës, Korçë)",
+   "region": "Korçë",
+   "lat": 40.6128,
+   "lon": 20.84836,
+   "altM": 1808,
+   "coordConfidence": "likely",
+   "coordSource": "https://www.openstreetmap.org/node/5273510940 (OSM peak 'Maja Çardhakut')",
+   "serves": [
+    "Korçë",
+    "Devoll",
+    "Bilisht"
+   ],
+   "muxes": [
+    {
+     "uhf": 43,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 45,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 21,
+     "mux": "vizion",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://web.archive.org/web/20260614191612/https://tring.al/televizion/platforma-tokesore/ ; https://web.archive.org/web/20240719064525/https://www.vizionplus.tv/kreu/projekt-plani-frekuencor-numerike/"
+    },
+    {
+     "uhf": null,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/sinjali",
+     "note": "channel not published"
+    },
+    {
+     "uhf": null,
+     "mux": "digitalb",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://digitalb.al/ndihma/suporti-teknik/support-sinjal",
+     "note": "channel not published per site"
+    }
+   ]
+  },
+  {
+   "site": "Tushemisht hill (Pogradec)",
+   "region": "Korçë",
+   "lat": 40.90104,
+   "lon": 20.72016,
+   "altM": null,
+   "coordConfidence": "unverified",
+   "coordSource": "https://nominatim.openstreetmap.org/ (OSM locality/admin centroid, not the mast) (village; site on the hill above)",
+   "serves": [
+    "Pogradec"
+   ],
+   "muxes": [
+    {
+     "uhf": 43,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 45,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 21,
+     "mux": "vizion",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://web.archive.org/web/20260614191612/https://tring.al/televizion/platforma-tokesore/"
+    },
+    {
+     "uhf": null,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/sinjali",
+     "note": "channel not published"
+    },
+    {
+     "uhf": null,
+     "mux": "digitalb",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://digitalb.al/ndihma/suporti-teknik/support-sinjal",
+     "note": "channel not published per site"
+    }
+   ]
+  },
+  {
+   "site": "Çervenakë (mountain)",
+   "region": "Korçë",
+   "lat": 40.94556,
+   "lon": 20.6089,
+   "altM": null,
+   "coordConfidence": "unverified",
+   "coordSource": "https://nominatim.openstreetmap.org/ (OSM locality/admin centroid, not the mast) (Çervenakë village, not the summit)",
+   "serves": [
+    "Librazhd",
+    "Prrenjas",
+    "Pogradec",
+    "Korçë",
+    "Ohrid/Struga (N. Macedonia)"
+   ],
+   "muxes": [
+    {
+     "uhf": 43,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 45,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": null,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/klan-high-definition-tani-edhe-ne-cervenake/",
+     "note": "Klan station since June 2021, at the mobile-mast block on the summit"
+    }
+   ]
+  },
+  {
+   "site": "Maja e Gorricës (Ersekë)",
+   "region": "Korçë",
+   "lat": null,
+   "lon": null,
+   "altM": null,
+   "coordConfidence": null,
+   "coordSource": null,
+   "serves": [
+    "Ersekë / Kolonjë"
+   ],
+   "note": "no coordinates found",
+   "muxes": [
+    {
+     "uhf": 43,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 45,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": null,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/sinjali",
+     "note": "channel not published"
+    }
+   ]
+  },
+  {
+   "site": "Tarabosh",
+   "region": "Shkodër",
+   "lat": 42.04654,
+   "lon": 19.44978,
+   "altM": 593,
+   "coordConfidence": "likely",
+   "coordSource": "https://www.openstreetmap.org/node/3928757278 (OSM peak; OSM also maps 8 'Antena' masts tagged communication:television=yes at 42.0464-42.0468 N, 19.4487-19.4505 E)",
+   "serves": [
+    "Shkodër"
+   ],
+   "muxes": [
+    {
+     "uhf": 28,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 41,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 22,
+     "mux": "vizion",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://web.archive.org/web/20260614191612/https://tring.al/televizion/platforma-tokesore/ ; https://web.archive.org/web/20240719064525/https://www.vizionplus.tv/kreu/projekt-plani-frekuencor-numerike/"
+    },
+    {
+     "uhf": 34,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://tvklan.al/nga-e-hena-tv-klan-hd-me-frekuenca-te-reja-ne-zonen-e-shkodres/",
+     "note": "Klan announcement from Feb 2017; not re-checked since"
+    },
+    {
+     "uhf": null,
+     "mux": "digitalb",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://digitalb.al/ndihma/suporti-teknik/support-sinjal",
+     "note": "channel not published per site"
+    }
+   ]
+  },
+  {
+   "site": "Zefjan hill (Bushat, Vau i Dejës)",
+   "region": "Shkodër",
+   "lat": 41.96534,
+   "lon": 19.52153,
+   "altM": 249,
+   "coordConfidence": "likely",
+   "coordSource": "https://www.openstreetmap.org/node/4591674130 (OSM peak 'Kulmi Zefjanës')",
+   "serves": [
+    "Vau i Dejës",
+    "Bushat"
+   ],
+   "muxes": [
+    {
+     "uhf": 28,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 41,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "likely",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": null,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/sinjali",
+     "note": "channel not published"
+    }
+   ]
+  },
+  {
+   "site": "Tyrbe hill (Lezhë)",
+   "region": "Lezhë",
+   "lat": null,
+   "lon": null,
+   "altM": null,
+   "coordConfidence": null,
+   "coordSource": null,
+   "serves": [
+    "Lezhë"
+   ],
+   "note": "no coordinates found; RTSH publishes 43 for both Lezhë and Korçë, check with a scan",
+   "muxes": [
+    {
+     "uhf": 43,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 23,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/ ; https://web.archive.org/web/20240719064525/https://www.vizionplus.tv/kreu/projekt-plani-frekuencor-numerike/"
+    },
+    {
+     "uhf": 22,
+     "mux": "vizion",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://web.archive.org/web/20260614191612/https://tring.al/televizion/platforma-tokesore/ ; https://web.archive.org/web/20240719064525/https://www.vizionplus.tv/kreu/projekt-plani-frekuencor-numerike/"
+    },
+    {
+     "uhf": null,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/sinjali",
+     "note": "channel not published"
+    },
+    {
+     "uhf": null,
+     "mux": "digitalb",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://digitalb.al/ndihma/suporti-teknik/support-sinjal",
+     "note": "channel not published per site"
+    }
+   ]
+  },
+  {
+   "site": "Mali Tregtan (Kukës)",
+   "region": "Kukës",
+   "lat": 42.13613,
+   "lon": 20.338,
+   "altM": null,
+   "coordConfidence": "unverified",
+   "coordSource": "https://nominatim.openstreetmap.org/ (OSM locality/admin centroid, not the mast) (Tregtan village)",
+   "serves": [
+    "Kukës"
+   ],
+   "muxes": [
+    {
+     "uhf": 26,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 32,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/ ; https://web.archive.org/web/20240719064525/https://www.vizionplus.tv/kreu/projekt-plani-frekuencor-numerike/"
+    },
+    {
+     "uhf": 36,
+     "mux": "vizion",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://web.archive.org/web/20260614191612/https://tring.al/televizion/platforma-tokesore/"
+    },
+    {
+     "uhf": null,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/sinjali",
+     "note": "channel not published"
+    }
+   ]
+  },
+  {
+   "site": "Mali Arapaj (Dibër)",
+   "region": "Dibër",
+   "lat": null,
+   "lon": null,
+   "altM": null,
+   "coordConfidence": null,
+   "coordSource": null,
+   "serves": [
+    "Peshkopi / Dibër"
+   ],
+   "note": "no coordinates found; not the same as Kodra Arapaj in Durrës",
+   "muxes": [
+    {
+     "uhf": 38,
+     "mux": "rtsh",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": 24,
+     "mux": "rtsh-local",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://rtsh.al/informacione/sinjali/"
+    },
+    {
+     "uhf": null,
+     "mux": "klan",
+     "pol": null,
+     "confidence": "confirmed",
+     "source": "https://tvklan.al/sinjali",
+     "note": "channel not published"
+    }
+   ]
+  }
+ ]
+}

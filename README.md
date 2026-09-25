@@ -92,6 +92,14 @@ public-privilege APIs (see Samsung's OverlayPiP sample), so no partner certifica
 required; the app then lists antenna channels next to internet streams. The hardware below is only needed to watch
 antenna channels on other devices or through the Mac pipeline.
 
+**Which antenna, pointed where:** `npm run towers -- "Kamëz"` (any place name, or `41.33,19.82`; add `--indoor` to judge an
+indoor antenna). It lists the nearest transmitters from `sources/al-dvbt2-transmitters.json` (42 Albanian sites: RTSH,
+Klan, Top Channel, Media Vizion, DigitAlb; researched 2026-09-24, source per entry), the compass direction, whether hills
+block the path (Open-Meteo 90 m terrain, earth curvature, Fresnel zone), and the UHF channels with what is on them.
+Frequencies differ per county (RTSH is UHF 21 in Tirana, 23 in Vlorë, 28 in Shkodër, 43 in Korçë). Many tower positions
+are the nearest village, and UHF 49-60 (Top Channel, Media Vizion) will move when the 700 MHz band is cleared: re-scan then.
+Kosovo has no DVB-T2 network.
+
 A Mac has no tuner, so for that one piece of hardware is needed:
 
 1. **Network tuner** (e.g. HDHomeRun DVB-T2 model): plug into the router, scan once, it serves `http://<tuner>/lineup.json`

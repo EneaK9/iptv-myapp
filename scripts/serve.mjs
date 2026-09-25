@@ -85,7 +85,10 @@ async function proxy(req, res, q) {
   catch {} finally { res.end(); }
 }
 
-createServer(async (req, res) => {
+process.on('uncaughtException', e => console.error('uncaught', e));
+process.on('unhandledRejection', e => console.error('rejection', e));
+
+const server = createServer(async (req, res) => {
   const url = new URL(req.url, `http://localhost:${PORT}`);
   try {
     if (url.pathname === '/proxy') return proxy(req, res, url.searchParams);
@@ -101,4 +104,6 @@ createServer(async (req, res) => {
   } catch (e) {
     res.writeHead(e.code === 'ENOENT' ? 404 : 500); res.end(String(e.message));
   }
-}).listen(PORT, () => console.log(`viewer: http://localhost:${PORT}`));
+});
+server.on('error', e => { console.error(e); process.exit(1); });
+server.listen(PORT, () => console.log(`viewer: http://localhost:${PORT}`));
