@@ -1,3 +1,22 @@
 viewer: http://localhost:8789
 [2026-09-25T08:08:18.639Z] serve pid 88961 port 8789
 viewer: http://localhost:8789
+[2026-09-25T08:46:02.316Z] serve exited code=null signal=SIGTERM, restarting in 1s
+[2026-09-25T08:46:03.318Z] serve pid 41650 port 8789
+viewer: http://localhost:8789
+[2026-09-25T09:47:14.383Z] serve exited code=null signal=SIGTERM, restarting in 1s
+[2026-09-25T09:47:15.386Z] serve pid 47054 port 8789
+viewer: http://localhost:8789
+[2026-09-25T09:49:20.133Z] Albanian re-check finished (exit 0)
+[2026-09-25T09:56:33.729Z] serve exited code=null signal=SIGTERM, restarting in 1s
+[2026-09-25T09:56:34.732Z] serve pid 63298 port 8789
+viewer: http://localhost:8789
+[2026-09-25T09:58:38.936Z] Albanian re-check finished (exit 0)
+[2026-09-25T10:27:39.245Z] Albanian re-check finished (exit 0)
+[2026-09-25T10:57:39.324Z] Albanian re-check finished (exit 0)
+[2026-09-25T11:27:39.205Z] Albanian re-check finished (exit 0)
+[2026-09-25T12:13:58.680Z] Albanian re-check finished (exit 0)
+[2026-09-25T12:27:39.189Z] Albanian re-check finished (exit 0)
+[2026-09-25T12:57:34.250Z] serve exited code=null signal=SIGTERM, restarting in 1s
+[2026-09-25T12:57:35.254Z] serve pid 22575 port 8789
+viewer: http://localhost:8789

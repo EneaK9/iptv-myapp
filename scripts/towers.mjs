@@ -119,7 +119,15 @@ const best = reachable.sort((a, b) => (freeMuxes(b).size - freeMuxes(a).size) ||
 if (best) {
   const dir = compass(best.deg);
   console.log(`Best bet: point the antenna ${dir} (${SQ_DIR[dir]}, ${Math.round(best.deg)}°) at ${best.site}, ${best.km.toFixed(1)} km away.`);
-  console.log(`It carries ${[...freeMuxes(best)].map(k => muxes[k].name).join(', ')}. ${best.advice[0].toUpperCase()}${best.advice.slice(1)}.\n`);
+  console.log(`It carries ${[...freeMuxes(best)].map(k => muxes[k].name).join(', ')}. ${best.advice[0].toUpperCase()}${best.advice.slice(1)}.`);
+  // free antenna from a spare TV cable (c't "sleeve dipole"): each half is a quarter wave, 7500 / MHz cm
+  const mhz = best.muxes.filter(m => m.uhf && muxes[m.mux]?.free.length).map(m => 306 + 8 * m.uhf);
+  if (mhz.length) {
+    const lo = Math.min(...mhz), hi = Math.max(...mhz), cm = f => (7500 / f).toFixed(1);
+    console.log(`No antenna yet? Strip a spare TV cable: fold ${cm((lo + hi) / 2)} cm of braid back over the jacket and leave ${cm((lo + hi) / 2)} cm of bare centre wire`);
+    console.log(`(up to ${cm(lo)} cm favours ${lo} MHz, down to ${cm(hi)} cm favours ${hi} MHz). Hang it at a window facing ${compass(best.deg)}, then run Auto Tuning.`);
+  }
+  console.log();
 }
 const shown = new Set(); // print each platform's channel list once
 for (const [i, s] of top.entries()) {

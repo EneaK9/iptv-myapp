@@ -6,6 +6,7 @@ import { plexToken, plexStreamUrl } from './plex.mjs';
 const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0 Safari/537.36';
 const cache = new Map();
 const fail = msg => Object.assign(new Error(msg), { code: 'resolver_error' });
+const TWITCH_TOKEN_QUERY = 'query PlaybackAccessToken_Template($login: String!, $isLive: Boolean!, $vodID: ID!, $isVod: Boolean!, $playerType: String!) { streamPlaybackAccessToken(channelName: $login, params: {platform: "web", playerBackend: "mediaplayer", playerType: $playerType}) @include(if: $isLive) { value signature __typename } videoPlaybackAccessToken(id: $vodID, params: {platform: "web", playerBackend: "mediaplayer", playerType: $playerType}) @include(if: $isVod) { value signature __typename } }';
 
 const RESOLVERS = {
   // Report TV: report-tv.al/report_live embeds deb20stream.duckdns.org/playerhls10.html which calls /playurl -> signed playlist.
@@ -96,6 +97,22 @@ const RESOLVERS = {
     if (!m) throw fail('utrk: no mediabay URL in page');
     return { hls: m[0], headers: {}, expiresAt: Date.now() + 150 * 60 * 1000 };
   },
+  // Twitch embeds on the broadcasters' own sites (abcnews.al/live -> abcnewsal, top-channel.tv/topnewslive -> topmedia_topnews):
+  // the embed player asks Twitch GQL for an anonymous PlaybackAccessToken with Twitch's public web client id, then plays usher's HLS.
+  // The token lasts 20 min (only needed to start playback); arg is the channel login. Offline channels answer 404 at usher.
+  async twitch(login) {
+    if (!/^\w{3,25}$/.test(login)) throw fail(`bad twitch login ${login}`);
+    const res = await fetch('https://gql.twitch.tv/gql', { method: 'POST', signal: AbortSignal.timeout(15000),
+      headers: { 'client-id': 'kimne78kx3ncx6brgo4mv6wki5h1ko', 'content-type': 'text/plain;charset=UTF-8', 'user-agent': UA },
+      body: JSON.stringify({ operationName: 'PlaybackAccessToken_Template', query: TWITCH_TOKEN_QUERY, variables: { isLive: true, login, isVod: false, vodID: '', playerType: 'embed' } }) });
+    if (!res.ok) throw fail(`gql HTTP ${res.status}`);
+    const t = (await res.json()).data?.streamPlaybackAccessToken;
+    if (!t?.value) throw fail('gql: no playback token');
+    const q = new URLSearchParams({ sig: t.signature, token: t.value, allow_source: 'true', allow_audio_only: 'true', p: String(Math.floor(Math.random() * 1e7)),
+      player_backend: 'mediaplayer', playlist_include_framerate: 'true', supported_codecs: 'avc1' }); // H.264 only: the 2018 TV has no HEVC/AV1 path in the browser
+    const expires = Number(JSON.parse(t.value).expires ?? 0) * 1000 || Date.now() + 20 * 60 * 1000;
+    return { hls: `https://usher.ttvnw.net/api/channel/hls/${login}.m3u8?${q}`, headers: {}, expiresAt: expires - 60_000 };
+  },
   // Plex free Live TV: anonymous web-client token (scripts/plex.mjs); arg is the channel's gridKey.
   async plex(gridKey) {
     if (!/^[a-f0-9]+$/.test(gridKey)) throw fail(`bad plex gridKey ${gridKey}`);
@@ -103,7 +120,7 @@ const RESOLVERS = {
   },
 };
 
-export const isResolver = u => /^(reporttv|mcntv|klankosova|mrt|mediaklikk|rtvslo|dailymotion|crtv|utrk|plex):\/\//.test(u);
+export const isResolver = u => /^(reporttv|mcntv|klankosova|mrt|mediaklikk|rtvslo|dailymotion|crtv|utrk|plex|twitch):\/\//.test(u);
 export const resolverName = u => u.split('://')[0];
 
 export async function resolveDynamic(url) {

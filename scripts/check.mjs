@@ -11,7 +11,7 @@ try { registerChannelIds(JSON.parse(await readFile(new URL('../sources/official-
 const DATA = new URL('../data/', import.meta.url);
 const CONCURRENCY = Number(process.env.CONCURRENCY ?? 48);
 const TIMEOUT = Number(process.env.TIMEOUT ?? 12_000);
-const ONLY = process.env.ONLY; // e.g. ONLY=AL,XK  -> only channels of these countries
+const ONLY = process.env.ONLY; // e.g. ONLY=AL,XK  -> only channels of these countries; SQ = Albanian (AL, XK or Albanian language), like the viewer
 const MATCH = process.env.MATCH ? new RegExp(process.env.MATCH, 'i') : null; // e.g. MATCH=youtube -> only URLs matching
 const NEW_ONLY = process.env.NEW_ONLY === '1'; // only URLs with no previous result in health.json
 const DEFAULT_UA = 'Mozilla/5.0 (SMART-TV; LINUX; Tizen 7.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.31 TV Safari/537.36';
@@ -22,8 +22,10 @@ try { previous = JSON.parse(await readFile(new URL('health.json', DATA), 'utf8')
 
 const jobs = [];
 const seen = new Set();
+const onlySet = ONLY ? ONLY.split(',') : null;
+const isAlbanian = c => c.country === 'AL' || c.country === 'XK' || (c.languages ?? []).includes('sqi');
 for (const c of channels) {
-  if (ONLY && !ONLY.split(',').includes(c.country ?? '')) continue;
+  if (onlySet && !onlySet.includes(c.country ?? '') && !(onlySet.includes('SQ') && isAlbanian(c))) continue;
   for (const s of c.streams) {
     if (seen.has(s.url)) continue;
     if (MATCH && !MATCH.test(s.url)) continue;
@@ -44,6 +46,7 @@ async function get(url, headers, { maxBytes = 512 * 1024, range } = {}) {
   if (range) h.range = range;
   const res = await fetch(url, { headers: h, redirect: 'follow', signal: AbortSignal.timeout(TIMEOUT) });
   if (!res.ok || !res.body) { res.body?.cancel().catch(() => {}); return { res, body: Buffer.alloc(0) }; }
+  if (/^audio\/(?!.*mpegurl)/i.test(res.headers.get('content-type') ?? '')) maxBytes = Math.min(maxBytes, 16 * 1024); // live radio never ends: a few KB prove it flows
   const reader = res.body.getReader();
   const chunks = []; let n = 0;
   while (n < maxBytes) {
@@ -124,6 +127,8 @@ async function checkOne(job) {
       out.kind = 'dash'; out.status = 'ok';
     } else if (/video\/|mp2t|octet-stream/i.test(ct) && body?.length > 1024) {
       out.kind = 'progressive'; out.status = 'ok';
+    } else if (/^audio\//i.test(ct) && body?.length > 1024) {
+      out.kind = 'audio'; out.status = 'ok';
     } else if (/text\/html/i.test(ct)) {
       out.kind = 'html'; out.status = 'html_page';
     } else {
@@ -135,12 +140,21 @@ async function checkOne(job) {
   } finally { out.ms = Date.now() - t0; }
 }
 
+// merge into what is on disk now: the viewer server saves streams that played while this check was running
+async function saveHealth() {
+  let latest = previous;
+  try { latest = JSON.parse(await readFile(new URL('health.json', DATA), 'utf8')); } catch {}
+  await writeFile(new URL('health.json', DATA), JSON.stringify({ ...latest, ...results }));
+}
+
 let done = 0, alive = 0; const t0 = Date.now(); const counts = {};
 const logLines = [];
 async function worker() {
   while (jobs.length) {
     const job = jobs.pop();
     const r = await checkOne(job);
+    const prev = previous[job.url]; // remember when it last worked: many channels go off air at night or for a few hours
+    r.lastOk = r.status === 'ok' ? r.checkedAt : (prev?.lastOk ?? (prev?.status === 'ok' ? prev.checkedAt : null));
     results[job.url] = r; done++;
     counts[r.status] = (counts[r.status] ?? 0) + 1;
     if (r.status === 'ok') alive++;
@@ -148,12 +162,12 @@ async function worker() {
       const line = `${new Date().toISOString().slice(11, 19)} ${done} done, ${alive} ok, ${jobs.length} left, ${((Date.now() - t0) / 1000).toFixed(0)}s`;
       console.log(line); logLines.push(line);
       await writeFile(new URL('check.progress.json', DATA), JSON.stringify({ done, alive, left: jobs.length, counts }));
-      await writeFile(new URL('health.json', DATA), JSON.stringify({ ...previous, ...results })); // incremental save
+      await saveHealth(); // incremental save
     }
   }
 }
 await Promise.all(Array.from({ length: CONCURRENCY }, worker));
-await writeFile(new URL('health.json', DATA), JSON.stringify({ ...previous, ...results }));
+await saveHealth();
 await writeFile(new URL('check.log', DATA), logLines.join('\n') + '\n');
 console.log('\nstatus breakdown:');
 for (const [k, v] of Object.entries(counts).sort((a, b) => b[1] - a[1])) console.log(`  ${String(v).padStart(6)}  ${k}`);

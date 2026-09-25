@@ -1,0 +1,10 @@
+[
+  { "channel": "RadioTirana1.al", "name": "Radio Tirana 1", "country": "AL", "categories": ["radio"], "languages": ["sqi"], "url": "https://stream.rtsh.al/radiotirana1", "note": "rtsh.al/radio player (Icecast, MP3 170 kbps)" },
+  { "channel": "RadioTirana2.al", "name": "Radio Tirana 2", "country": "AL", "categories": ["radio"], "languages": ["sqi"], "url": "https://stream.rtsh.al/radiotirana2", "note": "rtsh.al/radio player (Icecast, MP3 170 kbps)" },
+  { "channel": "RadioTirana3.al", "name": "Radio Tirana 3", "country": "AL", "categories": ["radio"], "languages": ["sqi"], "url": "https://stream.rtsh.al/radiotirana3", "note": "rtsh.al/radio player (Icecast, AAC 96 kbps)" },
+  { "channel": "RadioTiranaFemije.al", "name": "Radio Tirana Fëmijë", "country": "AL", "categories": ["radio", "kids"], "languages": ["sqi"], "url": "https://stream.rtsh.al/radiotiranafemije", "note": "rtsh.al/radio player (Icecast, AAC 96 kbps)" },
+  { "channel": "RadioTiranaJazz.al", "name": "Radio Tirana Jazz", "country": "AL", "categories": ["radio", "music"], "languages": ["sqi"], "url": "https://stream.rtsh.al/radiotiranajazz", "note": "rtsh.al/radio player (Icecast, AAC 96 kbps)" },
+  { "channel": "RadioTiranaKlasik.al", "name": "Radio Tirana Klasik", "country": "AL", "categories": ["radio", "music"], "languages": ["sqi"], "url": "https://stream.rtsh.al/radiotiranaklasik1", "note": "rtsh.al/radio player (Icecast, MP3 128 kbps)" },
+  { "channel": "RadioTiranaInternational.al", "name": "Radio Tirana International", "country": "AL", "categories": ["radio", "news"], "languages": ["sqi", "eng"], "url": "https://stream.rtsh.al/rti", "note": "rtsh.al/radio player (Icecast, AAC 96 kbps); RTSH's international service" },
+  { "channel": "TopAlbaniaRadio.al", "name": "Top Albania Radio", "country": "AL", "categories": ["radio", "music"], "languages": ["sqi"], "url": "https://live.top-media.al/tar", "note": "topalbaniaradio.com/live player (Icecast, MP3 192 kbps)" }
+]

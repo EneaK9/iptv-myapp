@@ -7,3 +7,5 @@ data/check.progress.json
 *.wgt
 .buildResult/
 sources/local-tuner.json
+data/rechecker.json
+data/rechecker.log

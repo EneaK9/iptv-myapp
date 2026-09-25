@@ -201,7 +201,7 @@ try {
 
 // ---- curated official sources: sources/official-youtube.json (YouTube lives) and sources/official-hls.json (open broadcaster HLS/DASH) ----
 let officialAdded = 0;
-for (const [file, source, labels] of [['official-youtube.json', 'official-youtube', ['YouTube', 'Official']], ['official-hls.json', 'official-hls', ['Official']], ['official-dynamic.json', 'official-session', ['Official', 'Session']]]) {
+for (const [file, source, labels] of [['official-youtube.json', 'official-youtube', ['YouTube', 'Official']], ['official-hls.json', 'official-hls', ['Official']], ['official-dynamic.json', 'official-session', ['Official', 'Session']], ['official-radio.json', 'official-radio', ['Official', 'Radio']]]) {
   let official;
   try { official = JSON.parse(await readFile(new URL(`../sources/${file}`, import.meta.url), 'utf8')); } catch (e) { if (e.code !== 'ENOENT') throw e; continue; }
   for (const o of official) {
@@ -225,9 +225,15 @@ for (const c of db.values()) {
   if (!c.categories.includes('sports') && (SPORTS_RE.test(c.name) || SPORTS_BRAND_RE.test(c.name)) && !NOT_SPORTS_RE.test(c.name)) { c.categories.push('sports'); c.sportsByName = true; sportsTagged++; }
 }
 
+// ---- not used on purpose (see README): the 5.254.89.106 pirate relay and sites the Albanian prosecution DNS sinkhole covers.
+// They arrive through public playlists and can never work legitimately, so drop them wherever they came from.
+const EXCLUDED = /^https?:\/\/(5\.254\.89\.106|([\w-]+\.)*(albportal\.net|tvmak\.com|ekranishqip\.[a-z]+))([:\/]|$)/i;
+let excluded = 0;
+for (const c of db.values()) { const n = c.streams.length; c.streams = c.streams.filter(s => !EXCLUDED.test(s.url)); excluded += n - c.streams.length; }
+
 // ---- output ----
 // stream priority: antenna first, then the broadcaster's own feeds, then aggregators
-const SOURCE_PRIORITY = ['local-tuner', 'official-hls', 'official-session', 'gjirafa', 'official-youtube', 'iptv-org', 'free-tv', 'famelack', 'tdtchannels', 'rakuten', 'fast-samsung', 'fast-plex', 'fast-tubi', 'fast-roku', 'fast-pluto'];
+const SOURCE_PRIORITY = ['local-tuner', 'official-hls', 'official-session', 'official-radio', 'gjirafa', 'official-youtube', 'iptv-org', 'free-tv', 'famelack', 'tdtchannels', 'rakuten', 'fast-samsung', 'fast-plex', 'fast-tubi', 'fast-roku', 'fast-pluto'];
 const prio = s => { if (s.official && !/youtube/.test(s.source)) return SOURCE_PRIORITY.indexOf('official-hls'); const i = SOURCE_PRIORITY.indexOf(s.source); return i === -1 ? SOURCE_PRIORITY.length : i; };
 for (const c of db.values()) c.streams.sort((a, b) => prio(a) - prio(b));
 const list = [...db.values()].filter(c => c.streams.length > 0).sort((a, b) => a.name.localeCompare(b.name));
@@ -247,4 +253,5 @@ console.log(`  rakuten channels added: ${rkAdded}`);
 console.log(`  plex channels added: ${plexAdded}`);
 console.log(`  local tuner channels: ${tunerAdded}`);
 console.log(`  nsfw channels: ${list.filter(c => c.isNsfw).length}`);
+console.log(`  pirate-relay / sinkholed streams dropped: ${excluded}`);
 console.log(`wrote data/channels.json (${(Buffer.byteLength(JSON.stringify(list)) / 1e6).toFixed(1)} MB)`);

@@ -10,5 +10,7 @@
   { "channel": "TVSLO2.si", "name": "TV SLO 2", "country": "SI", "categories": ["sports"], "languages": ["slv"], "url": "rtvslo://tv.slo2", "note": "RTV Slovenija's sports channel via 365.rtvslo.si (api.rtvslo.si, 1-h token)" },
   { "channel": "SportenFrance.fr", "name": "Sport en France", "country": "FR", "categories": ["sports"], "languages": ["fra"], "url": "dailymotion://x8sayn8", "note": "French Olympic Committee's free channel; official Dailymotion live linked from sportenfrance.com" },
   { "channel": "CRTVSport.cm", "name": "CRTV Sport", "country": "CM", "categories": ["sports"], "languages": ["fra", "eng"], "url": "crtv://50006", "note": "crtv.cm/live/crtv-sport -> tveapi.acan.group directplayback (10-min wmsAuthSign)" },
-  { "channel": "KTRKSport.kg", "name": "KTRK Sport", "country": "KG", "categories": ["sports"], "languages": ["kir", "rus"], "url": "utrk://51", "note": "utrk.kg/live/tv?channel=51 inline mediabay token (3 h)" }
+  { "channel": "KTRKSport.kg", "name": "KTRK Sport", "country": "KG", "categories": ["sports"], "languages": ["kir", "rus"], "url": "utrk://51", "note": "utrk.kg/live/tv?channel=51 inline mediabay token (3 h)" },
+  { "channel": "ABCNewsAlbania.al", "name": "ABC News Albania", "country": "AL", "categories": ["news"], "languages": ["sqi"], "url": "twitch://abcnewsal", "note": "24/7 simulcast embedded on abcnews.al/live (Twitch player, anonymous playback token, 1080p)" },
+  { "channel": "TopNews.al", "name": "Top News", "country": "AL", "categories": ["news"], "languages": ["sqi"], "url": "twitch://topmedia_topnews", "note": "embedded on top-channel.tv/topnewslive (Twitch player, anonymous playback token, 720p); the old twitch.tv/topnewsal is gone (404)" }
 ]

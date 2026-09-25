@@ -21,7 +21,7 @@
   li .n { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   li .m { color: #8b95a7; font-size: 11px; }
   .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; background: #3a4150; }
-  .dot.ok { background: #38c172; } .dot.bad { background: #e3342f; }
+  .dot.ok { background: #38c172; } .dot.bad { background: #e3342f; } .dot.warn { background: #f6ad55; }
   main { display: flex; flex-direction: column; min-width: 0; }
   video { width: 100%; flex: 1; background: #000; min-height: 0; }
   #info { padding: 10px 14px; border-top: 1px solid #1f242c; display: flex; gap: 16px; align-items: center; color: #9aa3b2; font-size: 13px; }
@@ -50,7 +50,7 @@
     <label><input type="checkbox" id="forceProxy"> always via proxy</label>
   </div>
   <div id="count"></div>
-  <div style="padding:0 10px 8px;display:flex;gap:6px"><button onclick="quick('SQ','')">🇦🇱 Albanian</button><button onclick="quick('','sports')">⚽ Sports (all countries)</button><button onclick="quick('','news')">📰 News</button><button onclick="quickSource('rakuten')">🎬 Rakuten (free in AL)</button></div>
+  <div style="padding:0 10px 8px;display:flex;flex-wrap:wrap;gap:6px"><button onclick="quick('SQ','')">🇦🇱 Albanian</button><button onclick="quick('','sports')">⚽ Sports (all countries)</button><button onclick="quick('','news')">📰 News</button><button onclick="quickSource('rakuten')">🎬 Rakuten (free in AL)</button><button onclick="quick('','radio')">📻 Radio</button></div>
   <ul id="list"></ul>
 </aside>
 <main>
@@ -80,6 +80,9 @@ let cur = null;           // what is playing: { c, streams, i, viaProxy, failed 
 let pausedAt = 0;         // set when the user pauses a live stream; the next play jumps to live
 let internalSeek = false;
 const log = m => { logEl.textContent = `${new Date().toLocaleTimeString()}  ${m}\n` + logEl.textContent.split('\n').slice(0, 12).join('\n'); };
+const ago = iso => { const m = (Date.now() - Date.parse(iso)) / 60000; return m < 60 ? `${Math.max(1, Math.round(m))} min ago` : m < 2880 ? `${Math.round(m / 60)} h ago` : `${Math.round(m / 1440)} days ago`; };
+const recentOk = s => !!s.lastOk && Date.now() - Date.parse(s.lastOk) < 48 * 3600e3; // worked in the last 48 h: probably just off air for a while
+const lastWorked = c => c.streams.map(s => s.lastOk).filter(Boolean).sort().pop();
 
 fetch('/api/channels').then(r => r.json()).then(d => {
   all = d;
@@ -90,10 +93,36 @@ fetch('/api/channels').then(r => r.json()).then(d => {
   render();
 });
 
+// the server's background rechecker keeps statuses fresh: show when it last ran, and pull new statuses every 5 min
+// into the loaded channels (same objects, so playback and the stream buttons are not disturbed)
+let recheckInfo = '';
+const showCount = () => { $('#count').textContent = `${view.length} channels${recheckInfo}`; };
+async function loadRecheckInfo() {
+  try {
+    const r = await (await fetch('/api/rechecker')).json();
+    const al = r.running.albanian ? 'checking Albanian now' : r.lastRun.albanian ? `Albanian checked ${ago(r.lastRun.albanian)}` : '';
+    const full = r.running.full ? 'full check running' : r.lastRun.full ? `all checked ${ago(r.lastRun.full)}` : '';
+    recheckInfo = [al, full].filter(Boolean).map(s => ` · ${s}`).join('');
+    showCount();
+  } catch {}
+}
+async function refreshStatuses() {
+  try {
+    const fresh = new Map((await (await fetch('/api/channels')).json()).map(c => [c.id, c]));
+    for (const c of all) {
+      const f = fresh.get(c.id); if (!f) continue;
+      c.alive = f.alive; c.recent = f.recent;
+      for (const s of c.streams) { const fs = f.streams.find(x => x.url === s.url); if (fs) Object.assign(s, { status: fs.status, checkedAt: fs.checkedAt, lastOk: fs.lastOk }); }
+    }
+    render(); if (cur) renderStreams();
+  } catch {}
+}
+loadRecheckInfo(); setInterval(loadRecheckInfo, 60_000); setInterval(refreshStatuses, 5 * 60_000);
+
 function render() {
   const q = $('#q').value.trim().toLowerCase(), co = $('#country').value, cat = $('#cat').value, aliveOnly = $('#aliveOnly').checked;
   view = all.filter(c => {
-    if (aliveOnly && !c.alive) return false;
+    if (aliveOnly && !c.alive && !c.recent) return false;
     if (c.isNsfw) return false;
     if (sourceFilter && !c.streams.some(s => s.source === sourceFilter)) return false;
     if (co === 'SQ') { if (!(c.country === 'AL' || c.country === 'XK' || c.languages.includes('sqi'))) return false; }
@@ -101,13 +130,14 @@ function render() {
     if (cat && !c.categories.includes(cat)) return false;
     if (q && !c.name.toLowerCase().includes(q)) return false;
     return true;
-  }).sort((a, b) => (b.alive - a.alive) || a.name.localeCompare(b.name));
-  $('#count').textContent = `${view.length} channels`;
+  }).sort((a, b) => (b.alive - a.alive) || (!!b.recent - !!a.recent) || a.name.localeCompare(b.name));
+  showCount();
   list.innerHTML = '';
   const frag = document.createDocumentFragment();
   view.slice(0, 800).forEach((c, i) => {
     const li = document.createElement('li');
-    li.innerHTML = `<span class="dot ${c.alive ? 'ok' : 'bad'}"></span><img loading="lazy" src="${c.logo ?? ''}" onerror="this.style.visibility='hidden'"><div class="n">${c.name}<div class="m">${c.country ?? '—'} · ${c.categories.join(', ') || '—'} · ${c.streams.length} stream${c.streams.length > 1 ? 's' : ''}</div></div>`;
+    const worked = !c.alive && lastWorked(c);
+    li.innerHTML = `<span class="dot ${c.alive ? 'ok' : c.recent ? 'warn' : 'bad'}"></span><img loading="lazy" src="${c.logo ?? ''}" onerror="this.style.visibility='hidden'"><div class="n">${c.name}<div class="m">${c.country ?? '—'} · ${c.categories.join(', ') || '—'} · ${c.streams.length} stream${c.streams.length > 1 ? 's' : ''}${worked ? ` · worked ${ago(worked)}` : ''}</div></div>`;
     li.onclick = () => { focusIdx = i; play(c); };
     if (c === active) li.classList.add('active');
     frag.append(li);
@@ -137,8 +167,8 @@ function renderStreams() {
   box.append(Object.assign(document.createElement('span'), { className: 'hint', textContent: 'Streams:' }));
   cur.streams.forEach((s, i) => {
     const b = document.createElement('button');
-    b.innerHTML = `<span class="dot ${s.status === 'ok' ? 'ok' : s.status ? 'bad' : ''}"></span>Stream ${i + 1} <small>${[s.quality, s.source].filter(Boolean).join(' · ')}</small>`;
-    b.title = `${s.status ?? 'unchecked'} — ${s.url}`;
+    b.innerHTML = `<span class="dot ${s.status === 'ok' ? 'ok' : recentOk(s) ? 'warn' : s.status ? 'bad' : ''}"></span>Stream ${i + 1} <small>${[s.quality, s.source].filter(Boolean).join(' · ')}</small>`;
+    b.title = `${s.status ?? 'unchecked'}${s.checkedAt ? ` · checked ${ago(s.checkedAt)}` : ''}${s.lastOk && s.status !== 'ok' ? ` · last worked ${ago(s.lastOk)}` : ''} — ${s.url}`;
     b.classList.toggle('on', i === cur.i); b.classList.toggle('fail', cur.failed.has(i));
     b.onclick = () => playStream(i);
     box.append(b);
@@ -151,7 +181,7 @@ function tryStream(c, streams, i, viaProxy, first) {
   Object.assign(cur, { i, viaProxy, netRetries: 0, mediaRetries: 0 }); pausedAt = 0;
   if (hls) { hls.destroy(); hls = null; }
   if (ts) { ts.destroy(); ts = null; }
-  video.onerror = null; video.removeAttribute('src'); video.load();
+  video.onerror = null; video.removeAttribute('src'); video.removeAttribute('poster'); video.load();
   info.innerHTML = `<b>${c.name}</b> <span class="tag">${s.quality ?? '?'}</span> <span class="tag">${s.source}</span> <span class="tag">${viaProxy ? 'via proxy' : 'direct'}</span> <span class="tag">stream ${i + 1}/${streams.length}</span> <span class="tag">${s.status ?? 'unchecked'}</span> <span style="flex:1"></span><button onclick="navigator.clipboard.writeText('${s.url.replace(/'/g, '')}')">copy URL</button>`;
   renderStreams();
   log(`▶ ${c.name} — ${viaProxy ? 'proxy' : 'direct'} — ${s.url}`);
@@ -175,13 +205,21 @@ function tryStream(c, streams, i, viaProxy, first) {
     log(`✓ MPEG-TS via mpegts.js`); return;
   }
   if (/twitch\.tv/i.test(s.url)) return skip('Twitch page, not supported');
+  if (s.labels?.includes('Radio')) { // Icecast radio (MP3/AAC): the media element plays it directly, no CORS needed
+    if (c.logo) video.poster = c.logo;
+    video.src = src; video.onerror = () => next('radio stream error'); video.play().catch(() => {});
+    log('✓ radio via the media element'); return;
+  }
   if (Hls.isSupported()) {
     hls = new Hls({ enableWorker: true, lowLatencyMode: false, manifestLoadingTimeOut: 20000, levelLoadingTimeOut: 20000, fragLoadingTimeOut: 20000, fragLoadingMaxRetry: 6, manifestLoadingMaxRetry: 4, levelLoadingMaxRetry: 6 });
     hls.on(Hls.Events.MANIFEST_PARSED, (_, d) => log(`✓ manifest parsed: ${d.levels.length} quality level(s)`));
     hls.on(Hls.Events.ERROR, (_, d) => {
       if (!d.fatal) return;
       const why = `${d.type}: ${d.details}${d.response ? ` (HTTP ${d.response.code})` : ''}`;
-      if (d.type === Hls.ErrorTypes.NETWORK_ERROR && cur.netRetries < 4) { cur.netRetries++; log(`↻ ${why} — reconnecting (${cur.netRetries}/4)`); hls.startLoad(); return; }
+      // reconnect only for a hiccup in a stream that was already playing: startLoad() cannot reload a playlist that never loaded
+      // (it just hangs), and a 4xx such as 403/404 will not heal, so both fall through to the next stream/proxy at once
+      const code = d.response?.code ?? 0, midStream = hls.levels?.length > 0 && !/^manifest/i.test(d.details);
+      if (d.type === Hls.ErrorTypes.NETWORK_ERROR && midStream && !(code >= 400 && code < 500) && cur.netRetries < 4) { cur.netRetries++; log(`↻ ${why} — reconnecting (${cur.netRetries}/4)`); hls.startLoad(); return; }
       if (d.type === Hls.ErrorTypes.MEDIA_ERROR && cur.mediaRetries < 2) { cur.mediaRetries++; log(`↻ ${why} — recovering`); hls.recoverMediaError(); return; }
       next(why);
     });
@@ -191,7 +229,17 @@ function tryStream(c, streams, i, viaProxy, first) {
     video.src = src; video.onerror = () => next('video element error'); video.play().catch(() => {});
   }
 }
-video.addEventListener('playing', () => { if (!cur) return; cur.netRetries = 0; cur.mediaRetries = 0; if (cur.failed.delete(cur.i)) renderStreams(); });
+video.addEventListener('playing', () => {
+  if (!cur) return; cur.netRetries = 0; cur.mediaRetries = 0;
+  const s = cur.streams[cur.i];
+  let changed = cur.failed.delete(cur.i);
+  if (s && s.status !== 'ok') { // it plays, whatever the last check said: remember that (server saves it to health.json)
+    s.status = 'ok'; s.checkedAt = s.lastOk = new Date().toISOString(); cur.c.alive = true; cur.c.recent = false; changed = true;
+    fetch(`/api/played?u=${encodeURIComponent(s.url)}`, { method: 'POST' }).catch(() => {});
+    [...list.children].forEach((li, i) => { if (view[i] === cur.c) li.querySelector('.dot').className = 'dot ok'; });
+  }
+  if (changed) renderStreams();
+});
 
 // ---- live / rewind ----
 const fmt = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
@@ -217,7 +265,7 @@ function liveRange() {
 }
 function goLive() {
   const away = pausedAt && Date.now() - pausedAt; pausedAt = 0;
-  if (cur && (ts ? away : away > 60000)) return reload(); // raw TS or a long pause (tokens may have expired): reconnect
+  if (cur && (ts || isRadio() ? away : away > 60000)) return reload(); // raw TS / radio or a long pause (tokens may have expired): reconnect
   const r = liveRange();
   if (r && r.live - video.currentTime > 1) { internalSeek = true; video.currentTime = r.live; }
   if (video.paused) video.play().catch(() => {});
@@ -231,7 +279,8 @@ function seekBy(d) {
   video.currentTime = Math.max(t, Math.min(r.start, video.currentTime));
 }
 const togglePlay = () => { if (cur) video.paused ? video.play().catch(() => {}) : video.pause(); };
-video.addEventListener('pause', () => { if (cur && video.readyState >= 2 && !video.ended && liveRange()) pausedAt = Date.now(); });
+const isRadio = () => !!cur && !!cur.streams[cur.i]?.labels?.includes('Radio');
+video.addEventListener('pause', () => { if (cur && video.readyState >= 2 && !video.ended && (liveRange() || isRadio())) pausedAt = Date.now(); });
 video.addEventListener('play', () => { if (pausedAt) goLive(); });
 video.addEventListener('seeking', () => { if (internalSeek) internalSeek = false; else if (video.paused) pausedAt = 0; }); // picked a spot while paused: resume there
 function updateCtrl() {

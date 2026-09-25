@@ -19,7 +19,8 @@ Useful env vars for `check`:
 |---|---|---|
 | `CONCURRENCY` | 48 | parallel requests |
 | `TIMEOUT` | 12000 | ms per request |
-| `ONLY` | | comma-separated country codes, e.g. `ONLY=AL,XK` |
+| `ONLY` | | comma-separated country codes, e.g. `ONLY=AL,XK`; `SQ` = everything the viewer's Albanian filter shows |
+| `NEW_ONLY` | | `1` = only URLs with no result yet |
 
 The checker fetches the manifest, follows a master playlist to its first variant, requires the media
 playlist to list segments, then pulls the first 64 KB of the first segment. Statuses:
@@ -30,6 +31,11 @@ playlist to list segments, then pulls the first 64 KB of the first segment. Stat
 - `html_page` the URL is a web page (YouTube / Twitch), not a stream
 - `bad_manifest`, `no_segments`, `variant_http_*`, `segment_http_*` manifest reachable but stream not usable
 
+Many channels (Albanian locals especially) go off air for hours, so a status is only as good as its age. Each result keeps
+`lastOk`, the last time the stream worked. The viewer (`npm run serve`) reads `health.json` live and shows green = worked at
+the last check, yellow = failing now but worked in the last 48 h (kept in "alive only"), red = not seen working. It re-checks
+the Albanian channels every 30 minutes (`RECHECK_MIN`, `0` = off) and records every stream that actually plays in the viewer.
+
 ## YouTube lives
 
 Some broadcasters (Euronews, France 24, A2 CNN, Euronews Albania, many public broadcasters) stream officially and
@@ -37,7 +43,7 @@ free on YouTube. A playlist entry pointing at a YouTube page is not playable by 
 resolves it: it finds the live video on the page, asks YouTube's player API as the Android client, and returns the
 HLS manifest (fallback: manifest embedded in the mobile page). Manifests expire after ~6 h and are re-resolved on
 demand. The checker marks them `ok` when the resolved stream delivers bytes, `yt_offline` when the channel is not
-live. The viewer/proxy resolves them transparently. Twitch pages are not supported.
+live. The viewer/proxy resolves them transparently. Twitch page URLs are not supported (two official embeds are, see below).
 
 `sources/official-youtube.json` lists hand-curated official YouTube lives; `sources/official-hls.json` lists hand-verified open
 broadcaster HLS/DASH URLs. Both are merged in and tried before other streams of the same channel.
@@ -64,12 +70,16 @@ broadcaster HLS/DASH URLs. Both are merged in and tried before other streams of 
   TVRI Sport, ...) — tried before other streams of the same channel.
 
 Not used on purpose: pirate relays (e.g. `5.254.89.106`), anything the Albanian prosecution DNS sinkhole
-(`you.are.closed.by.law.prosecution.`) covers (TvMAK, albportal.net/AlbKanale, ekranishqip, ...), Twitch embeds (user's choice),
+(`you.are.closed.by.law.prosecution.`) covers (TvMAK, albportal.net/AlbKanale, ekranishqip, ...), Twitch channels other than the
+two broadcaster embeds below (user's choice),
 unofficial restreams of pay channels (SuperSport, Tring Sport, ArtSport, Sky, beIN, DAZN, ...), players that require a sign-in
 (Alkass Shoof, SABC+, RugbyPass site) and tokenized players we cannot resolve legitimately (Scan TV, MRT terrestrial geo-block).
 `sources/official-dynamic.json` channels are played through the broadcaster's own public player session (`scripts/resolvers.mjs`):
 Report TV, MCN TV, Klan Kosova, MRT Sat, M4 Sport/M4 Sport+ (mediaklikk), TV SLO 2 (rtvslo), Sport en France (Dailymotion),
-CRTV Sport, KTRK Sport.
+CRTV Sport, KTRK Sport, and (since 2026-09-25) ABC News Albania and Top News as `twitch://<login>`: the Twitch players embedded on
+abcnews.al/live and top-channel.tv/topnewslive, resolved with the same anonymous playback token those embeds request.
+`sources/official-radio.json`: RTSH radio (Radio Tirana 1/2/3, Fëmijë, Jazz, Klasik, International) and Top Albania Radio,
+open Icecast MP3/AAC from the broadcasters' own players; the viewer plays them in the media element (📻 Radio filter).
 
 ## Pay TV and paid sports (not in the app; official subscriptions)
 

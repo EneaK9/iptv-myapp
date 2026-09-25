@@ -1,26 +1,26 @@
 # Stream health report
-Generated 2026-09-24T14:17:47.533Z from this machine.
+Generated 2026-09-25T09:56:16.243Z from this machine.
 
 | | Streams | Channels |
 |---|---|---|
-| Checked | 23313 | 16473 |
-| Alive | 14770 (63.4%) | 11285 (68.5%) |
-| Alive, not NSFW | 14769 | 11284 |
+| Checked | 23301 | 16473 |
+| Alive | 14784 (63.4%) | 11297 (68.6%) |
+| Alive, not NSFW | 14783 | 11296 |
 
 ## Failure reasons (streams)
 | Status | Count |
 |---|---|
-| ok | 14770 |
-| http_403 | 2142 |
+| ok | 14784 |
+| http_403 | 2125 |
 | timeout | 1321 |
-| http_404 | 1048 |
+| http_404 | 1045 |
 | slate_only | 1005 |
-| dns | 644 |
+| dns | 641 |
 | segment_http_403 | 571 |
 | tls | 326 |
 | variant_http_404 | 157 |
 | segment_http_404 | 155 |
-| yt_offline | 149 |
+| yt_offline | 147 |
 | refused | 130 |
 | http_400 | 116 |
 | html_page | 88 |
@@ -43,7 +43,7 @@ Generated 2026-09-24T14:17:47.533Z from this machine.
 | http_408 | 6 |
 | http_406 | 5 |
 | variant_http_400 | 4 |
-| empty | 4 |
+| empty | 3 |
 | segment_http_416 | 3 |
 | http_521 | 3 |
 | error:ETIMEDOUT | 3 |
@@ -71,9 +71,9 @@ Generated 2026-09-24T14:17:47.533Z from this machine.
 ## Alive by source
 | Source | Streams checked | Alive |
 |---|---|---|
-| iptv-org | 17519 | 11229 (64.1%) |
+| iptv-org | 17498 | 11231 (64.2%) |
 | fast-samsung | 2607 | 1469 (56.3%) |
-| free-tv | 1138 | 459 (40.3%) |
+| free-tv | 1137 | 459 (40.4%) |
 | famelack | 790 | 605 (76.6%) |
 | tdtchannels | 337 | 235 (69.7%) |
 | fast-roku | 230 | 221 (96.1%) |
@@ -81,25 +81,28 @@ Generated 2026-09-24T14:17:47.533Z from this machine.
 | fast-plex | 183 | 176 (96.2%) |
 | fast-tubi | 152 | 134 (88.2%) |
 | rakuten | 51 | 51 (100.0%) |
-| official-youtube | 41 | 8 (19.5%) |
+| official-youtube | 41 | 10 (24.4%) |
 | official-hls | 16 | 16 (100.0%) |
+| official-session | 14 | 14 (100.0%) |
 | gjirafa | 13 | 10 (76.9%) |
-| official-session | 12 | 12 (100.0%) |
+| official-radio | 8 | 8 (100.0%) |
 
 ## Albanian-language channels (AL, XK, or language sqi)
 | Channel | Country | Alive | Streams (status) |
 |---|---|---|---|
 | A2 CNN | AL | ✅ | ok, ok |
-| Alb UK TV | UK | ✅ | ok, http_403 |
+| ABC News Albania | AL | ✅ | ok, yt_offline, twitch_page |
+| Alb UK TV | UK | ✅ | ok |
 | Albswiss TV | CH | ✅ | ok |
-| ATV | XK | ✅ | ok, yt_offline, http_403 |
+| ATV | XK | ✅ | ok, yt_offline |
+| CNA | AL | ✅ | ok, ok, dns |
 | Drita TV | CH | ✅ | ok |
 | EbS+ | BE | ✅ | ok |
 | Euronews Albania | AL | ✅ | ok, ok |
 | Fieri Tv | AL | ✅ | ok |
 | Kanal D Drama | TR | ✅ | ok, ok, ok, ok |
-| Klan Kosova | XK | ✅ | ok, yt_offline, http_403 |
-| Kohavision | XK | ✅ | ok, yt_offline, ok, http_403 |
+| Klan Kosova | XK | ✅ | ok, yt_offline |
+| Kohavision | XK | ✅ | ok, ok, ok |
 | MCN TV | AL | ✅ | ok |
 | MRT 2 Sat | MK | ✅ | ok, http_403 |
 | MRT Sobraniski kanal | MK | ✅ | ok, refused, http_403 |
@@ -108,17 +111,27 @@ Generated 2026-09-24T14:17:47.533Z from this machine.
 | Ora News | AL | ✅ | ok, yt_offline, ok |
 | PRO1 | XK | ✅ | ok |
 | Radio 1 RTV | AL | ✅ | ok |
-| Report TV | AL | ✅ | ok, yt_offline, timeout, http_403 |
+| Radio Tirana 1 | AL | ✅ | ok |
+| Radio Tirana 2 | AL | ✅ | ok |
+| Radio Tirana 3 | AL | ✅ | ok |
+| Radio Tirana Fëmijë | AL | ✅ | ok |
+| Radio Tirana International | AL | ✅ | ok |
+| Radio Tirana Jazz | AL | ✅ | ok |
+| Radio Tirana Klasik | AL | ✅ | ok |
+| Report TV | AL | ✅ | ok, yt_offline, timeout |
 | RTK 1 Sat | XK | ✅ | ok |
 | RTK 3 | XK | ✅ | ok |
+| RTSH 1 | AL | ✅ | ok, timeout |
 | RTV Arkiva Islame | XK | ✅ | ok |
 | RTV Besa | XK | ✅ | ok |
-| RTV Islam | CH | ✅ | ok, http_403 |
+| RTV Islam | CH | ✅ | ok |
 | RTV Pendimi | CH | ✅ | ok |
 | RTV21 | XK | ✅ | ok, ok, yt_offline, ok |
 | Shqiponja TV | AL | ✅ | ok |
 | Syri | AL | ✅ | ok, yt_offline |
 | T7 | XK | ✅ | yt_offline, ok |
+| Top Albania Radio | AL | ✅ | ok |
+| Top News | AL | ✅ | ok, twitch_page |
 | TopEstrada TV | MK | ✅ | ok |
 | Tropoja Televizion | AL | ✅ | ok |
 | TV 7 Albania | AL | ✅ | http_403, ok |
@@ -131,30 +144,21 @@ Generated 2026-09-24T14:17:47.533Z from this machine.
 | TV Prizreni | XK | ✅ | ok |
 | TV Syri | XK | ✅ | ok |
 | TV2 Gostivar | MK | ✅ | ok |
-| Vizion Plus | AL | ✅ | ok, yt_offline, http_403 |
+| Vizion Plus | AL | ✅ | ok, yt_offline |
 | ZËRI TV | XK | ✅ | ok |
 | ZICO TV | RS | ✅ | ok |
 | Zjarr TV | AL | ✅ | ok |
-| ABC News Albania | AL | ❌ | yt_offline, twitch_page |
-| Albanian TV America | US | ❌ | http_403 |
-| AlbKanale Music TV | AL | ❌ | dns, dns |
 | Alpo TV | AL | ❌ | http_403, tls |
-| Alsat | MK | ❌ | yt_offline, refused, http_403 |
-| CNA | AL | ❌ | empty, http_404, dns |
+| Alsat | MK | ❌ | yt_offline, refused |
 | Cufo | AL | ❌ | http_403 |
-| Elrodi TV | AL | ❌ | http_403 |
 | Fax News | AL | ❌ | yt_offline |
-| First Channel | XK | ❌ | http_403 |
 | Kanali 7 | AL | ❌ | http_404 |
-| Max | AL | ❌ | http_404 |
 | MRT 2 | MK | ❌ | refused, http_403 |
 | MRT 3 | MK | ❌ | http_403 |
-| My Music | AL | ❌ | http_403 |
 | Panorama TV | AL | ❌ | yt_offline, tls, http_404 |
-| RTK 1 | XK | ❌ | http_403, yt_offline, http_403 |
+| RTK 1 | XK | ❌ | http_403, yt_offline |
 | RTK 2 | XK | ❌ | http_403 |
 | RTK 4 | XK | ❌ | http_403 |
-| RTSH 1 | AL | ❌ | yt_offline, timeout |
 | RTSH 2 | AL | ❌ | timeout |
 | RTSH 24 | AL | ❌ | timeout |
 | RTSH Shqip | AL | ❌ | timeout |
@@ -163,23 +167,20 @@ Generated 2026-09-24T14:17:47.533Z from this machine.
 | RTV Mitrovica | XK | ❌ | yt_offline |
 | Shijak TV | AL | ❌ | yt_offline |
 | Teve1 | XK | ❌ | yt_offline |
-| Top Channel | AL | ❌ | yt_offline, http_403 |
-| Top News | AL | ❌ | twitch_page |
-| Tring History | AL | ❌ | http_403 |
-| Tring Kids | AL | ❌ | http_403 |
+| Top Channel | AL | ❌ | yt_offline |
 | TV Arberia 3 Femije | XK | ❌ | tls |
 | TV Arberia 4 Muzike | XK | ❌ | tls |
 | TV Arberia Retro Hits | XK | ❌ | tls |
 | TV ERA | MK | ❌ | refused |
-| TV Klan | AL | ❌ | yt_offline, http_403 |
-| TV21 | MK | ❌ | yt_offline, refused, dns |
+| TV Klan | AL | ❌ | yt_offline |
+| TV21 | MK | ❌ | yt_offline, refused |
 
-46 of 84 Albanian-language channels alive.
+58 of 84 Albanian-language channels alive.
 
 ## Alive channels per country (top 60)
 | Country | Channels | Alive | % |
 |---|---|---|---|
-| 🇺🇸 United States | 2701 | 1870 | 69% |
+| 🇺🇸 United States | 2700 | 1870 | 69% |
 |  ?? | 1862 | 1093 | 59% |
 | 🇮🇳 India | 938 | 781 | 83% |
 | 🇮🇹 Italy | 732 | 501 | 68% |
@@ -235,24 +236,24 @@ Generated 2026-09-24T14:17:47.533Z from this machine.
 | 🇬🇹 Guatemala | 65 | 30 | 46% |
 | 🇦🇺 Australia | 56 | 29 | 52% |
 | 🇰🇿 Kazakhstan | 45 | 29 | 64% |
+| 🇦🇱 Albania | 41 | 29 | 71% |
 | 🇱🇧 Lebanon | 32 | 27 | 84% |
 | 🇧🇩 Bangladesh | 33 | 27 | 82% |
 | 🇧🇪 Belgium | 41 | 24 | 59% |
-| 🇫🇮 Finland | 33 | 24 | 73% |
 
 ## Alive channels per category
 | Category | Alive channels |
 |---|---|
 | (none) | 4103 |
-| general | 1824 |
-| news | 983 |
-| music | 631 |
+| general | 1825 |
+| news | 987 |
+| music | 634 |
 | religious | 629 |
 | entertainment | 625 |
 | sports | 497 |
 | movies | 457 |
 | series | 329 |
-| kids | 306 |
+| kids | 307 |
 | documentary | 153 |
 | education | 142 |
 | comedy | 134 |
@@ -272,4 +273,5 @@ Generated 2026-09-24T14:17:47.533Z from this machine.
 | science | 17 |
 | weather | 14 |
 | relax | 9 |
+| radio | 8 |
 | interactive | 1 |

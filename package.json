@@ -12,7 +12,8 @@
     "pipeline": "npm run fetch && npm run merge && npm run check && npm run report",
     "serve": "node scripts/serve.mjs",
     "sports": "node scripts/sports.mjs",
-    "towers": "node scripts/towers.mjs"
+    "towers": "node scripts/towers.mjs",
+    "rechecker": "node scripts/rechecker.mjs"
   },
   "engines": {
     "node": ">=20"
